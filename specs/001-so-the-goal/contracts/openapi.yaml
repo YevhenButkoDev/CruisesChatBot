@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Cruise Info API
+  version: 1.0.0
+paths:
+  /query:
+    post:
+      summary: Query the vector database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+      responses:
+        '200':
+          description: A list of relevant cruise information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cruise_id:
+                      type: string
+                    cruise_info:
+                      type: string
+                    score:
+                      type: number

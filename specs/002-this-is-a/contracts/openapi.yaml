@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: AI Chatbot for Cruise Search API
+  version: 1.0.0
+paths:
+  /chat:
+    post:
+      summary: Send a message to the chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatMessage'
+      responses:
+        '200':
+          description: The chatbot's response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+components:
+  schemas:
+    ChatMessage:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+          description: The ID of the conversation, for context. Can be empty for a new conversation.
+        message:
+          type: string
+          description: The user's message.
+    ChatResponse:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+          description: The ID of the conversation.
+        response:
+          type: string
+          description: The chatbot's text response.
+        cruises:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cruise'
+    Cruise:
+      type: object
+      properties:
+        cruise_id:
+          type: string
+        destination:
+          type: string
+        itinerary:
+          type: object
+        sailing_dates:
+          type: array
+          items:
+            type: string
+        ship_information:
+          type: object
+        pricing:
+          type: object
