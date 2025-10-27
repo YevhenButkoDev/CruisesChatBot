@@ -4,16 +4,16 @@ from langdetect import detect
 
 def translate_to_english(text, src_lang=None):
     """Translates a given text to English."""
-    if not text or not isinstance(text, str):
-        return ""
-    translator = Translator()
-    if src_lang and src_lang != "en":
-        try:
-            return translator.translate(text, src=src_lang, dest="en").text
-        except Exception as e:
-            raise PermissionError(e)
-    return text
-
+    # if not text or not isinstance(text, str):
+    #     return ""
+    # translator = Translator()
+    # if src_lang and src_lang != "en":
+    #     try:
+    #         return translator.translate(text, src=src_lang, dest="en").text
+    #     except Exception as e:
+    #         raise PermissionError(e)
+    # return text
+    return ""
 
 def get_localized_text(data, key, lang_order=["en", "de", "ru", "uk", "pl", "hy"]):
     """

@@ -1,3 +1,11 @@
+# Environment variables
+.env
+devops/.env
+
+# SQLite databases
+*.db
+cruise_data.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
@@ -119,4 +127,6 @@ dmypy.json
 .pyre/
 
 .idea/
-./src/chroma_data/
+src/chroma_data/
+
+devops/secret/

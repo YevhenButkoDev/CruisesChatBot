@@ -32,11 +32,11 @@ def get_descriptive_text_and_meta(cruise_data):
         ", ".join(list(set([
             remove_html_tags(get_i18n_text(r, ["description_i18n"]))
             for r in get_nested(cruise_info, ["rivers"]) or []
-        ]))).split()[:200]
+        ]))).split()[:100]
     )
 
     start_port = get_i18n_text(cruise_info, ["portMaybe", "name_i18n"])
-    start_port_desc = " ".join(remove_html_tags(get_i18n_text(cruise_info, ["portMaybe", "description_i18n"])).split()[:200])
+    start_port_desc = " ".join(remove_html_tags(get_i18n_text(cruise_info, ["portMaybe", "description_i18n"])).split()[:100])
     start_port_country = get_i18n_text(cruise_info, ["portMaybe", "country_gen_i18n"])
 
     cities = ", ".join(list(set(
@@ -49,13 +49,13 @@ def get_descriptive_text_and_meta(cruise_data):
         ", ".join(list(set([
             remove_html_tags(get_i18n_text(i, ["city", "country_description_i18n"]))
             for i in get_nested(cruise_info, ["itineraries"]) or []
-        ]))).split()[:200]
+        ]))).split()[:100]
     )
     city_descs = " ".join(
         ", ".join([
             remove_html_tags(get_i18n_text(i, ["city", "description_i18n"]))
             for i in get_nested(cruise_info, ["itineraries"]) or []
-        ]).split()[:200]
+        ]).split()[:100]
     )
 
     end_port = get_i18n_text(cruise_info, ["lastPortMaybe", "name_i18n"])
@@ -63,7 +63,10 @@ def get_descriptive_text_and_meta(cruise_data):
     end_port_desc = remove_html_tags(get_i18n_text(cruise_info, ["lastPortMaybe", "description_i18n"]))
 
     categories = ", ".join([get_i18n_text(c, ["name_i18n"]) for c in get_nested(cruise_info, ["cruiseCategories"]) or []])
-    category_descs = ", ".join([remove_html_tags(get_i18n_text(c, ["description_i18n"])) for c in get_nested(cruise_info, ["cruiseCategories"]) or []])
+    category_descs = " ".join(
+        ", ".join([remove_html_tags(get_i18n_text(c, ["description_i18n"])) for c in get_nested(cruise_info, ["cruiseCategories"]) or []])
+            .split()[:50]
+    )
     category_type = get_i18n_text(cruise_info, ["cruiseCategoryType", "name_i18n"])
 
     # Build the descriptive text

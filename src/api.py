@@ -1,11 +1,43 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from src.vector_db.query import query_chroma_db
-from dotenv import load_dotenv
+import jwt
 import os
 
+from src.ai_agent import CruiseAgent
+from src.vector_db.query import query_chroma_db
+from dotenv import load_dotenv
+
 load_dotenv()
+
+# Configuration
+JWT_SECRET = os.getenv("JWT_SECRET", "your-secret-key")
+JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000").split(",")
+
 app = FastAPI()
+security = HTTPBearer()
+agent = CruiseAgent()
+
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
+
+# JWT verification
+def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    try:
+        payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        return payload
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
 
 class Query(BaseModel):
@@ -17,30 +49,24 @@ class ChatMessage(BaseModel):
     session_id: str = "default"
 
 
-# Chat bot instances will be created per session
+class AgentRequest(BaseModel):
+    question: str
+    chat_id: str
 
+@app.post("/ask")
+async def ask_agent(request: AgentRequest, user: dict = Depends(verify_jwt)):
+    """
+    Call the Cruise AI agent with a user's question and chat ID.
+    """
+    try:
+        responses = agent.ask(user_message=request.question, thread_id=request.chat_id)
+        if not responses:
+            raise HTTPException(status_code=404, detail="No response from agent")
 
-@app.post("/query")
-def query(query: Query):
-    """Queries the vector database and returns the most relevant cruise information."""
-    results = query_chroma_db(query.query)
-    
-    # The results from chromadb are a bit complex, we need to parse them
-    # to match the openapi.yaml format.
-    
-    if not results or not results.get("ids"):
-        return []
+        return responses
 
-    parsed_results = []
-    for i, doc_id in enumerate(results["ids"][0]):
-        parsed_results.append({
-            "cruise_id": doc_id,
-            "cruise_info": results["documents"][0][i],
-            "meta": results["metadatas"][0][i],
-            "score": results["distances"][0][i]
-        })
-
-    return parsed_results
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":

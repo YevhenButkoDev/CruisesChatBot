@@ -1,7 +1,7 @@
-import json
 import logging
 from datetime import datetime
 from src.data_extraction.db import get_db_connection
+from src.util.sqlite_storage import CruiseDataStorage
 
 logging.basicConfig(level=logging.INFO)
 
@@ -77,14 +77,16 @@ def get_date_and_price_info(cruise_ids):
 
 
 def extract_data():
-    """Orchestrates the data extraction process and saves the final data to a JSON file."""
+    """Orchestrates the data extraction process and saves the final data to SQLite."""
     logging.info("Starting data extraction")
     enabled_cruise_ids = get_enabled_cruise_ids()
     logging.info(f"Found {len(enabled_cruise_ids)} enabled cruises")
 
-    all_cruise_data = []
+    storage = CruiseDataStorage()
+    batch_data = []
     processed = 0
     skipped = 0
+    batch_size = 100  # Persist every 100 records
 
     for batch in get_cruise_data_in_batches(enabled_cruise_ids):
         batch_cruise_ids = [row[0] for row in batch]
@@ -96,22 +98,29 @@ def extract_data():
 
         for row in batch:
             cruise_id, ufl, cruise_info = row
-            all_cruise_data.append({
+            cruise_data = {
+                "id": cruise_id,
                 "cruise_id": cruise_id,
                 "ufl": ufl,
                 "cruise_info": cruise_info,
                 "date_and_price_info": date_and_price_info.get(cruise_id),
-            })
+            }
+            batch_data.append(cruise_data)
             processed += 1
 
-        # if processed > 200:
-        #     break
+            # Persist batch when it reaches batch_size
+            if len(batch_data) >= batch_size:
+                logging.info("Persisting batch ...")
+                storage.save_raw_cruises(batch_data)
+                batch_data = []  # Clear batch
 
         logging.info(
             f"Processed: {processed}, Skipped: {skipped}, Left: {len(enabled_cruise_ids) - processed - skipped}")
 
-    with open("cruise_data.json", "w", encoding="utf-8") as f:
-        json.dump(all_cruise_data, f, ensure_ascii=False, indent=4)
+    # Persist remaining data
+    if batch_data:
+        storage.save_raw_cruises(batch_data)
+    
     logging.info("Data extraction completed")
 
 

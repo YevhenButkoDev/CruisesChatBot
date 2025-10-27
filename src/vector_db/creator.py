@@ -1,4 +1,6 @@
+from chromadb import EmbeddingFunction
 from sentence_transformers import SentenceTransformer
+import os
 import chromadb
 
 
@@ -6,12 +8,13 @@ class AllMpnetBaseV2EmbeddingFunction:
     def __init__(self, model_name="all-MiniLM-L12-v2"):
         self.model = SentenceTransformer(model_name)
 
-    def __call__(self, input):
-        # input is a list of strings
-        embeddings = self.model.encode(input)
-        # make sure to return a list of lists of floats
+    def __call__(self, input: list[str]) -> list[list[float]]:
+        # input must be named exactly 'input'
+        embeddings = self.model.encode(input, convert_to_numpy=True)
         return embeddings.tolist()
 
+    def name(self):
+        return "all-MiniLM-L12-v2"
 
 def get_chroma_client(data_dir="./chroma_data"):
     """Initializes and returns a Chroma DB client."""

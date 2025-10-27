@@ -1,3 +1,4 @@
+import os
 import chromadb
 from chromadb.api.types import EmbeddingFunction
 from src.vector_db.creator import AllMpnetBaseV2EmbeddingFunction  # adjust import if needed
@@ -49,7 +50,7 @@ def query_chroma_db(
     :return: Query results from Chroma.
     """
     # Connect to persistent Chroma client
-    client = chromadb.PersistentClient("./chroma_data")
+    client = chromadb.PersistentClient(os.getenv("CHROMA_DATA_DIR", "./chroma_data"))
 
     # Initialize embedding function
     embedding_function = ChromaCompatibleEmbedding(AllMpnetBaseV2EmbeddingFunction())
@@ -87,7 +88,7 @@ def get_chunks_by_meta(filters: dict, collection_name: str = "cruise_collection"
     import chromadb
 
     # Connect to persistent Chroma client
-    client = chromadb.PersistentClient("./chroma_data")
+    client = chromadb.PersistentClient(os.getenv("CHROMA_DATA_DIR", "./src/chroma_data"))
 
     # Get the collection
     collection = client.get_collection(name=collection_name)

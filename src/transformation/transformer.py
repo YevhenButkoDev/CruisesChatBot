@@ -1,5 +1,5 @@
-import json
 from src.transformation.semantic import get_descriptive_text_and_meta
+from src.util.sqlite_storage import CruiseDataStorage
 import logging
 import os
 
@@ -9,12 +9,6 @@ def transform_data(cruise_data):
     """
     Orchestrates the data cleaning, translation, and semantic transformation for a single cruise.
     """
-    # This is a simplified transformation. 
-    # In a real-world scenario, you would iterate through the fields 
-    # specified in FR-005 and apply cleaning and translation.
-    
-    # For now, we'll just apply it to the descriptive text generation
-
     if cruise_data.get("date_and_price_info", {}) is None:
         return None
 
@@ -42,49 +36,53 @@ def transform_data(cruise_data):
 
 def main():
     """
-    Main function to orchestrate the data transformation.
+    Main function to orchestrate the data transformation using SQLite storage with batch processing.
     """
     logging.info("Starting data transformation")
-    with open("cruise_data.json", "r") as f:
-        all_cruise_data = json.load(f)
-
-    logging.info(f"Found {len(all_cruise_data)} cruises to transform")
-    transformed_data = []
-    if os.path.exists("transformed_cruise_data.json"):
-        with open("transformed_cruise_data.json", "r") as f2:
-            transformed_data = json.load(f2)
-            logging.info(f"Loaded {len(transformed_data)} previously transformed cruises")
-
-    # Load existing transformed IDs if file exists
-    transformed_cruises = []
-    if os.path.exists("transformed_cruise_ids.json"):
-        with open("transformed_cruise_ids.json", "r") as f3:
-            transformed_cruises = json.load(f3)
-            logging.info(f"Loaded {len(transformed_cruises)} previously transformed cruises")
     
-    for i, cruise in enumerate(all_cruise_data, 1):
-        cruise_id = cruise.get("cruise_id")
-
-        # Skip already transformed cruises
-        if cruise_id in transformed_cruises:
-            continue
-
-        try:
-            tr = transform_data(cruise)
-
-            if tr is not None:
-                transformed_data.append(tr)
-                if i % 10 == 0 or i == len(all_cruise_data):
-                    logging.info(f"Transformed: {i}/{len(all_cruise_data)}")
-            transformed_cruises.append(cruise_id)
-        except Exception as e:
-            logging.error(f"Permission error on cruise {cruise_id}: {e}")
+    storage = CruiseDataStorage()
+    
+    # Get total count and existing processed IDs
+    total_cruises = storage.get_raw_cruises_count()
+    transformed_cruises = set(storage.get_processed_ids())
+    logging.info(f"Found {total_cruises} total cruises, {len(transformed_cruises)} already processed")
+    
+    batch_size = 100
+    offset = 0
+    processed_count = 0
+    
+    while True:
+        # Get batch of raw cruise data
+        cruise_batch = storage.get_raw_cruises_batch(batch_size, offset)
+        
+        if not cruise_batch:
             break
+            
+        for cruise in cruise_batch:
+            cruise_id = cruise.get("cruise_id")
 
-    with open("transformed_cruise_data.json", "w", encoding="utf-8") as f:
-        json.dump(transformed_data, f, ensure_ascii=False, indent=4)
-    with open("transformed_cruise_ids.json", "w", encoding="utf-8") as f:
-        json.dump(transformed_cruises, f, ensure_ascii=False, indent=4)
+            # Skip already transformed cruises
+            if cruise_id in transformed_cruises:
+                continue
+
+            try:
+                tr = transform_data(cruise)
+
+                if tr is not None:
+                    storage.save_transformed_cruise(tr)
+                    processed_count += 1
+                    if processed_count % 10 == 0:
+                        logging.info(f"Transformed: {processed_count}")
+                
+                storage.mark_as_processed(cruise_id)
+                transformed_cruises.add(cruise_id)
+            except Exception as e:
+                logging.error(f"Error processing cruise {cruise_id}: {e}")
+                break
+        
+        offset += batch_size
+        logging.info(f"Processed batch {offset//batch_size}, total processed: {processed_count}")
+
     logging.info("Data transformation completed")
 
 if __name__ == "__main__":
