@@ -1,110 +1,119 @@
-# Credentials Setup for Google Cloud Run Deployment
+# Credentials Setup for Cruise AI Agent
 
-## Required Credentials
+## Required Services & APIs
 
-### 1. Google Cloud Service Account Key
-
-**Create Service Account:**
-```bash
-# Create service account
-gcloud iam service-accounts create cruise-ai-agent \
-    --description="Service account for Cruise AI Agent" \
-    --display-name="Cruise AI Agent"
-
-# Grant necessary permissions
-gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
-    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
-    --role="roles/storage.objectViewer"
-
-# Create and download key
-gcloud iam service-accounts keys create service-account-key.json \
-    --iam-account=cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com
-    
-gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
-  --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
-  --role="roles/datastore.user"
-```
-
-**Add to Docker:**
-```dockerfile
-# Add to Dockerfile
-COPY service-account-key.json /app/service-account-key.json
-ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
-```
-
-### 2. MongoDB Atlas (for Agent Checkpoints)
-
-**Setup:**
-1. Create MongoDB Atlas cluster
-2. Create database user
-3. Get connection string
-
-**Update .env:**
-```bash
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
-MONGODB_DB_NAME=cruise_agent_checkpoints
-```
-
-### 3. Environment Variables to Set
-
-**Required for Cloud Run:**
-```bash
-# In devops/.env
-JWT_SECRET=your-256-bit-secret-key
-OPENAI_API_KEY=sk-proj-your-openai-key
-GCS_BUCKET_NAME=your-chroma-data-bucket
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/
-DB_HOST=your-postgres-host
-DB_USER=your-db-user
-DB_PASSWORD=your-db-password
-```
-
-## Setup Steps
-
-### 1. Google Cloud Setup
+### 1. Google Cloud APIs
 ```bash
 # Enable required APIs
 gcloud services enable run.googleapis.com
 gcloud services enable storage.googleapis.com
 gcloud services enable containerregistry.googleapis.com
+gcloud services enable secretmanager.googleapis.com
+gcloud services enable firestore.googleapis.com
+```
 
-# Create GCS bucket
-gsutil mb gs://your-chroma-data-bucket
+### 2. Service Account Setup
+```bash
+# Create service account (if not exists)
+gcloud iam service-accounts create cruise-ai-agent \
+    --description="Service account for Cruise AI Agent" \
+    --display-name="Cruise AI Agent" \
+    --project=cruises-api-yevhen-dev
+
+# Grant Firestore permissions (for AI agent checkpointing)
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+    --role="roles/datastore.user"
+
+# Grant Cloud Storage permissions (for ChromaDB data sync)
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+    --role="roles/storage.objectViewer"
+
+# Grant Secret Manager permissions (for accessing secrets in Cloud Run)
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+    --role="roles/secretmanager.secretAccessor"
+
+# Create service account key for local development
+gcloud iam service-accounts keys create devops/secret/service-account-key.json \
+    --iam-account=cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com
+```
+
+## Environment Variables
+
+### Local Development (.env)
+```bash
+# Authentication
+JWT_SECRET=cruise-secret
+JWT_ALGORITHM=HS256
+
+# CORS
+ALLOWED_ORIGINS=http://localhost:8000
+
+# Google Cloud
+GCS_BUCKET_NAME=cruise_bucket
+GOOGLE_APPLICATION_CREDENTIALS=/Users/ybutko/Documents/Projects/cruise-info-vector-db-creator/devops/secret/service-account-key.json
+FIRESTORE_PROJECT_ID=cruises-api-yevhen-dev
+
+# ChromaDB
+CHROMA_DATA_DIR=/tmp/chroma_data
+
+# OpenAI
+OPENAI_API_KEY=sk-proj-your-openai-key
+
+# Database
+DB_HOST=uat-db-do-user-2290310-0.d.db.ondigitalocean.com
+DB_PORT=25060
+DB_NAME=db_cruise
+DB_USER=llm_user
+DB_PASSWORD=your-db-password
+```
+
+### Cloud Run Secrets (Production)
+```bash
+# Create secrets in Google Secret Manager
+echo "cruise-secret" | gcloud secrets create jwt-secret --data-file=- --project=cruises-api-yevhen-dev
+echo "your-openai-key" | gcloud secrets create openai-api-key --data-file=- --project=cruises-api-yevhen-dev
+echo "your-db-password" | gcloud secrets create db-password --data-file=- --project=cruises-api-yevhen-dev
+```
+
+## Setup Steps
+
+### 1. Google Cloud Storage Setup
+```bash
+# Create GCS bucket for ChromaDB data
+gsutil mb gs://cruise_bucket
 
 # Upload ChromaDB data
-gsutil -m cp -r src/chroma_data gs://your-chroma-data-bucket/
+gsutil -m cp -r src/chroma_data gs://cruise_bucket/
 ```
 
-### 2. Update Dockerfile
-```dockerfile
-# Add service account key
-COPY service-account-key.json /app/service-account-key.json
-ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
-```
-
-### 3. Update Deployment Script
+### 2. Local Development
 ```bash
-# In devops/deploy-cloudrun.sh
-PROJECT_ID="your-gcp-project-id"
-GCS_BUCKET="your-chroma-data-bucket"
+# Run with Docker Compose
+cd devops
+docker-compose up -d
 ```
 
-## Security Notes
-
-1. **Never commit service account keys to git**
-2. **Use Cloud Run environment variables for secrets**
-3. **Rotate keys regularly**
-4. **Use least privilege IAM roles**
-
-## Alternative: Use Cloud Run Service Account
-
-Instead of service account key file, you can use Cloud Run's default service account:
-
+### 3. Cloud Run Deployment
 ```bash
-# Grant permissions to Cloud Run service account
-gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
-    --member="serviceAccount:YOUR_PROJECT_NUMBER-compute@developer.gserviceaccount.com" \
-    --role="roles/storage.objectViewer"
+# Deploy to Cloud Run
+cd devops
+./deploy-cloudrun.sh
 ```
 
-Then remove `GOOGLE_APPLICATION_CREDENTIALS` from environment variables.
+## Security Best Practices
+
+1. **Service Account Keys**: Only for local development, never commit to git
+2. **Production Secrets**: Use Google Secret Manager for sensitive data
+3. **CORS**: Configure appropriate origins for your frontend
+4. **IAM**: Use least privilege principle for service account permissions
+5. **Key Rotation**: Regularly rotate service account keys and API keys
+
+## Architecture Overview
+
+- **Firestore**: AI agent conversation checkpointing
+- **Cloud Storage**: ChromaDB vector database data sync
+- **Secret Manager**: Secure storage of API keys and passwords
+- **Cloud Run**: Serverless container deployment with service account authentication

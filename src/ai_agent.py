@@ -1,9 +1,7 @@
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.mongodb import MongoDBSaver
 from langchain.agents import create_agent
 from typing import List, Dict, Any, Optional
-from langdetect import detect
 import os
 from langgraph_checkpoint_firestore import FirestoreSaver
 

@@ -1,5 +1,4 @@
 import asyncio
-from datetime import date
 from langdetect import detect
 from googletrans import Translator
 
@@ -9,17 +8,17 @@ from src.vector_db.query import query_chroma_db, get_chunks_by_meta
 from datetime import datetime, date, timedelta
 
 
-def translate_to_english(text: str) -> str:
-    """Translate text to English if it's not already in English."""
-    try:
-        detected_lang = detect(text)
-        if detected_lang != 'en':
-            translator = Translator()
-            return asyncio.run(translator.translate(text, dest='en')).text
-        return text
-    except Exception as e:
-        print(f"Translation error: {e}")
-        return text  # Return original if translation fails
+# def translate_to_english(text: str) -> str:
+#     """Translate text to English if it's not already in English."""
+#     try:
+#         detected_lang = detect(text)
+#         if detected_lang != 'en':
+#             translator = Translator()
+#             return asyncio.run(translator.translate(text, dest='en')).text
+#         return text
+#     except Exception as e:
+#         print(f"Translation error: {e}")
+#         return text  # Return original if translation fails
 
 
 def validate_and_correct_date_range(date_from: str | None, date_to: str | None) -> tuple[date, date, bool]:
@@ -202,14 +201,14 @@ def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> s
     """
     try:
         # Translate user question to English for vector search
-        english_question = translate_to_english(user_question)
+        # english_question = translate_to_english(user_question)
         
         range = validate_and_correct_date_range(date_from, date_to)
         ids = []
         if range[2]:
             ids = filter_cruises_by_date_range(range[0], range[1])
 
-        results = query_chroma_db(query_text=english_question, cruise_ids=ids)
+        results = query_chroma_db(query_text=user_question, cruise_ids=ids)
         parsed_results = []
         for i, doc_id in enumerate(results["ids"][0]):
             parsed_results.append({
