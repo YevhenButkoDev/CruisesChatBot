@@ -190,7 +190,7 @@ def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> s
     """
     Retrieves cruise information relevant to the user's question within a specified date range.
 
-    :param user_question: A natural-language question or search query used to retrieve relevant cruise data from the vector database.
+    :param user_question: An ENGLISH natural-language question or search query used to retrieve relevant cruise data from the vector database.
     :param date_from: The start date of the desired cruise range (inclusive).
                       Must be in ISO format 'YYYY-MM-DD' (e.g., '2025-10-01').
                       If not provided or empty, no lower bound on the date range is applied.

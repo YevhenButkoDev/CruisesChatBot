@@ -4,12 +4,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import jwt
 import os
+import logging
 
 from src.ai_agent import CruiseAgent
-from src.vector_db.query import query_chroma_db
+from src.util.cloud_storage import sync_chroma_data_from_gcs
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Configuration
 JWT_SECRET = os.getenv("JWT_SECRET", "your-secret-key")
@@ -18,6 +22,10 @@ ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000").split(",
 
 app = FastAPI()
 security = HTTPBearer()
+
+# Sync data when module is imported (runs in Docker)
+sync_chroma_data_from_gcs()
+
 agent = CruiseAgent()
 
 # CORS middleware
@@ -71,4 +79,6 @@ async def ask_agent(request: AgentRequest, user: dict = Depends(verify_jwt)):
 
 if __name__ == "__main__":
     import uvicorn
+
+    sync_chroma_data_from_gcs()
     uvicorn.run(app, host="0.0.0.0", port=8000)

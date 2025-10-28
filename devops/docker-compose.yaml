@@ -1,36 +1,24 @@
-version: "3.9"
 
 services:
   my_cruise_app:
-    image: butkoevgenii/cruise-client:latest
+    image: cruise-ai-agent-api:latest
     container_name: cruise_app
     restart: unless-stopped
+    volumes:
+      - ./secret/service-account-key.json:/app/service-account-key.json:ro
     environment:
       JWT_SECRET: ${JWT_SECRET}
       JWT_ALGORITHM: ${JWT_ALGORITHM}
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+      GCS_BUCKET_NAME: ${GCS_BUCKET_NAME}
+      GOOGLE_APPLICATION_CREDENTIALS: /app/service-account-key.json
+      CHROMA_DATA_DIR: ${CHROMA_DATA_DIR}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      MONGODB_URI: ${MONGODB_URI}
-      MONGODB_DB_NAME: ${MONGODB_DB_NAME}
+      FIRESTORE_PROJECT_ID: ${FIRESTORE_PROJECT_ID}
     ports:
       - "8000:8000"
-
-  mongodb:
-    image: mongo:6.0
-    container_name: cruise_mongo
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-volumes:
-  mongo_data:

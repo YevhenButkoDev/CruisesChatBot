@@ -5,6 +5,8 @@ from langchain.agents import create_agent
 from typing import List, Dict, Any, Optional
 from langdetect import detect
 import os
+from langgraph_checkpoint_firestore import FirestoreSaver
+
 
 from src.agent_tools.agent_tools import (
     find_relevant_cruises,
@@ -40,38 +42,21 @@ class CruiseAgent:
 
         self.llm = ChatOpenAI(model=model_name)
         # Use environment variables if no values are provided
-        self.mongodb_uri = os.environ.get("MONGODB_URI", "mongodb://admin:secret123@localhost:27017")
-        self.db_name = os.environ.get("MONGO_DB_NAME", "checkpoint_example")
 
         self.tools = tools or [find_relevant_cruises, find_cruise_info, get_current_date]
         self.system_prompt = system_prompt or (
             "You are an intelligent travel assistant.\n"
             "- Always query the cruise tool in ENGLISH, even if the user is speaking another language.\n"
-            "- Always respond in the user's language.\n"
+            "- Always respond in the user's language, but limit response answer languages to en, ru and ua\n"
             "- If no relevant cruises are found, politely inform the user in their language."
         )
 
-    def _detect_language(self, text: str) -> str:
-        """Detect the language of the input text."""
-        try:
-            return detect(text)
-        except:
-            return "en"  # Default to English if detection fails
-
-    def _wrap_message_with_language(self, user_message: str) -> str:
-        """Wrap user message with detected language information."""
-        detected_lang = self._detect_language(user_message)
-        return f"User message language: {detected_lang}\nUser message: {user_message}"
-
     def ask(self, user_message: str, thread_id: str = "default"):
-        # Wrap message with language detection
-        wrapped_message = self._wrap_message_with_language(user_message)
-        
         config = {"configurable": {"thread_id": thread_id}}
-        input_message = {"role": "user", "content": wrapped_message}
+        input_message = {"role": "user", "content": user_message}
         responses = []
 
-        with MongoDBSaver.from_conn_string(self.mongodb_uri, self.db_name) as checkpointer:
+        with FirestoreSaver.from_conn_info(project_id=os.environ.get("FIRESTORE_PROJECT_ID"), checkpoints_collection='langchain', writes_collection='langchain_writes') as checkpointer:
             agent = create_agent(
                 self.llm,
                 tools=self.tools,
@@ -90,6 +75,4 @@ if __name__ == "__main__":
     agent = CruiseAgent()
 
     # Or collect responses programmatically
-    responses = agent.ask(user_message = "is it possible to get a cruise from barcelona to usa?", thread_id = "abc108")
-    for msg in responses:
-        print(msg)
+    print(agent._wrap_message_with_language("cruise to barcelona"))

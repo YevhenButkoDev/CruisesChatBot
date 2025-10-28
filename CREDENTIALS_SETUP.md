@@ -19,6 +19,10 @@ gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
 # Create and download key
 gcloud iam service-accounts keys create service-account-key.json \
     --iam-account=cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com
+    
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+  --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+  --role="roles/datastore.user"
 ```
 
 **Add to Docker:**

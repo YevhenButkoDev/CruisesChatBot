@@ -43,7 +43,7 @@ def query_chroma_db(
     Queries the Chroma vector database using AllMpnetBaseV2EmbeddingFunction
     and returns the top n_results, optionally filtered by cruise IDs.
 
-    :param query_text: Text to query against the Chroma vector store.
+    :param query_text: English text to query against the Chroma vector store.
     :param collection_name: The name of the Chroma collection.
     :param n_results: Number of top results to return.
     :param cruise_ids: Optional list of cruise IDs to filter metadata.
@@ -106,3 +106,10 @@ def get_chunks_by_meta(filters: dict, collection_name: str = "cruise_collection"
         })
 
     return chunks
+
+
+if __name__ == "__main__":
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    print(query_chroma_db(query_text = "Cruise to Barcelona", n_results = 5))

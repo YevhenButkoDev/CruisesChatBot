@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Configuration
-PROJECT_ID="your-gcp-project-id"
+PROJECT_ID="cruises-api-yevhen-dev"
 SERVICE_NAME="cruise-ai-agent"
 REGION="us-central1"
 IMAGE_NAME="gcr.io/$PROJECT_ID/$SERVICE_NAME"
+SERVICE_ACCOUNT="cruise-service-account@$PROJECT_ID.iam.gserviceaccount.com"
 
 # Build and push Docker image
 echo "Building Docker image..."
@@ -22,7 +23,8 @@ gcloud run deploy $SERVICE_NAME \
   --allow-unauthenticated \
   --memory 2Gi \
   --cpu 1 \
-  --set-env-vars "CHROMA_DATA_DIR=/app/chroma_data" \
+  --service-account $SERVICE_ACCOUNT \
+  --set-env-vars "CHROMA_DATA_DIR=/app/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID" \
   --project $PROJECT_ID
 
 echo "Deployment complete!"
