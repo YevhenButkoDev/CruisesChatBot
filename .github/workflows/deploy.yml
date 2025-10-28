@@ -25,6 +25,13 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: ${{ env.PROJECT_ID }}
 
+    - name: Verify authentication
+      run: |
+        echo "Current authenticated account:"
+        gcloud auth list
+        echo "Current project:"
+        gcloud config get-value project
+
     - name: Configure Docker for GCR
       run: gcloud auth configure-docker --quiet
 
