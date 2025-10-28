@@ -13,6 +13,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     steps:
     - name: Checkout code
@@ -25,20 +26,25 @@ jobs:
         project_id: ${{ env.PROJECT_ID }}
 
     - name: Configure Docker for GCR
-      run: gcloud auth configure-docker
+      run: gcloud auth configure-docker --quiet
 
     - name: Build Docker image
       run: |
-        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
-        docker tag gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
+        echo "Building Docker image..."
+        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
+        echo "Build completed successfully"
 
     - name: Push Docker image
+      timeout-minutes: 15
       run: |
-        docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+        echo "Pushing Docker image..."
         docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
+        echo "Push completed successfully"
 
     - name: Deploy to Cloud Run
+      timeout-minutes: 10
       run: |
+        echo "Deploying to Cloud Run..."
         gcloud run deploy $SERVICE_NAME \
           --image gcr.io/$PROJECT_ID/$SERVICE_NAME:latest \
           --platform managed \
@@ -50,3 +56,4 @@ jobs:
           --set-env-vars "CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080,http://127.0.0.1:3000,https://your-frontend-domain.com,GCS_BUCKET_NAME=cruise_bucket,DB_HOST=uat-db-do-user-2290310-0.d.db.ondigitalocean.com,DB_PORT=25060,DB_NAME=db_cruise,DB_USER=llm_user" \
           --set-secrets "JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,DB_PASSWORD=db-password:latest" \
           --project $PROJECT_ID
+        echo "Deployment completed successfully"
