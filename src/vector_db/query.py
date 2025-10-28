@@ -1,7 +1,12 @@
 import os
+import logging
 import chromadb
 from chromadb.api.types import EmbeddingFunction
 from src.vector_db.creator import AllMpnetBaseV2EmbeddingFunction  # adjust import if needed
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 # ------------------------------
@@ -49,31 +54,58 @@ def query_chroma_db(
     :param cruise_ids: Optional list of cruise IDs to filter metadata.
     :return: Query results from Chroma.
     """
-    # Connect to persistent Chroma client
-    client = chromadb.PersistentClient(os.getenv("CHROMA_DATA_DIR", "./chroma_data"))
+    logger.info(f"🔎 ChromaDB Query - Text: '{query_text}', Collection: {collection_name}, Results: {n_results}")
+    logger.info(f"🔎 ChromaDB Filter - Cruise IDs: {len(cruise_ids) if cruise_ids else 0} IDs")
+    
+    try:
+        # Connect to persistent Chroma client
+        chroma_dir = os.getenv("CHROMA_DATA_DIR", "./chroma_data")
+        logger.info(f"📁 Connecting to ChromaDB at: {chroma_dir}")
+        client = chromadb.PersistentClient(chroma_dir)
+        logger.info("✅ ChromaDB client connected")
 
-    # Initialize embedding function
-    embedding_function = ChromaCompatibleEmbedding(AllMpnetBaseV2EmbeddingFunction())
+        # Initialize embedding function
+        logger.info("🧠 Initializing embedding function")
+        embedding_function = ChromaCompatibleEmbedding(AllMpnetBaseV2EmbeddingFunction())
+        logger.info("✅ Embedding function initialized")
 
-    # Access the collection
-    collection = client.get_collection(
-        name=collection_name,
-        embedding_function=embedding_function
-    )
+        # Access the collection
+        logger.info(f"📚 Accessing collection: {collection_name}")
+        collection = client.get_collection(
+            name=collection_name,
+            embedding_function=embedding_function
+        )
+        logger.info(f"✅ Collection accessed - Count: {collection.count()}")
 
-    # Prepare filter if cruise_ids provided
-    where_filter = None
-    if cruise_ids:
-        where_filter = {"cruise_id": {"$in": cruise_ids}}
+        # Prepare filter if cruise_ids provided
+        where_filter = None
+        if cruise_ids:
+            where_filter = {"cruise_id": {"$in": cruise_ids}}
+            logger.info(f"🔍 Applied filter for {len(cruise_ids)} cruise IDs")
+        else:
+            logger.info("🔍 No cruise ID filter applied")
 
-    # Query the collection
-    results = collection.query(
-        query_texts=[query_text],
-        n_results=n_results,
-        where=where_filter
-    )
+        # Query the collection
+        logger.info("🔎 Executing ChromaDB query")
+        results = collection.query(
+            query_texts=[query_text],
+            n_results=n_results,
+            where=where_filter
+        )
+        
+        result_count = len(results.get("ids", [[]])[0])
+        logger.info(f"✅ ChromaDB query completed - Found {result_count} results")
+        
+        # Log first few results for debugging
+        if result_count > 0:
+            for i, (doc_id, distance) in enumerate(zip(results["ids"][0][:3], results["distances"][0][:3])):
+                logger.info(f"📋 Result {i+1}: ID={doc_id}, Distance={distance:.4f}")
 
-    return results
+        return results
+        
+    except Exception as e:
+        logger.error(f"❌ ChromaDB query error: {str(e)}")
+        raise
 
 
 def get_chunks_by_meta(filters: dict, collection_name: str = "cruise_collection"):

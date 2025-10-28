@@ -3,7 +3,12 @@ from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 from typing import List, Dict, Any, Optional
 import os
+import logging
 from langgraph_checkpoint_firestore import FirestoreSaver
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 from src.agent_tools.agent_tools import (
@@ -50,22 +55,39 @@ class CruiseAgent:
         )
 
     def ask(self, user_message: str, thread_id: str = "default"):
+        logger.info(f"🤖 AI Agent starting - Thread: {thread_id}, Message: {user_message}")
+        
         config = {"configurable": {"thread_id": thread_id}}
         input_message = {"role": "user", "content": user_message}
         responses = []
 
-        with FirestoreSaver.from_conn_info(project_id=os.environ.get("FIRESTORE_PROJECT_ID"), checkpoints_collection='langchain', writes_collection='langchain_writes') as checkpointer:
-            agent = create_agent(
-                self.llm,
-                tools=self.tools,
-                checkpointer=checkpointer,
-                system_prompt=self.system_prompt
-            )
+        try:
+            logger.info(f"🔥 Initializing Firestore checkpointer - Project: {os.environ.get('FIRESTORE_PROJECT_ID')}")
+            with FirestoreSaver.from_conn_info(project_id=os.environ.get("FIRESTORE_PROJECT_ID"), checkpoints_collection='langchain', writes_collection='langchain_writes') as checkpointer:
+                logger.info("✅ Firestore checkpointer initialized successfully")
+                
+                logger.info(f"🛠️ Creating agent with {len(self.tools)} tools")
+                agent = create_agent(
+                    self.llm,
+                    tools=self.tools,
+                    checkpointer=checkpointer,
+                    system_prompt=self.system_prompt
+                )
+                logger.info("✅ Agent created successfully")
 
-            for step in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
-                responses.append(step["messages"][-1])
+                logger.info("🔄 Starting agent stream processing")
+                step_count = 0
+                for step in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
+                    step_count += 1
+                    logger.info(f"📝 Agent step {step_count}: {step['messages'][-1].get('type', 'unknown')} - {step['messages'][-1].get('content', '')[:100]}...")
+                    responses.append(step["messages"][-1])
 
-        # return responses[-1]["content"]
+                logger.info(f"✅ Agent processing completed - {step_count} steps, {len(responses)} responses")
+                
+        except Exception as e:
+            logger.error(f"❌ AI Agent error: {str(e)}")
+            raise
+
         return responses
 
 
