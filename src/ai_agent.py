@@ -79,7 +79,7 @@ class CruiseAgent:
                 step_count = 0
                 for step in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
                     step_count += 1
-                    logger.info(f"📝 Agent step {step_count}: {step['messages'][-1].get('type', 'unknown')} - {step['messages'][-1].get('content', '')[:100]}...")
+                    logger.info(step["messages"][-1])
                     responses.append(step["messages"][-1])
 
                 logger.info(f"✅ Agent processing completed - {step_count} steps, {len(responses)} responses")

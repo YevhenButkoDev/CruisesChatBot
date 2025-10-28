@@ -75,7 +75,6 @@ def query_chroma_db(
             name=collection_name,
             embedding_function=embedding_function
         )
-        logger.info(f"✅ Collection accessed - Count: {collection.count()}")
 
         # Prepare filter if cruise_ids provided
         where_filter = None
@@ -95,11 +94,6 @@ def query_chroma_db(
         
         result_count = len(results.get("ids", [[]])[0])
         logger.info(f"✅ ChromaDB query completed - Found {result_count} results")
-        
-        # Log first few results for debugging
-        if result_count > 0:
-            for i, (doc_id, distance) in enumerate(zip(results["ids"][0][:3], results["distances"][0][:3])):
-                logger.info(f"📋 Result {i+1}: ID={doc_id}, Distance={distance:.4f}")
 
         return results
         
