@@ -42,6 +42,8 @@ def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
         logging.info("validating token")
         logging.info(JWT_SECRET)
+        logging.info(credentials.credentials)
+        logging.info(JWT_ALGORITHM)
         payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         return payload
     except jwt.ExpiredSignatureError:
