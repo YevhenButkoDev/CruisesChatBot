@@ -10,6 +10,8 @@ from src.ai_agent import CruiseAgent
 from src.util.cloud_storage import sync_chroma_data_from_gcs
 from dotenv import load_dotenv
 
+from src.util.jwt_utils import create_jwt_token
+
 load_dotenv()
 
 # Configure logging
@@ -81,6 +83,13 @@ async def ask_agent(request: AgentRequest, user: dict = Depends(verify_jwt)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
+@app.get("/debug-token")
+def debug_token():
+    return {
+        "token": create_jwt_token(user_id="cruise_client", expires_in_hours=24 * 365),
+        "secret": JWT_SECRET
+    }
 
 if __name__ == "__main__":
     import uvicorn
