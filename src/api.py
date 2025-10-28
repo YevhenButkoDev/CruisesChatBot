@@ -40,11 +40,13 @@ app.add_middleware(
 # JWT verification
 def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
+        logging.info("validating token")
         payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         return payload
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
-    except jwt.InvalidTokenError:
+    except jwt.InvalidTokenError as er:
+        logging.info(er)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
 
