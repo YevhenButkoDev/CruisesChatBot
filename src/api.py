@@ -42,10 +42,6 @@ app.add_middleware(
 # JWT verification
 def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
-        logging.info("validating token")
-        logging.info(JWT_SECRET)
-        logging.info(credentials.credentials)
-        logging.info(JWT_ALGORITHM)
         payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         return payload
     except jwt.ExpiredSignatureError:
@@ -94,5 +90,4 @@ def debug_token():
 if __name__ == "__main__":
     import uvicorn
 
-    sync_chroma_data_from_gcs()
     uvicorn.run(app, host="0.0.0.0", port=8000)

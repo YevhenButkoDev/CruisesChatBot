@@ -1,4 +1,5 @@
 psycopg2-binary
+psycopg[binary]
 fastapi
 uvicorn
 chromadb
@@ -16,3 +17,4 @@ pydantic>=2.0
 PyJWT==2.8.0
 google-cloud-storage
 langgraph-checkpoint-firestore
+langgraph-checkpoint-postgres

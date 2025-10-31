@@ -54,23 +54,15 @@ def query_chroma_db(
     :param cruise_ids: Optional list of cruise IDs to filter metadata.
     :return: Query results from Chroma.
     """
-    logger.info(f"🔎 ChromaDB Query - Text: '{query_text}', Collection: {collection_name}, Results: {n_results}")
-    logger.info(f"🔎 ChromaDB Filter - Cruise IDs: {len(cruise_ids) if cruise_ids else 0} IDs")
-    
     try:
         # Connect to persistent Chroma client
         chroma_dir = os.getenv("CHROMA_DATA_DIR", "./chroma_data")
-        logger.info(f"📁 Connecting to ChromaDB at: {chroma_dir}")
         client = chromadb.PersistentClient(chroma_dir)
-        logger.info("✅ ChromaDB client connected")
 
         # Initialize embedding function
-        logger.info("🧠 Initializing embedding function")
         embedding_function = ChromaCompatibleEmbedding(AllMpnetBaseV2EmbeddingFunction())
-        logger.info("✅ Embedding function initialized")
 
         # Access the collection
-        logger.info(f"📚 Accessing collection: {collection_name}")
         collection = client.get_collection(
             name=collection_name,
             embedding_function=embedding_function
@@ -80,20 +72,13 @@ def query_chroma_db(
         where_filter = None
         if cruise_ids:
             where_filter = {"cruise_id": {"$in": cruise_ids}}
-            logger.info(f"🔍 Applied filter for {len(cruise_ids)} cruise IDs")
-        else:
-            logger.info("🔍 No cruise ID filter applied")
 
         # Query the collection
-        logger.info("🔎 Executing ChromaDB query")
         results = collection.query(
             query_texts=[query_text],
             n_results=n_results,
             where=where_filter
         )
-        
-        result_count = len(results.get("ids", [[]])[0])
-        logger.info(f"✅ ChromaDB query completed - Found {result_count} results")
 
         return results
         

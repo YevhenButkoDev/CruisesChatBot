@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import time
 from langdetect import detect
 from googletrans import Translator
 
@@ -76,12 +77,11 @@ def filter_cruises_by_date_range(date_from: date, date_to: date):
     :param date_to: End date (inclusive)
     :return: List of enabled cruise IDs within the given date range.
     """
-    logger.info(f"🗄️ Filtering cruises by date range: {date_from} to {date_to}")
+    start_time = time.time()
     
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        logger.info("✅ Database connection established")
 
         query = """
             SELECT m.cruise_id
@@ -95,15 +95,14 @@ def filter_cruises_by_date_range(date_from: date, date_to: date):
                   )
         """
 
-        logger.info(f"🔍 Executing database query with parameters: date_to={date_to}, date_from={date_from}")
         cur.execute(query, (date_to, date_from))
-
         cruise_ids = [row[0] for row in cur.fetchall()]
-        logger.info(f"✅ Database query completed - Found {len(cruise_ids)} cruise IDs")
         
         cur.close()
         conn.close()
-        logger.info("🔒 Database connection closed")
+        
+        elapsed = time.time() - start_time
+        print(f"⏱️ DB filter cruises: {elapsed:.2f}s")
         
         return cruise_ids
         
@@ -129,12 +128,11 @@ def find_cruise_info(cruise_id: str):
         from the Chroma vector database.
         :param cruise_id unique cruise identifier
     """
-    logger.info(f"🚢 Finding cruise info for ID: {cruise_id}")
+    start_time = time.time()
     
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        logger.info("✅ Database connection established for cruise info")
 
         query = """
                 SELECT
@@ -162,14 +160,14 @@ def find_cruise_info(cruise_id: str):
                 WHERE cruise_id = %s;
             """
 
-        logger.info(f"🔍 Executing cruise info query for ID: {cruise_id}")
         cur.execute(query, (cruise_id,))
         results = cur.fetchall()
         
-        logger.info(f"✅ Cruise info query completed - Found {len(results)} records")
         cur.close()
         conn.close()
-        logger.info("🔒 Database connection closed")
+        
+        elapsed = time.time() - start_time
+        print(f"⏱️ DB cruise info: {elapsed:.2f}s")
         
         return results
         
@@ -226,25 +224,20 @@ def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> s
     :return: A list of parsed cruise details including cruise_id, cruise_info, metadata, and relevance score.
              Returns "no data" if no results are found or an error occurs.
     """
+    start_time = time.time()
+    
     try:
-        logger.info(f"🔍 Finding relevant cruises - Question: '{user_question}', Date range: {date_from} to {date_to}")
-        
         # Validate and correct date range
-        logger.info("📅 Validating date range")
         range_result = validate_and_correct_date_range(date_from, date_to)
-        logger.info(f"📅 Date validation result: {range_result[0]} to {range_result[1]}, valid: {range_result[2]}")
-        
+
         ids = []
         if range_result[2]:
-            logger.info("🗄️ Filtering cruises by date range from database")
             ids = filter_cruises_by_date_range(range_result[0], range_result[1])
-            logger.info(f"🗄️ Found {len(ids)} cruises in date range: {ids[:5]}{'...' if len(ids) > 5 else ''}")
-        else:
-            logger.info("⚠️ Using default date range - no cruise ID filtering")
 
-        logger.info(f"🔎 Querying ChromaDB with question: '{user_question}' and {len(ids)} cruise IDs")
+        vector_start = time.time()
         results = query_chroma_db(query_text=user_question, cruise_ids=ids)
-        logger.info(f"🔎 ChromaDB returned {len(results.get('ids', [[]])[0])} results")
+        vector_elapsed = time.time() - vector_start
+        print(f"⏱️ Vector DB query: {vector_elapsed:.2f}s")
         
         parsed_results = []
         for i, doc_id in enumerate(results["ids"][0]):
@@ -257,9 +250,10 @@ def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> s
                 "link_to_website": cruise_url
             }
             parsed_results.append(parsed_result)
-            logger.info(f"📋 Parsed result {i+1}: Cruise ID {doc_id}, Score: {results['distances'][0][i]:.4f}, URL: {cruise_url}")
+
+        total_elapsed = time.time() - start_time
+        print(f"⏱️ Find relevant cruises: {total_elapsed:.2f}s")
         
-        logger.info(f"✅ Successfully found {len(parsed_results)} relevant cruises")
         return parsed_results
         
     except Exception as e:
