@@ -60,6 +60,15 @@ class CruiseDataStorage:
             cursor = conn.execute("SELECT COUNT(*) FROM raw_cruises")
             return cursor.fetchone()[0]
 
+    def get_cruise_ids_not_persisted(self, cruise_ids) -> int:
+        """Get total count of raw cruises."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.execute(
+                f"SELECT COUNT(*) FROM raw_cruises WHERE id IN ({','.join('?'*len(cruise_ids))})",
+                cruise_ids
+            )
+            return cursor.fetchone()[0]
+
     def get_raw_cruises(self) -> List[Dict[str, Any]]:
         """Get all raw cruise data."""
         with sqlite3.connect(self.db_path) as conn:
@@ -98,6 +107,6 @@ class CruiseDataStorage:
     def clear_all_data(self):
         """Clear all data from database."""
         with sqlite3.connect(self.db_path) as conn:
-            conn.execute("DELETE FROM raw_cruises")
-            conn.execute("DELETE FROM transformed_cruises")
+            # conn.execute("DELETE FROM raw_cruises")
+            # conn.execute("DELETE FROM transformed_cruises")
             conn.execute("DELETE FROM processed_ids")

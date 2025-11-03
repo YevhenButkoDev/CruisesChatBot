@@ -12,7 +12,8 @@ def transform_data(cruise_data):
     if cruise_data.get("date_and_price_info", {}) is None:
         return None
 
-    if len(cruise_data.get("date_and_price_info", {}).get("dates", [])) == 0:
+    data_and_price_info = cruise_data.get("date_and_price_info", {}).get(str(cruise_data.get("id")))
+    if len(data_and_price_info.get("dates", [])) == 0:
         return None
 
     descriptive_text = get_descriptive_text_and_meta(cruise_data)
@@ -27,10 +28,10 @@ def transform_data(cruise_data):
             "city_countries": descriptive_text["meta"]["city_countries"],
             "rivers": descriptive_text["meta"]["rivers"],
             "sea_cruise": descriptive_text["meta"]["rivers"] == "",
-            "min_price": cruise_data.get("date_and_price_info", {}).get("prices", [])[0],
-            "max_price": cruise_data.get("date_and_price_info", {}).get("prices", [])[1],
-            "dates": ", ".join(cruise_data.get("date_and_price_info", {}).get("dates", [])),
-            "ranges": ", ".join(cruise_data.get("date_and_price_info", {}).get("ranges", []))
+            "min_price": data_and_price_info.get("prices", [])[0],
+            "max_price": data_and_price_info.get("prices", [])[1],
+            "dates": ", ".join(data_and_price_info.get("dates", [])),
+            "ranges": ", ".join(data_and_price_info.get("ranges", []))
         }
     }
 
@@ -63,6 +64,7 @@ def main():
 
             # Skip already transformed cruises
             if cruise_id in transformed_cruises:
+                logging.info(f"{cruise_id} was already transformed")
                 continue
 
             try:
