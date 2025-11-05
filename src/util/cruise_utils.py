@@ -1,8 +1,10 @@
 from typing import Dict, List, Any
+import os
 
 
-def build_cruise_url(results: Dict, index: int, base_url: str = "https://uat.center.cruises/cruise-") -> str:
+def build_cruise_url(results: Dict, index: int) -> str:
     """Build cruise website URL from search results."""
+    base_url = os.getenv('CRUISE_BASE_URL', 'http://uat.center.cruises/cruise-')
     try:
         meta_list = results.get("metadatas", [[]])
         meta = meta_list[0][index] if meta_list and len(meta_list[0]) > index else {}

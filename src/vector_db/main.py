@@ -1,12 +1,14 @@
 from src.vector_db.creator import get_chroma_client, create_collection, add_cruise_document
 from src.util.sqlite_storage import CruiseDataStorage
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
 def create_vector_db():
     """Main function to orchestrate the vector database creation process using SQLite."""
-    client = get_chroma_client()
+    local_path = os.getenv("CHROMA_DATA_DIR", "./chroma_data")
+    client = get_chroma_client(local_path)
     collection = create_collection(client)
     
     storage = CruiseDataStorage()

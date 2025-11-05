@@ -1,4 +1,5 @@
 import logging
+import os
 import requests
 from datetime import datetime
 from src.util.sqlite_storage import CruiseDataStorage
@@ -8,7 +9,8 @@ logging.basicConfig(level=logging.INFO)
 
 def get_enabled_cruise_ids():
     """Fetches all enabled cruise IDs from the API."""
-    response = requests.get("http://uat.center.cruises/api/chatbot/cruises/enabled-ids/")
+    base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+    response = requests.get(f"{base_url}/api/chatbot/cruises/enabled-ids/")
     response.raise_for_status()
     return response.json()
 
@@ -16,11 +18,12 @@ def get_enabled_cruise_ids():
 def persist_cruise_data_in_batches(cruise_ids, batch_size=1):
     """Fetches cruise data in batches from the API and persists to SQLite."""
     storage = CruiseDataStorage()
+    base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
     
     for i in range(0, len(cruise_ids), batch_size):
         batch_ids = cruise_ids[i:i + batch_size]
         params = [f"cruiseId[]={cruise_id}" for cruise_id in batch_ids]
-        url = f"http://uat.center.cruises/en/api/chatbot/cruises/batch-data?{'&'.join(params)}"
+        url = f"{base_url}/en/api/chatbot/cruises/batch-data?{'&'.join(params)}"
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()['data']

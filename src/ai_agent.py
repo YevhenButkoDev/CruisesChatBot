@@ -84,7 +84,7 @@ class CruiseAgent:
     def _process_conversation_history(self, checkpointer, config, thread_id, user_message, agent):
         state = checkpointer.get(config)
         
-        if state and len(state['channel_values']['messages']) > 5:
+        if state and len(state['channel_values']['messages']) > 20:
             print("Summarizing chat history")
 
             summary_content = self.summarizer.summarize_conversation(agent, config)

@@ -4,8 +4,8 @@ import os
 from typing import List, Dict, Any, Optional
 
 class CruiseDataStorage:
-    def __init__(self, db_path: str = "cruise_data.db"):
-        self.db_path = db_path
+    def __init__(self, db_path: str = None):
+        self.db_path = db_path or os.getenv("SQLITE_DB_PATH", "cruise_data.db")
         self._init_db()
     
     def _init_db(self):
@@ -32,6 +32,16 @@ class CruiseDataStorage:
                 CREATE TABLE IF NOT EXISTS processed_ids (
                     cruise_id TEXT PRIMARY KEY,
                     processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS cruise_dates (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    cruise_id TEXT NOT NULL,
+                    date_start TEXT NOT NULL,
+                    range_id TEXT NOT NULL,
+                    ufl TEXT
                 )
             """)
     
@@ -107,6 +117,55 @@ class CruiseDataStorage:
     def clear_all_data(self):
         """Clear all data from database."""
         with sqlite3.connect(self.db_path) as conn:
-            # conn.execute("DELETE FROM raw_cruises")
-            # conn.execute("DELETE FROM transformed_cruises")
-            conn.execute("DELETE FROM processed_ids")
+            conn.execute("DROP TABLE raw_cruises")
+            conn.execute("DROP TABLE transformed_cruises")
+            conn.execute("DROP TABLE processed_ids")
+            conn.execute("VACUUM")
+
+    def create_cruise_dates_table(self):
+        """Create cruise_dates table with data from raw_cruises."""
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute("DELETE FROM cruise_dates")
+            
+            batch_size = 100
+            offset = 0
+            
+            while True:
+                cursor = conn.execute("SELECT id, data FROM raw_cruises LIMIT ? OFFSET ?", (batch_size, offset))
+                batch = cursor.fetchall()
+                
+                if not batch:
+                    break
+                    
+                for cruise_id, data_json in batch:
+                    try:
+                        data = json.loads(data_json)
+                        date_price_info = data.get('date_and_price_info', {})
+                        
+                        for info_key, info_data in date_price_info.items():
+                            dates = info_data.get('dates', [])
+                            ranges = info_data.get('ranges', [])
+                            
+                            for date_start in dates:
+                                for range_id in ranges:
+                                    conn.execute(
+                                        "INSERT INTO cruise_dates (cruise_id, date_start, range_id, ufl) VALUES (?, ?, ?, ?)",
+                                        (cruise_id, date_start, range_id, data.get('ufl'))
+                                    )
+                    except (json.JSONDecodeError, KeyError):
+                        pass
+                
+                offset += batch_size
+                conn.commit()
+            
+            cursor = conn.execute("SELECT COUNT(*) FROM cruise_dates")
+            return cursor.fetchone()[0]
+    
+    def get_cruise_ids_by_date_range(self, date_start: int, date_end: int) -> List[str]:
+        """Get distinct cruise IDs within date range."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.execute(
+                "SELECT DISTINCT cd.cruise_id FROM cruise_dates cd WHERE cd.date_start >= ? AND cd.date_start <= ?",
+                (date_start, date_end)
+            )
+            return [row[0] for row in cursor.fetchall()]
