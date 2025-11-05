@@ -40,7 +40,7 @@ jobs:
     - name: Build Docker image
       run: |
         echo "Building Docker image..."
-        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
+        docker build -f devops/DockerfileApi -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
         echo "Build completed successfully"
 
     - name: Push Docker image

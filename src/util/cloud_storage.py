@@ -102,8 +102,9 @@ def fetch_sqlite_db_from_gcs(db_filename: str = "cruise_data.db"):
         logging.error(f"Failed to fetch SQLite DB from GCS: {e}")
         return None
 
-def upload_sqlite_db_to_gcs(local_db_path: str, db_filename: str = "cruise_data.db"):
+def upload_sqlite_db_to_gcs(db_filename: str = "cruise_data.db"):
     """Upload SQLite database to Google Cloud Storage."""
+    sqllite_path = os.getenv("SQLITE_DB_PATH")
     bucket_name = os.getenv("GCS_BUCKET_NAME")
     if not bucket_name:
         logging.info("No GCS bucket configured")
@@ -114,7 +115,7 @@ def upload_sqlite_db_to_gcs(local_db_path: str, db_filename: str = "cruise_data.
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(db_filename)
         
-        blob.upload_from_filename(local_db_path)
+        blob.upload_from_filename(sqllite_path)
         logging.info(f"SQLite database uploaded to GCS: {db_filename}")
         return True
     except Exception as e:

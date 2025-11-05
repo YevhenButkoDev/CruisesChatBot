@@ -9,7 +9,7 @@ SERVICE_ACCOUNT="cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com"
 
 # Build and push Docker image
 echo "Building Docker image..."
-docker build -f Dockerfile -t $IMAGE_NAME ..
+docker build -f DockerfileApi -t $IMAGE_NAME ..
 
 echo "Configuring Docker for GCR..."
 gcloud auth configure-docker
