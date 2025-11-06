@@ -8,6 +8,7 @@ on:
 env:
   PROJECT_ID: cruises-api-yevhen-dev
   SERVICE_NAME: cruise-ai-agent
+  EXTRACTOR_SERVICE_NAME: cruise-data-extractor
   REGION: europe-central2
 
 jobs:
@@ -37,32 +38,60 @@ jobs:
     - name: Configure Docker for GCR
       run: gcloud auth configure-docker --quiet
 
-    - name: Build Docker image
-      run: |
-        echo "Building Docker image..."
-        docker build -f devops/DockerfileApi -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
-        echo "Build completed successfully"
+#    - name: Build Api Docker image
+#      run: |
+#        echo "Building Docker image..."
+#        docker build -f devops/DockerfileApi -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
+#        echo "Build completed successfully"
 
-    - name: Push Docker image
+#    - name: Push Api Docker image
+#      timeout-minutes: 15
+#      run: |
+#        echo "Pushing Docker image..."
+#        docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
+#        echo "Push completed successfully"
+
+#    - name: Deploy to Cloud Run
+#      timeout-minutes: 10
+#      run: |
+#        echo "Deploying to Cloud Run..."
+#        gcloud run deploy $SERVICE_NAME \
+#          --image gcr.io/$PROJECT_ID/$SERVICE_NAME:latest \
+#          --platform managed \
+#          --region $REGION \
+#          --allow-unauthenticated \
+#          --memory 2Gi \
+#          --cpu 1 \
+#          --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
+#          --set-env-vars CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="https://uat.center.cruises",GCS_BUCKET_NAME=cruise_bucket \
+#          --set-secrets JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest \
+#          --project $PROJECT_ID
+#        echo "Deployment completed successfully"
+
+    - name: Build Extractor Docker image
+      run: |
+        echo "Building Extractor Docker image..."
+        docker build -f devops/DockerfileExtractor -t gcr.io/$PROJECT_ID/$EXTRACTOR_SERVICE_NAME:latest .
+        echo "Extractor build completed successfully"
+
+    - name: Push Extractor Docker image
       timeout-minutes: 15
       run: |
-        echo "Pushing Docker image..."
-        docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
-        echo "Push completed successfully"
+        echo "Pushing Extractor Docker image..."
+        docker push gcr.io/$PROJECT_ID/$EXTRACTOR_SERVICE_NAME:latest
+        echo "Extractor push completed successfully"
 
-    - name: Deploy to Cloud Run
+    - name: Deploy Extractor as Cloud Run Job
       timeout-minutes: 10
       run: |
-        echo "Deploying to Cloud Run..."
-        gcloud run deploy $SERVICE_NAME \
-          --image gcr.io/$PROJECT_ID/$SERVICE_NAME:latest \
-          --platform managed \
+        echo "Deploying Extractor as Cloud Run Job..."
+        gcloud run jobs deploy $EXTRACTOR_SERVICE_NAME \
+          --image gcr.io/$PROJECT_ID/$EXTRACTOR_SERVICE_NAME:latest \
           --region $REGION \
-          --allow-unauthenticated \
           --memory 2Gi \
           --cpu 1 \
           --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
-          --set-env-vars CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="https://uat.center.cruises",GCS_BUCKET_NAME=cruise_bucket,DB_HOST=uat-db-do-user-2290310-0.d.db.ondigitalocean.com,DB_PORT=25060,DB_NAME=db_cruise,DB_USER=llm_user \
-          --set-secrets JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,DB_PASSWORD=db-password:latest \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,GCS_BUCKET_NAME=cruise_bucket,CHROMA_DATA_DIR=/tmp/chroma_data,SQLITE_DB_PATH=/tmp/cruise_data.db \
+          --set-secrets POSTGRES_DB_URL=db-url:latest \
           --project $PROJECT_ID
-        echo "Deployment completed successfully"
+        echo "Extractor job deployment completed successfully"
