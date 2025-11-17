@@ -4,16 +4,14 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { message, token } = req.body;
+    const { message, email } = req.body;
 
-    if (!message || !token) {
-      return res.status(400).json({ error: "Missing message or token" });
+    if (!message) {
+      return res.status(400).json({ error: "Missing message" });
     }
 
-    // Здесь позже будет проверка токена (jwt.verify) и обращение к AI API
-    console.log("💬 Message from widget:", message);
+    console.log("💬 Message from widget:", message, "📧", email || "email not provided");
 
-    // Временный фейковый ответ от “AI”
     const aiResponse = `Вы написали: "${message}". Спасибо за обращение! 🚢`;
 
     return res.json({ reply: aiResponse });
@@ -22,5 +20,6 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 export default router;

@@ -1,10 +1,9 @@
 (function () {
   const script = document.currentScript;
-  const params = new URLSearchParams((script.src.split("?")[1] || ""));
-  const token = params.get("token");
+  
   const userLang = script.dataset.lang || "en";
+  const token = null;
 
-  if (!token) return;
 
   const css = document.createElement("link");
   css.rel = "stylesheet";
@@ -185,21 +184,21 @@
     addMessage(text, "user");
     messageInput.value = "";
 
-    try {
-      const res = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: text,
-          email: userEmail,
-          token
-        })
-      });
-      const data = await res.json();
-      addMessage(data.reply || "...");
-    } catch {
-      addMessage("Error");
-    }
+try {
+  const res = await fetch("http://localhost:3000/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      message: text,
+      email: userEmail
+    })
+  });
+  const data = await res.json();
+  addMessage(data.reply || "...");
+} catch {
+  addMessage("Error");
+}
+
   };
 
   sendBtn.onclick = sendMessage;
