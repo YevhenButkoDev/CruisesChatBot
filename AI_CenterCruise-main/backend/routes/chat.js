@@ -10,16 +10,28 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Missing message" });
     }
 
-    console.log("💬 Message from widget:", message, "📧", email || "email not provided");
+    const API_URL = "https://cruise-ai-agent-620626195243.europe-central2.run.app/ask";
+    const TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY3J1aXNlX2NsaWVudCIsImV4cCI6MTc5MzgwMzM0OSwiaWF0IjoxNzYyMjY3MzQ5fQ.ZCLt-pkUIqpPrG2EwgLCaaS7eDYlDKQ_cO3rlzAO61g";
 
-    const aiResponse = `Вы написали: "${message}". Спасибо за обращение! 🚢`;
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": TOKEN
+      },
+      body: JSON.stringify({
+        question: message,
+        chat_id: email || "web_client"
+      })
+    });
 
-    return res.json({ reply: aiResponse });
+    const data = await response.json();
+
+    return res.json({ reply: data.answer || "No response from AI" });
   } catch (err) {
-    console.error("Error in /api/chat:", err);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Error /api/chat:", err);
+    res.status(500).json({ error: "AI server error" });
   }
 });
-
 
 export default router;
