@@ -26,11 +26,19 @@ router.post("/", async (req, res) => {
     });
 
     const data = await response.json();
+    console.log("AI raw response:", data);
 
-    return res.json({ reply: data.answer || "No response from AI" });
+    let answer = data.answer || data.message || data.output || null;
+
+    if (!answer) {
+      return res.json({ reply: "AI returned empty response" });
+    }
+
+    return res.json({ reply: answer });
+
   } catch (err) {
     console.error("Error /api/chat:", err);
-    res.status(500).json({ error: "AI server error" });
+    res.status(500).json({ reply: "AI server error" });
   }
 });
 
