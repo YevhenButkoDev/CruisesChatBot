@@ -17,9 +17,9 @@
     const token = params.get("token");
     const userLang = script.dataset.lang || "en";
 
-if (!token) {
-  console.warn("No token provided — running in DEV mode");
-}
+    if (!token) {
+      console.warn("No token provided — running in DEV mode");
+    }
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
@@ -53,7 +53,7 @@ if (!token) {
       },
       pl: {
         welcome: "Jesteśmy tutaj, aby pomóc! 👋",
-        agents: "Konsultanci są доступny",
+        agents: "Konsultanci są dostępny",
         links: "PRZYDATNE LINKI",
         faq: "FAQ",
         contact: "Kontakt",
@@ -98,7 +98,7 @@ if (!token) {
         </a>
         <a href="https://center.cruises/contact/" target="_blank" class="cc-link-item">
           <span>${t.contact}</span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7l-7 7v-4H4v-6h9В5z"></path></svg>
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7l-7 7v-4H4v-6h9V5z"></path></svg>
         </a>
       </div>
       <button class="cc-start-btn">${t.start}</button>
@@ -130,7 +130,7 @@ if (!token) {
         <input class="cc-input" placeholder="${t.typeMessage}">
       </div>
       <button class="cc-send-btn">
-        <svg viewBox="0 0 24 24"><path d="М2 21l21-9L2 3v7l15 2-15 2v7z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path></svg>
       </button>
     `;
 
