@@ -1,6 +1,6 @@
 (function () {
 
-  // Функция, которая запускает код вне Angular зоны
+  // Функция, которая позволяет выполнить код вне Angular зоны
   function runOutsideAngular(callbackFunction) {
     if (window.Zone && Zone.current && Zone.current.runOutsideAngular) {
       Zone.current.runOutsideAngular(callbackFunction);
@@ -9,15 +9,17 @@
     }
   }
 
-  // Запускаем виджет вне Angular
+  // Основной код виджета запускается вне Angular
   runOutsideAngular(function () {
 
     const script = document.currentScript;
-    const parameters = new URLSearchParams((script.src.split("?")[1] || ""));
-    const token = parameters.get("token");
+    const params = new URLSearchParams((script.src.split("?")[1] || ""));
+    const token = params.get("token");
     const userLang = script.dataset.lang || "en";
 
-    if (!token) return;
+if (!token) {
+  console.warn("No token provided — running in DEV mode");
+}
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
@@ -51,7 +53,7 @@
       },
       pl: {
         welcome: "Jesteśmy tutaj, aby pomóc! 👋",
-        agents: "Konsultanci są dostępni",
+        agents: "Konsultanci są доступny",
         links: "PRZYDATNE LINKI",
         faq: "FAQ",
         contact: "Kontakt",
@@ -96,7 +98,7 @@
         </a>
         <a href="https://center.cruises/contact/" target="_blank" class="cc-link-item">
           <span>${t.contact}</span>
-          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7l-7 7v-4H4v-6h9V5z"></path></svg>
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7l-7 7v-4H4v-6h9В5z"></path></svg>
         </a>
       </div>
       <button class="cc-start-btn">${t.start}</button>
@@ -115,9 +117,10 @@
 
     const emailArea = document.createElement("div");
     emailArea.className = "cc-email-area";
-    emailArea.innerHTML =
-      `<input class="cc-email-input" placeholder="${t.emailPlaceholder}">
-       <button class="cc-email-btn">${t.continue}</button>`;
+    emailArea.innerHTML = `
+      <input class="cc-email-input" placeholder="${t.emailPlaceholder}">
+      <button class="cc-email-btn">${t.continue}</button>
+    `;
 
     const inputArea = document.createElement("div");
     inputArea.className = "cc-input-area";
@@ -127,7 +130,7 @@
         <input class="cc-input" placeholder="${t.typeMessage}">
       </div>
       <button class="cc-send-btn">
-        <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="М2 21l21-9L2 3v7l15 2-15 2v7z"></path></svg>
       </button>
     `;
 
@@ -146,9 +149,9 @@
 
     let userEmail = null;
 
-    function addMessage(text, sender = "bot") {
+    function addMessage(text, who = "bot") {
       const msg = document.createElement("div");
-      msg.className = `cc-msg ${sender}`;
+      msg.className = "cc-msg " + who;
       msg.textContent = text;
       body.append(msg);
       body.scrollTop = body.scrollHeight;
@@ -219,6 +222,7 @@
     }
 
     sendBtn.onclick = sendMessage;
+
     messageInput.onkeydown = function (event) {
       if (event.key === "Enter") {
         sendMessage();
