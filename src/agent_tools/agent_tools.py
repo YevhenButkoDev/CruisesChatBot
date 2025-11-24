@@ -5,7 +5,6 @@ import os
 from datetime import date, timedelta
 from typing import List, Tuple, Optional
 
-from src.data_extraction.db import get_db_connection
 from src.vector_db.query import query_chroma_db
 from src.util.date_utils import validate_and_correct_date_range
 from src.util.cruise_utils import parse_cruise_results
