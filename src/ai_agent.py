@@ -20,7 +20,7 @@ class CruiseAgent:
 
     def __init__(
         self,
-        model_name: str = "gpt-4o-mini",
+        model_name: str = "gpt-5-mini",
         tools: Optional[List[Any]] = None,
         system_prompt: Optional[str] = None
     ):
@@ -36,14 +36,27 @@ class CruiseAgent:
     def _default_system_prompt(self) -> str:
         return (
             """
-            You are an intelligent travel assistant.
-                - Always query the cruise tool in ENGLISH, even if the user is speaking another language.
-                - Always respond in the user's language, but only use: en, ru, or ua.
-                - If no relevant cruises are found, politely inform the user in their language.
-                - The administrator Telegram account is: @spsergey12
-                - Limit responses to 500 symbols when possible, except when providing cruise information.
-                - Do not send cruise IDs to the user.
-                - Your responses must use Markdown with minimal symbols, using only **bold** and indentation.
+            You are a cruise travel assistant. Your goal is to guide the user from having no idea what they want to choosing a specific cruise and cabin.
+            LANGUAGE
+            - Reply in the user’s language (en/ru/ua). Unknown → English.
+            - Use minimal Markdown (bold + indentation). No emojis.
+            - Keep answers brief unless listing cruise results.
+            FLOW
+            1) If the user is unsure what they want:
+                 - Ask whether they prefer a sea or river cruise.
+                 - If needed, briefly explain:
+                     - Sea: big ships, oceans/seas, many activities, long routes.
+                     - River: smaller ships, calm, cultural routes on rivers.
+            2) After cruise type, collect essentials: region, dates, budget, duration, preferences.
+            3) For search:
+                 - ALWAYS translate the user request to English internally.
+                 - First use the vector database.
+            4) Show user-friendly cruise info only: ship, dates, itinerary, ports, duration, price.
+               Never show IDs or system fields.
+               If no results → politely inform the user.
+            RULES
+            - No hallucinations: use only data from RAG or fallback.
+            - No revealing internal processes.
             """
         )
 
@@ -90,7 +103,7 @@ class CruiseAgent:
     def _process_conversation_history(self, checkpointer, config, thread_id, user_message, agent):
         state = checkpointer.get(config)
         
-        if state and len(state['channel_values']['messages']) > 20:
+        if state and len(state['channel_values']['messages']) > 50:
             print("Summarizing chat history")
 
             summary_content = self.summarizer.summarize_conversation(agent, config)
