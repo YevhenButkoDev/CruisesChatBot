@@ -1,0 +1,2098 @@
+ {
+            "enabled": true,
+            "cruiseDateRangeId": 30944947,
+            "vesselSiteCode": [
+                "any"
+            ],
+            "cruiseDateRangeInfoJson": {
+                "minPrice": {
+                    "1": 1399.492224,
+                    "2": 1196,
+                    "4": 545230.088,
+                    "5": 5341.934,
+                    "200": 59155.986291999994
+                },
+                "dateRange": {
+                    "end_date": "2025-07-03",
+                    "cruise_id": 1971007,
+                    "vessel_id": 1105009,
+                    "begin_date": "2025-06-26",
+                    "is_disable": false,
+                    "currency_id": 2,
+                    "last_update": "2025-06-12T02:40:25.575251",
+                    "cruise_date_range_id": 30944947,
+                    "cruise_language_service_id": 150
+                },
+                "sales_shot": null,
+                "langService": {
+                    "name": "Немецкий язык",
+                    "name_i18n": {
+                        "de": "Deutsche Sprache",
+                        "en": "German",
+                        "ru": "Немецкий язык",
+                        "uk": "Німецька мова"
+                    },
+                    "cruise_language_service_id": 150
+                },
+                "minPriceInfo": [
+                    {
+                        "location": "WITH_WINDOW",
+                        "cruise_id": 1971007,
+                        "min_price": 1196,
+                        "currency_id": 2,
+                        "price_value": 1196,
+                        "availability_type": 100,
+                        "cabin_category_id": 181109,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_BALCONY",
+                        "cruise_id": 1971007,
+                        "min_price": 1196,
+                        "currency_id": 2,
+                        "price_value": 1796,
+                        "availability_type": 100,
+                        "cabin_category_id": 181107,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_WINDOW",
+                        "cruise_id": 1971007,
+                        "min_price": 5341.934,
+                        "currency_id": 5,
+                        "price_value": 5341.934,
+                        "availability_type": 100,
+                        "cabin_category_id": 181109,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_BALCONY",
+                        "cruise_id": 1971007,
+                        "min_price": 545230.088,
+                        "currency_id": 4,
+                        "price_value": 818756.8879999999,
+                        "availability_type": 100,
+                        "cabin_category_id": 181107,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_BALCONY",
+                        "cruise_id": 1971007,
+                        "min_price": 59155.986291999994,
+                        "currency_id": 200,
+                        "price_value": 88832.902492,
+                        "availability_type": 100,
+                        "cabin_category_id": 181107,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_BALCONY",
+                        "cruise_id": 1971007,
+                        "min_price": 5341.934,
+                        "currency_id": 5,
+                        "price_value": 8021.834,
+                        "availability_type": 100,
+                        "cabin_category_id": 181107,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_WINDOW",
+                        "cruise_id": 1971007,
+                        "min_price": 545230.088,
+                        "currency_id": 4,
+                        "price_value": 545230.088,
+                        "availability_type": 100,
+                        "cabin_category_id": 181109,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_WINDOW",
+                        "cruise_id": 1971007,
+                        "min_price": 1399.492224,
+                        "currency_id": 1,
+                        "price_value": 1399.492224,
+                        "availability_type": 100,
+                        "cabin_category_id": 181109,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_BALCONY",
+                        "cruise_id": 1971007,
+                        "min_price": 1399.492224,
+                        "currency_id": 1,
+                        "price_value": 2101.578624,
+                        "availability_type": 100,
+                        "cabin_category_id": 181107,
+                        "cruise_date_range_id": 30944947
+                    },
+                    {
+                        "location": "WITH_WINDOW",
+                        "cruise_id": 1971007,
+                        "min_price": 59155.986291999994,
+                        "currency_id": 200,
+                        "price_value": 59155.986291999994,
+                        "availability_type": 100,
+                        "cabin_category_id": 181109,
+                        "cruise_date_range_id": 30944947
+                    }
+                ]
+            },
+            "cruiseInfoJson": {
+                "cruise": {
+                    "ufl": "seine-experience-normandy-with-paris-2025",
+                    "name": "Seine Experience Normandy with Paris 2025",
+                    "video": null,
+                    "port_id": 2389381,
+                    "sale_id": null,
+                    "cruise_id": 1971007,
+                    "is_import": true,
+                    "name_i18n": {
+                        "de": "Seine Experience Normandy with Paris 2025",
+                        "en": "Seine Experience Normandy with Paris 2025",
+                        "hy": "Սեն, Նորմանդիա, Փարիզ 2025",
+                        "pl": "Sekwana Poznaj Normandię z Paryżem 2025",
+                        "ru": "Сена Познакомьтесь с Нормандией с Парижем 2025",
+                        "uk": "Відчуйте Нормандію в Сені з Парижем 2025"
+                    },
+                    "site_code": [],
+                    "vessel_id": null,
+                    "company_id": 55,
+                    "gallery_id": 8693734602,
+                    "description": null,
+                    "is_disabled": false,
+                    "cruise_type_id": 50,
+                    "description_i18n": null,
+                    "description_gallery_id": null,
+                    "simple_itinerary_description": null,
+                    "is_itinerary_can_be_overwritten": true,
+                    "simple_itinerary_description_i18n": null
+                },
+                "rivers": [
+                    {
+                        "ufl": "sena",
+                        "name": "Сена",
+                        "river_id": 19,
+                        "name_i18n": {
+                            "de": "Sena",
+                            "en": "Sena",
+                            "pl": "Sekwana",
+                            "ru": "Сена",
+                            "uk": "Сена"
+                        },
+                        "gallery_id": 8693724141,
+                        "category_id": 3,
+                        "description": "<p>Речной круиз по <strong>Сене</strong> подарит Вам бурю невероятных эмоций и впечатлений, а также ознакомит с невероятным множеством достопримечательностей. Главными портами этой чудесной реки являются Париж, Гавр и Руан. Грубо говоря, можно отметить, что Париж разбит этой рекой на две неотъемлимые части: правый берег, сосредоточивший в себе торговые и деловые центры и левый берег с его культурной и образовательной жизнью.</p>\n\n<p>Следуя по течению реки Вы сможете лицезреть Эйфелеву башню, по левую сторону, а также дворец Марии Медичи и Латинский квартал. А на правом берегу Сены Вас ждут удивительные архитектурные сооружения в саду Тьюильри, Триумфаьная арка и конечно же &mdash; &quot;Гранд-Опера&quot;. Также во время криза Вы сможете оценить неимоверную красоту многочисленных мостов.</p>\n\n<p>Сена всегда являлась душой и сердцем парижан и сегодня у реки масса фанатов, можете не сомневаться, что и Вы пополните их ряды, отправившись в круиз по это знаменитой реке.</p>\n",
+                        "description_i18n": {
+                            "de": "",
+                            "en": "<p>Sena</p>",
+                            "pl": "",
+                            "ru": "",
+                            "uk": "<p><strong>Се́на</strong>&nbsp;(фр.&nbsp;<em>Seine</em>,&nbsp;лат.&nbsp;<em>Sequana</em>)&nbsp;&mdash; одна з найбільших&nbsp;річок Франції, потужна транспортна артерія, яка проходить через&nbsp;регіони&nbsp;Іль-де-Франс&nbsp;та&nbsp;Верхню Нормандію. Довжина річки становить 776 км, витік знаходиться поблизу муніципалітету&nbsp;Сен-Сен, що біля&nbsp;Діжона&nbsp;(центрально-східна Франція,&nbsp;плато Лангре), річка прямує через&nbsp;Париж&nbsp;і впадає у&nbsp;Ла-Манш&nbsp;біля&nbsp;Гавра.</p>\n\n<p>Існує 37 мостів через річку у межах Парижа і безліч переправ поза його межами. Найяскравішими прикладами паризьких мостів є&nbsp;міст Луї-Філіпп&nbsp;і&nbsp;Пон Неф, останній побудовано у&nbsp;1607&nbsp;році. Найяскравішим прикладом моста за межами Парижа є&nbsp;міст Нормандія&nbsp;&mdash; один з найдовших&nbsp;вантових мостів&nbsp;світу, який поєднує міста&nbsp;Гавр&nbsp;та&nbsp;Онфлер.</p>\n\n<p>Назва &laquo;Сена&raquo; походить від&nbsp;латинського&nbsp;слова&nbsp;<em>Sequana</em>, латинізованої версія&nbsp;гальського&nbsp;(кельтського) слова&nbsp;<em>Sicauna</em>, яке, за найпоширенішою версією, означає &laquo;священна річка&raquo;. За іншою версією назва&nbsp;<em>Sicauna</em>&nbsp;споріднена із назвою річки&nbsp;Сона, при цьому неймовірною виглядає спорідненість із&nbsp;ірландськоюрічкою&nbsp;Шаннон, з огляду на дуже відмінні форми останніх; гальське&nbsp;<em>Ціона</em>&nbsp;(у давальному відмінку&nbsp;<em>Sionainn</em>) швидше походить від давньоірландського Sinona. Також висувають гіпотезу про те, що&nbsp;<em>Sequana</em>&nbsp;&mdash; латинізована версія гальського&nbsp;<em>Issicauna</em>&nbsp;<em>Lower-Icauna</em>, скорочена версія від&nbsp;<em>Icauna</em>, гальської назви річки&nbsp;Йонна. Існують припущення, що древні&nbsp;галли&nbsp;вважали Сену притокою Йонни, що достатньо ймовірно&nbsp;&mdash; при впадінні Йонни у Сену перша є значно більшою.</p>\n\n<p>Інколи назву річки Sikanos, що походить (згідно з&nbsp;Фукідідом) від Sicanoi, що у Sikelia (Сицилія), пов&#39;язують з річкою Sequana (Сена).</p>\n\n<p>Йдучи вниз по течії, у місцевості, яка зараз носить назву&nbsp;Нормандія, Сена була відома під назвою&nbsp;<em>Rodo</em>, чи&nbsp;<em>Roto</em>. Це кельтська назва річки, споріднена із назвою річки&nbsp;Рона. Обидві назви пов&#39;язані з назвою Rouen, який у галлів називалась&nbsp;<em>Rotomagos</em>, що означало&nbsp;<em>рівнина Roto</em>.</p>\n\n<p>Згідно з легендою, після спалення на вогні&nbsp;Жанни д&#39;Арк&nbsp;у&nbsp;1431&nbsp;році, її попіл було розвіяно над Сеною, хоч суперечки з цього приводу є і зараз.</p>\n\n<p>Наполеон I Бонапарт, який помер у&nbsp;1821&nbsp;році, бажав, щоб його поховали на березі Сени, але його заповіт не був виконаний.</p>\n\n<p>На&nbsp;Літніх Олімпійських іграх 1900 року&nbsp;тут проводились змагання з&nbsp;академічної греблі,&nbsp;плавання&nbsp;і&nbsp;водного поло.&nbsp;Через&nbsp;двадцять чотири роки&nbsp;на річці знову відбулись змагання з&nbsp;академічної греблі, трохи північніше Парижа.</p>\n\n<p>У січні 1910 року рівень води в Сені піднявся на 6 м вище норми, затопивши майже все місто і змусивши тисячі парижан ховатися у притулках.&nbsp;Велика Паризька повінь 1910 року&nbsp;була найбільшою, яку бачило місто з 1658 року, коли рівень води був на декілька сантиметрів вище.</p>\n\n<p>Аж до 1930-х років існувала ланцюгова буксирувальна система, яка допомагала суднам підніматися вгору по річці.</p>\n\n<p>Річка Сена була однією з головних цілей, які ставились при досягненні&nbsp;Операції &laquo;Оверлорд&raquo;&nbsp;у 1944 році. Наміри союзників полягали в досягненні Сени у період Д+90 (не більше 90 днів від&nbsp;дня-Д). Ціль була досягнута. Очікуваного форсування річки не відбулося, так як німецький опір був зламаний ще на початку вересня 1944 року. Щоправда,&nbsp;Перша канадська армія&nbsp;зустріла супротив безпосередньо на захід від Сени, у боях поблизу Форе-де-ла-Лонда, коли союзні війська спробували відрізати шляхи втечі через річку частині&nbsp;Сьомої німецької армії&nbsp;у завершальній фазі&nbsp;Битви за Нормандію.</p>\n\n<p>Деякі з жертв&nbsp;Паризького погрому 1961&nbsp;року потонули у річці після того, як були скинуті з мосту&nbsp;Сен-Мішель&nbsp;та інших місць Парижа.</p>\n\n<p>Днопоглиблюючі&nbsp;роботи у 1960-х роках усунули проблему&nbsp;борових&nbsp;хвиль, які називаються&nbsp;<em>&laquo;le mascaret.&raquo;</em></p>\n\n<p>У 1991 році береги річки Сена у Парижі&nbsp;&mdash;&nbsp;<em>Rive Gauche</em>&nbsp;і&nbsp;<em>Rive Droite</em>&nbsp;були додані&nbsp;ЮНЕСКО&nbsp;до&nbsp;списку об&#39;єктів світової спадщини у Європі.</p>\n\n<p>Річка була популярним місцем для самогубців і злочинців, які скидали сюди тіла своїх жертв.&nbsp;У 2007 році з вод річки було витягнуто 55 трупів; у лютому 2008 року звідти ж виловили тіло супермоделі&nbsp;Катоуча Ніане.&nbsp;За період у 6 останніх років загальна кількість тіл, знайдених в річці, становить 306, інколи сягаючи числа 16 трупів за день.</p>"
+                        }
+                    }
+                ],
+                "gallery": {
+                    "images": [
+                        {
+                            "i": "019761fc-34a7-70e9-8c5e-f93e2e2416de",
+                            "n": "csm_AdobeStock_274571371_Etretat_7e2fbbfe3a.jpeg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 8693734602,
+                    "default_file_uuid": "019761fc-34a7-70e9-8c5e-f93e2e2416de"
+                },
+                "portMaybe": {
+                    "ufl": "paris",
+                    "name": "Paris",
+                    "city_id": 2389381,
+                    "latitude": "48.85661400000001",
+                    "ref_city": 99,
+                    "longitude": "2.3522219",
+                    "name_i18n": {
+                        "de": "Paris",
+                        "en": "Paris",
+                        "hy": "Փարիզ",
+                        "pl": "Paryż",
+                        "ru": "Париж",
+                        "uk": "Париж"
+                    },
+                    "country_id": 6129,
+                    "gallery_id": 8693678398,
+                    "is_enabled": true,
+                    "country_ufl": "france",
+                    "description": "<p>the capital of France, on the Seine River; population 2,203,817 (2006). Paris was held by the Romans, who called it Lutetia, and by the Franks, and was established as the capital in 987 under Hugh Capet. It was organized into three parts&mdash;the &Icirc;le de la Cit&eacute; (an island in the Seine), the Right Bank, and the Left Bank&mdash;during the reign of Philippe-Auguste 1180&ndash;1223. The city&#39;s neoclassical architecture dates from the modernization of the Napoleonic era, which continued under Napoleon III, when the bridges and boulevards of the modern city were built.</p>\n",
+                    "country_name": "France",
+                    "country_is_show": true,
+                    "country_to_i18n": {
+                        "de": "aus Frankreich",
+                        "en": "to France",
+                        "pl": "do Francji",
+                        "ru": "во Францию",
+                        "uk": "до Франції"
+                    },
+                    "country_to_name": "to France",
+                    "country_gen_i18n": {
+                        "de": "aus Frankreich",
+                        "en": "from France",
+                        "pl": "z Francji",
+                        "ru": "из Франции",
+                        "uk": "з Франції"
+                    },
+                    "country_gen_name": "from France",
+                    "description_i18n": {
+                        "de": "",
+                        "en": "<p>the capital of France, on the Seine River; population 2,203,817 (2006). Paris was held by the Romans, who called it Lutetia, and by the Franks, and was established as the capital in 987 under Hugh Capet. It was organized into three parts&mdash;the &Icirc;le de la Cit&eacute; (an island in the Seine), the Right Bank, and the Left Bank&mdash;during the reign of Philippe-Auguste 1180&ndash;1223. The city&#39;s neoclassical architecture dates from the modernization of the Napoleonic era, which continued under Napoleon III, when the bridges and boulevards of the modern city were built.</p>",
+                        "hy": "",
+                        "pl": "",
+                        "ru": "<p>Пожалуй, самый известный город в мире &mdash; <strong>Париж</strong>, столица Франции и мечта любой девушки и не только. Ежегодно в Париж приезжает самое большое количество туристов, ведь этот город знаменит своей красотой, безумной роскошью архитектуры, великолепными видами города и авеню, а также изобилием музеев и достопримечательностей.</p>\n\n<p>Вы можете начать свое путешествие по городу с любой стороны, в любом случае эта прогулка будет для Вас открытием. Вы сможете ознакомиться с туристическим, историческим, модным Парижем. Париж может быть разным, но Вы откроете его для себя по-своему. Это удивительно, но Париж не такой уж и большой город, его главные достопримечательности можно обойти и пешком.</p>\n\n<p>Вы сможете посетить классические достопримечательности: известнейшую Эйфелеву башню, Собор Парижской Богоматери, Триумфальную Арку и прочее. Но, кроме этого, у Вас будет удивительная возможность посетить и абсолютно новые места, такие как Арка Дефанс, Город Наук и Промышленности, а также Город Музыки в парке Виллет, и еще несколько безумно интересных мест.</p>\n\n<p>Красота и очарование Парижа безграничны, город завораживает ночью, ведь не зря его называют Городом Света.</p>",
+                        "uk": "<p>Мабуть, найвідоміший місто в світі - Париж, столиця Франції і мрія будь-якої дівчини і не тільки. Щорічно в Париж приїжджає найбільша кількість туристів, адже це місто знамените своєю красою, божевільної розкішшю архітектури, чудовими краєвидами міста та авеню, а також достатком музеїв і пам&#39;яток.</p>\n\n<p>Ви можете почати свою подорож по місту з будь-якого боку, в будь-якому випадку ця прогулянка буде для Вас відкриттям. Ви зможете ознайомитися з туристичним, історичним, модним Парижем. Париж може бути різним, але Ви відкриєте його для себе по-своєму. Це дивно, але Париж не такий вже і великий місто, його головні визначні пам&#39;ятки можна обійти і пішки.</p>\n\n<p>Ви зможете відвідати класичні пам&#39;ятки: найвідомішу Ейфелеву вежу, Собор Паризької Богоматері, Тріумфальну Арку та інше. Але, крім цього, у Вас буде чудова можливість відвідати і абсолютно нові місця, такі як Арка Дефанс, Місто Наук і Промисловості, а також Місто Музики в парку Віллет, і ще кілька шалено цікавих місць.</p>\n\n<p>Краса і чарівність Парижа безмежні, місто заворожує вночі, адже не дарма його називають Містом Світу.</p>"
+                    },
+                    "country_name_i18n": {
+                        "de": "Frankreich",
+                        "en": "France",
+                        "pl": "Francja",
+                        "ru": "Франция",
+                        "uk": "Франція"
+                    },
+                    "country_gallery_id": 8693686426,
+                    "country_description": null,
+                    "country_description_i18n": null
+                },
+                "itineraries": [
+                    {
+                        "city": {
+                            "ufl": "rouen",
+                            "name": "Rouen",
+                            "city_id": 97,
+                            "latitude": "49.44323199999999",
+                            "ref_city": null,
+                            "longitude": "1.099971",
+                            "name_i18n": {
+                                "de": "Rouen",
+                                "en": "Rouen",
+                                "hy": "Ռուան",
+                                "pl": "Rouen",
+                                "ru": "Руан",
+                                "uk": "Руан"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693678640,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": "<p><strong>Rouen</strong>&nbsp;is a city on the River&nbsp;Seine&nbsp;in the north of France. It is the capital of the&nbsp;region&nbsp;of&nbsp;Normandy. Formerly one of the largest and most prosperous cities of&nbsp;medieval Europe, Rouen was the seat of the&nbsp;Exchequer of Normandy&nbsp;during the Middle Ages. It was one of the capitals of the&nbsp;Anglo-Norman&nbsp;dynasties, which ruled both England and large parts of modern France from the 11th to the 15th centuries.</p>\n\n<p>The population of the metropolitan area (in French:&nbsp;<em>agglom&eacute;ration</em>) at the 2011 census was 655,013, with the city proper having an estimated population of 111,557. People from Rouen are known as&nbsp;<em>Rouennais</em>.</p>\n",
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p><strong>Rouen</strong>&nbsp;is a city on the River&nbsp;Seine&nbsp;in the north of France. It is the capital of the&nbsp;region&nbsp;of&nbsp;Normandy. Formerly one of the largest and most prosperous cities of&nbsp;medieval Europe, Rouen was the seat of the&nbsp;Exchequer of Normandy&nbsp;during the Middle Ages. It was one of the capitals of the&nbsp;Anglo-Norman&nbsp;dynasties, which ruled both England and large parts of modern France from the 11th to the 15th centuries.</p>\n\n<p>The population of the metropolitan area (in French:&nbsp;<em>agglom&eacute;ration</em>) at the 2011 census was 655,013, with the city proper having an estimated population of 111,557. People from Rouen are known as&nbsp;<em>Rouennais</em>.</p>\n\n<p><br />\n&nbsp;</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Rouen</strong> jest miastem nad Sekwaną w p&oacute;łnocnej Francji. Jest stolicą regionu Normandia. Niegdyś jedno z największych i najbogatszych miast średniowiecznej Europy, Rouen było siedzibą Skarbu Normandii w średniowieczu. Było jedną ze stolic dynastii anglonormańskich, kt&oacute;re rządziły Anglią i znacznymi częściami wsp&oacute;łczesnej Francji od XI do XV wieku.</p>\n\n<p>Populacja obszaru metropolitalnego (po francusku: agglom&eacute;ration) według spisu z 2011 roku wynosiła 655 013, a szacunkowa populacja samego miasta to 111 557. Mieszkańcy Rouen są znani jako Rouennais.</p>",
+                                "ru": "<p>Во французском регионе &mdash; Верхняя Нормандия, рекомендуем Вам посетить его столицу &mdash; город <strong>Руан</strong>.</p>\n\n<p>Руан &mdash; жемчужина Северной Франции, город с&nbsp; богатейшей историей. Посетите площадь Старого рынка и окунитесь в историю, вместе с этим местом Вы станете свидетелем казни знаменитой Жанны д&rsquo;Арк. Руан был музой для многих творческих людей, знаменитых людей: Гюстав Флобер, Клод Моне. Здесь, в Руане, Вы сможете приобрести изумительную керамику, наесться вкуснейшими французскими яблоками, а днями напролет гулять в бескрайних лесах Нормандии.</p>\n\n<p>Исторический центр Руана может похвастаться знаменитым Руанским собором, увековеченный Клодом Моне в серии пейзажей. Посетите это место и лично сравните игру света и теней на стенах собора и картинах этого известного художника.</p>\n\n<p>Еще список известных достопримечательностей Руана пополняют большие часы. Готическая башня, ворота Ренессанса, фонтан &mdash; смесь эпох, но в принципе типичная руанская смесь. Механизм этих знаменитых часов считается старейшим в Европе.</p>\n\n<p>В Руане есть еще масса мест, которые Вас заинтересуют, в том числе музеи, галереи и обычные кафе. Рекомендуем Вам приехать сюда и лично оценить очарование этого города.</p>",
+                                "uk": "<p>У французькому регіоні - Верхня Нормандія, рекомендуємо Вам відвідати його столицю - місто Руан.</p>\n\n<p>Руан - перлина Північної Франції, місто з багатою історією. Відвідайте площа Старого ринку та пориньте в історію, разом з цим місцем Ви станете свідком страти знаменитої Жанни д&#39;Арк. Руан був музою для багатьох творчих людей, знаменитих людей: Гюстав Флобер, Клод Моне. Тут, в Руані, Ви зможете придбати дивну кераміку, наїстися смачними французькими яблуками, а цілими днями гуляти в безкрайніх лісах Нормандії.</p>\n\n<p>Історичний центр Руана може похвалитися знаменитим Руанським собором, увічнений Клодом Моне в серії пейзажів. Відвідайте це місце і особисто порівняйте гру світла і тіней на стінах собору і картинах цього відомого художника.</p>\n\n<p>Ще список відомих пам&#39;яток Руана поповнюють великий годинник. Готична вежа, ворота Ренесансу, фонтан - суміш епох, але в принципі типова Руанська суміш. Механізм цих знаменитого годинника вважається найстарішим в Європі.</p>\n\n<p>У Руані є ще маса місць, які Вас зацікавлять, в тому числі музеї, галереї і звичайні кафе. Рекомендуємо Вам приїхати сюди і особисто оцінити чарівність цього міста.</p>"
+                            },
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "01968730-347a-77f5-8891-d15988323df7",
+                                    "n": "97_Rouen.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693678640,
+                            "default_file_uuid": "01968730-347a-77f5-8891-d15988323df7"
+                        },
+                        "itinerary": {
+                            "day": 4,
+                            "city_id": 97,
+                            "ordering": 3,
+                            "cruise_id": 1971007,
+                            "description": "<p>You quickly lose track of time in Normandy’s capital. But you’re reminded of it again by the 600-year-old ‘Big Clock’. This is one of the world’s oldest astronomical clocks and has just one hand – for the hour.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": null,
+                            "start_city_id": 2391118,
+                            "departure_time": "20:00:00",
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "rouen",
+                            "name": "Rouen",
+                            "city_id": 97,
+                            "latitude": "49.44323199999999",
+                            "ref_city": null,
+                            "longitude": "1.099971",
+                            "name_i18n": {
+                                "de": "Rouen",
+                                "en": "Rouen",
+                                "hy": "Ռուան",
+                                "pl": "Rouen",
+                                "ru": "Руан",
+                                "uk": "Руан"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693678640,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": "<p><strong>Rouen</strong>&nbsp;is a city on the River&nbsp;Seine&nbsp;in the north of France. It is the capital of the&nbsp;region&nbsp;of&nbsp;Normandy. Formerly one of the largest and most prosperous cities of&nbsp;medieval Europe, Rouen was the seat of the&nbsp;Exchequer of Normandy&nbsp;during the Middle Ages. It was one of the capitals of the&nbsp;Anglo-Norman&nbsp;dynasties, which ruled both England and large parts of modern France from the 11th to the 15th centuries.</p>\n\n<p>The population of the metropolitan area (in French:&nbsp;<em>agglom&eacute;ration</em>) at the 2011 census was 655,013, with the city proper having an estimated population of 111,557. People from Rouen are known as&nbsp;<em>Rouennais</em>.</p>\n",
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p><strong>Rouen</strong>&nbsp;is a city on the River&nbsp;Seine&nbsp;in the north of France. It is the capital of the&nbsp;region&nbsp;of&nbsp;Normandy. Formerly one of the largest and most prosperous cities of&nbsp;medieval Europe, Rouen was the seat of the&nbsp;Exchequer of Normandy&nbsp;during the Middle Ages. It was one of the capitals of the&nbsp;Anglo-Norman&nbsp;dynasties, which ruled both England and large parts of modern France from the 11th to the 15th centuries.</p>\n\n<p>The population of the metropolitan area (in French:&nbsp;<em>agglom&eacute;ration</em>) at the 2011 census was 655,013, with the city proper having an estimated population of 111,557. People from Rouen are known as&nbsp;<em>Rouennais</em>.</p>\n\n<p><br />\n&nbsp;</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Rouen</strong> jest miastem nad Sekwaną w p&oacute;łnocnej Francji. Jest stolicą regionu Normandia. Niegdyś jedno z największych i najbogatszych miast średniowiecznej Europy, Rouen było siedzibą Skarbu Normandii w średniowieczu. Było jedną ze stolic dynastii anglonormańskich, kt&oacute;re rządziły Anglią i znacznymi częściami wsp&oacute;łczesnej Francji od XI do XV wieku.</p>\n\n<p>Populacja obszaru metropolitalnego (po francusku: agglom&eacute;ration) według spisu z 2011 roku wynosiła 655 013, a szacunkowa populacja samego miasta to 111 557. Mieszkańcy Rouen są znani jako Rouennais.</p>",
+                                "ru": "<p>Во французском регионе &mdash; Верхняя Нормандия, рекомендуем Вам посетить его столицу &mdash; город <strong>Руан</strong>.</p>\n\n<p>Руан &mdash; жемчужина Северной Франции, город с&nbsp; богатейшей историей. Посетите площадь Старого рынка и окунитесь в историю, вместе с этим местом Вы станете свидетелем казни знаменитой Жанны д&rsquo;Арк. Руан был музой для многих творческих людей, знаменитых людей: Гюстав Флобер, Клод Моне. Здесь, в Руане, Вы сможете приобрести изумительную керамику, наесться вкуснейшими французскими яблоками, а днями напролет гулять в бескрайних лесах Нормандии.</p>\n\n<p>Исторический центр Руана может похвастаться знаменитым Руанским собором, увековеченный Клодом Моне в серии пейзажей. Посетите это место и лично сравните игру света и теней на стенах собора и картинах этого известного художника.</p>\n\n<p>Еще список известных достопримечательностей Руана пополняют большие часы. Готическая башня, ворота Ренессанса, фонтан &mdash; смесь эпох, но в принципе типичная руанская смесь. Механизм этих знаменитых часов считается старейшим в Европе.</p>\n\n<p>В Руане есть еще масса мест, которые Вас заинтересуют, в том числе музеи, галереи и обычные кафе. Рекомендуем Вам приехать сюда и лично оценить очарование этого города.</p>",
+                                "uk": "<p>У французькому регіоні - Верхня Нормандія, рекомендуємо Вам відвідати його столицю - місто Руан.</p>\n\n<p>Руан - перлина Північної Франції, місто з багатою історією. Відвідайте площа Старого ринку та пориньте в історію, разом з цим місцем Ви станете свідком страти знаменитої Жанни д&#39;Арк. Руан був музою для багатьох творчих людей, знаменитих людей: Гюстав Флобер, Клод Моне. Тут, в Руані, Ви зможете придбати дивну кераміку, наїстися смачними французькими яблуками, а цілими днями гуляти в безкрайніх лісах Нормандії.</p>\n\n<p>Історичний центр Руана може похвалитися знаменитим Руанським собором, увічнений Клодом Моне в серії пейзажів. Відвідайте це місце і особисто порівняйте гру світла і тіней на стінах собору і картинах цього відомого художника.</p>\n\n<p>Ще список відомих пам&#39;яток Руана поповнюють великий годинник. Готична вежа, ворота Ренесансу, фонтан - суміш епох, але в принципі типова Руанська суміш. Механізм цих знаменитого годинника вважається найстарішим в Європі.</p>\n\n<p>У Руані є ще маса місць, які Вас зацікавлять, в тому числі музеї, галереї і звичайні кафе. Рекомендуємо Вам приїхати сюди і особисто оцінити чарівність цього міста.</p>"
+                            },
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "01968730-347a-77f5-8891-d15988323df7",
+                                    "n": "97_Rouen.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693678640,
+                            "default_file_uuid": "01968730-347a-77f5-8891-d15988323df7"
+                        },
+                        "itinerary": {
+                            "day": 3,
+                            "city_id": 97,
+                            "ordering": 2,
+                            "cruise_id": 1971007,
+                            "description": "<p>You quickly lose track of time in Normandy’s capital. But you’re reminded of it again by the 600-year-old ‘Big Clock’. This is one of the world’s oldest astronomical clocks and has just one hand – for the hour.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": "14:00:00",
+                            "start_city_id": 2391118,
+                            "departure_time": null,
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "caudebec-en-caux",
+                            "name": "Caudebec-en-Caux",
+                            "city_id": 2389349,
+                            "latitude": "49.525303",
+                            "ref_city": null,
+                            "longitude": "0.7233360000000001",
+                            "name_i18n": {
+                                "de": "Caudebec-en-Caux",
+                                "en": "Caudebec-en-Caux",
+                                "hy": "Caudebec-en-Caux",
+                                "pl": "Caudebec-en-Caux",
+                                "ru": "Кодбек-ан-Ко",
+                                "uk": "Кодбек-ан-Ко"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693710090,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": null,
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": null,
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "0196a188-1a97-780a-ba2d-e1a3cc70dddc",
+                                    "n": "2389349_Caudebec-en-Caux.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693710090,
+                            "default_file_uuid": "0196a188-1a97-780a-ba2d-e1a3cc70dddc"
+                        },
+                        "itinerary": {
+                            "day": 5,
+                            "city_id": 2389349,
+                            "ordering": 4,
+                            "cruise_id": 1971007,
+                            "description": "<p>The small town is situated in one of the greenest regions of France. Here, you will also find flower-filled gardens that invite you to linger. In the town centre, historic buildings such as the church of Notre Dame or the Templar House reflect the history of Caudebec.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": "00:30:00",
+                            "start_city_id": 2391118,
+                            "departure_time": "22:00:00",
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "les-andelys",
+                            "name": "Les Andelys",
+                            "city_id": 2389370,
+                            "latitude": "49.246568",
+                            "ref_city": 98,
+                            "longitude": "1.4192",
+                            "name_i18n": {
+                                "de": "Les Andelys",
+                                "en": "Les Andelys",
+                                "hy": "Les Andelys",
+                                "pl": "Les Andelys",
+                                "ru": "Лез-Андели",
+                                "uk": "Лез-Анделі"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693677966,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": "<p><strong>Les Andelys</strong>&nbsp;(French pronunciation:&nbsp;​[lez‿ɑ̃dli];&nbsp;Norman:&nbsp;<em>Les Aundelys</em>) is a&nbsp;commune&nbsp;in the&nbsp;Eure&nbsp;department&nbsp;in&nbsp;Normandy&nbsp;in northern&nbsp;France.</p>\n",
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p><strong>Les Andelys</strong>&nbsp;(French pronunciation:&nbsp;​[lez‿ɑ̃dli];&nbsp;Norman:&nbsp;<em>Les Aundelys</em>) is a&nbsp;commune&nbsp;in the&nbsp;Eure&nbsp;department&nbsp;in&nbsp;Normandy&nbsp;in northern&nbsp;France.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Les Andelys</strong>&nbsp;&ndash; miejscowość i gmina we&nbsp;Francji, w&nbsp;regionie&nbsp;Normandia, w departamencie&nbsp;Eure, położona nad wschodnim (prawym) brzegiem&nbsp;Sekwany.</p>",
+                                "ru": "<p>На севере Франции расположен очаровательный город <strong>Лез-Андели</strong>. Город находится на реке Сена, не так далеко от Парижа.</p>\n\n<p>Лез-Андели&nbsp;состоит из двух частей &mdash;&nbsp;Большой и Малый Андели. В Большой Андели находится городская мэрия, а Малая расположена на берегу Сены, там, где в нее впадают две маленькие речушки Гран Ринг и Гамбо. К знаменательным местам и произведениям архитектуры относят Кафедральный собор в Лез-Андели. Его популярность можно поставить на один уровень с соборами Реймса и Шартра.</p>",
+                                "uk": "<p>На півночі Франції розташоване&nbsp;чарівне місто Лез-Анделі. Місто знаходиться на річці Сена, не так далеко від Парижа.</p>\n\n<p>Лез-Анделі складається з двох частин - Великий і Малий Анделі. У Великий Анделі знаходиться міська мерія, а Мала розташована на березі Сени, там, де в неї впадають дві маленькі річечки Гран Ринг і Гамбо. До знаменних місцях і творам архітектури відносять Кафедральний собор в Лез-Анделі. Його популярність можна поставити на один рівень з соборами Реймса і Шартра.</p>"
+                            },
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "0196a033-884f-75d5-8c92-c718711eacd9",
+                                    "n": "98_Les Andelys.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693677966,
+                            "default_file_uuid": "0196a033-884f-75d5-8c92-c718711eacd9"
+                        },
+                        "itinerary": {
+                            "day": 6,
+                            "city_id": 2389370,
+                            "ordering": 5,
+                            "cruise_id": 1971007,
+                            "description": "<p>The pleasant, tranquil little town of Les Andelys occupies an idyllic spot surrounded by nature on the bank of the Seine. It is known for its castle, Château Gaillard. Although it is nothing more than a vast ruin nowadays, it’s easy to imagine Richard the Lionheart keeping watch here for the advance of the enemy – the French – through the Seine valley.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": "08:00:00",
+                            "start_city_id": 2391118,
+                            "departure_time": "12:00:00",
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "mantes-la-jolie",
+                            "name": "Mantes-la-Jolie",
+                            "city_id": 2389373,
+                            "latitude": "48.989323",
+                            "ref_city": 38501,
+                            "longitude": "1.7149580000000242",
+                            "name_i18n": {
+                                "de": "Mantes-la-Jolie",
+                                "en": "Mantes-la-Jolie",
+                                "hy": "Մանտես-լա-Ջոլի",
+                                "pl": "Mantes-la-Jolie",
+                                "ru": "Мант-ла-Жоли",
+                                "uk": "Мант-ла-Жолі"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693678133,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": null,
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": null,
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "019779b6-6c52-7638-b636-e62801b103ca",
+                                    "n": "38501_Mantes-la-Jolie.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693678133,
+                            "default_file_uuid": "019779b6-6c52-7638-b636-e62801b103ca"
+                        },
+                        "itinerary": {
+                            "day": 7,
+                            "city_id": 2389373,
+                            "ordering": 8,
+                            "cruise_id": 1971007,
+                            "description": "<p>This is a place where history was made. Henry IV of France wooed his mistress Gabrielle d’Estrées here, and from then on Mantes became Mantes-la-Jolie – ‘Mantes the beautiful’. Located just 50 kilometres from Paris, the city lies directly on the bank of the Seine. Now you’ll have the opportunity to discover it for yourself during your Seine river cruise.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": "12:00:00",
+                            "start_city_id": 2391118,
+                            "departure_time": null,
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "mantes-la-jolie",
+                            "name": "Mantes-la-Jolie",
+                            "city_id": 2389373,
+                            "latitude": "48.989323",
+                            "ref_city": 38501,
+                            "longitude": "1.7149580000000242",
+                            "name_i18n": {
+                                "de": "Mantes-la-Jolie",
+                                "en": "Mantes-la-Jolie",
+                                "hy": "Մանտես-լա-Ջոլի",
+                                "pl": "Mantes-la-Jolie",
+                                "ru": "Мант-ла-Жоли",
+                                "uk": "Мант-ла-Жолі"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693678133,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": null,
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": null,
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "019779b6-6c52-7638-b636-e62801b103ca",
+                                    "n": "38501_Mantes-la-Jolie.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693678133,
+                            "default_file_uuid": "019779b6-6c52-7638-b636-e62801b103ca"
+                        },
+                        "itinerary": {
+                            "day": 8,
+                            "city_id": 2389373,
+                            "ordering": 9,
+                            "cruise_id": 1971007,
+                            "description": "<p>This is a place where history was made. Henry IV of France wooed his mistress Gabrielle d’Estrées here, and from then on Mantes became Mantes-la-Jolie – ‘Mantes the beautiful’. Located just 50 kilometres from Paris, the city lies directly on the bank of the Seine. Now you’ll have the opportunity to discover it for yourself during your Seine river cruise.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": null,
+                            "start_city_id": 2391118,
+                            "departure_time": null,
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "vernon",
+                            "name": "Vernon",
+                            "city_id": 2389394,
+                            "latitude": "49.091958",
+                            "ref_city": 690,
+                            "longitude": "1.488107",
+                            "name_i18n": {
+                                "de": "Vernon",
+                                "en": "Vernon",
+                                "hy": "Վերնոն",
+                                "pl": "Vernon",
+                                "ru": "Вернон",
+                                "uk": "Вернон"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693676801,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": "<p><strong>Vernon</strong> is a small French town with a population of 25,000 people, located in the Eure department, which is part of the Upper Normandy region.</p>\n\n<p>Vernon is an ancient town. Throughout its existence, it has played strategic roles and witnessed numerous battles. During World War II, Vernon was completely destroyed but was rebuilt literally from the ruins. The most famous landmark of Vernon is the Old Mill. It is a timber-framed and brick structure that rests on two piers of an old destroyed bridge across the Seine. The bridge was built in the 12th century, while the mill dates back to around the 16th century.</p>\n",
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p><strong>Vernon</strong> is a small French town with a population of 25,000 people, located in the Eure department, which is part of the Upper Normandy region.</p>\n\n<p>Vernon is an ancient town. Throughout its existence, it has played strategic roles and witnessed numerous battles. During World War II, Vernon was completely destroyed but was rebuilt literally from the ruins. The most famous landmark of Vernon is the Old Mill. It is a timber-framed and brick structure that rests on two piers of an old destroyed bridge across the Seine. The bridge was built in the 12th century, while the mill dates back to around the 16th century.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Vernon</strong> to niewielkie francuskie miasto liczące 25 tysięcy mieszkańc&oacute;w, położone w departamencie Eure, kt&oacute;ry wchodzi w skład regionu G&oacute;rna Normandia.</p>\n\n<p>Vernon jest starożytnym miastem. Przez całe swoje istnienie odgrywało strategiczne role i było świadkiem licznych bitew. W czasie II wojny światowej Vernon zostało doszczętnie zniszczone, ale odbudowano je dosłownie z ruin. Najbardziej znanym zabytkiem Vernon jest Stary Młyn. Jest to drewniano-ceglana konstrukcja, kt&oacute;ra opiera się na dw&oacute;ch filarach starego zniszczonego mostu na Sekwanie. Most został zbudowany w XII wieku, a młyn pochodzi z około XVI wieku.</p>",
+                                "ru": "<p><strong>Вернон</strong>&nbsp;&mdash; небольшой французский город с населением 25 тыс. человек, расположенный в департаменте Эр, который входит в состав региона&nbsp;Верхняя Нормандия.</p>\n\n<p>Вернон &mdash;&nbsp;древний город. На протяжении всего своего существования он играл стратегические роли и был свидетелем многочисленных битв. В годы Второй Мировой войны&nbsp;Вернон&nbsp;и вовсе был разрушен, но восстановлен буквально из руин. Самой известной достопримечательностью&nbsp;Вернона&nbsp;стала Старая мельница. Она представляет собой деревянно-кирпичную конструкцию, которая держится на двух опорах старого разрушенного моста через Сену. Мост был построен в XII столетии, а мельница только около XVI века.</p>",
+                                "uk": "<p>Вернон - невелике французьке місто з населенням 25 тис. Чоловік, розташований в департаменті Ер, який входить до складу регіону Верхня Нормандія.</p>\n\n<p>Вернон - стародавнє місто. Протягом усього свого існування він грав стратегічні ролі і був свідком численних битв. У роки Другої Світової війни Вернон і зовсім був зруйнований, але відновлений буквально з руїн. Найвідомішою пам&#39;яткою Вернона стала Старий млин. Вона являє собою дерев&#39;яно-цегляну конструкцію, яка тримається на двох опорах старого зруйнованого моста через Сену. Міст був побудований в XII столітті, а млин тільки близько XVI століття.</p>"
+                            },
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "0196a594-aa36-7f3c-965f-71b3fb7773b2",
+                                    "n": "690_vernon.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693676801,
+                            "default_file_uuid": "0196a594-aa36-7f3c-965f-71b3fb7773b2"
+                        },
+                        "itinerary": {
+                            "day": 6,
+                            "city_id": 2389394,
+                            "ordering": 6,
+                            "cruise_id": 1971007,
+                            "description": "<p>Today will probably be one of the highlights of your Seine cruise: you’ll have the opportunity to visit Claude Monet’s house and garden in Giverny. It is a magnet for art and culture lovers and those of a romantic inclination – and rightly so. The lush garden looks like a meadow of flowers straight out of an impressionist painting. The highlight is the enchanting lily pond, the subject of one of the world’s most valuable paintings. And you’ll be able to admire it up close – what a view!</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": "14:30:00",
+                            "start_city_id": 2391118,
+                            "departure_time": null,
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "vernon",
+                            "name": "Vernon",
+                            "city_id": 2389394,
+                            "latitude": "49.091958",
+                            "ref_city": 690,
+                            "longitude": "1.488107",
+                            "name_i18n": {
+                                "de": "Vernon",
+                                "en": "Vernon",
+                                "hy": "Վերնոն",
+                                "pl": "Vernon",
+                                "ru": "Вернон",
+                                "uk": "Вернон"
+                            },
+                            "country_id": 6129,
+                            "gallery_id": 8693676801,
+                            "is_enabled": true,
+                            "country_ufl": "france",
+                            "description": "<p><strong>Vernon</strong> is a small French town with a population of 25,000 people, located in the Eure department, which is part of the Upper Normandy region.</p>\n\n<p>Vernon is an ancient town. Throughout its existence, it has played strategic roles and witnessed numerous battles. During World War II, Vernon was completely destroyed but was rebuilt literally from the ruins. The most famous landmark of Vernon is the Old Mill. It is a timber-framed and brick structure that rests on two piers of an old destroyed bridge across the Seine. The bridge was built in the 12th century, while the mill dates back to around the 16th century.</p>\n",
+                            "country_name": "France",
+                            "country_is_show": true,
+                            "country_to_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "to France",
+                                "pl": "do Francji",
+                                "ru": "во Францию",
+                                "uk": "до Франції"
+                            },
+                            "country_to_name": "to France",
+                            "country_gen_i18n": {
+                                "de": "aus Frankreich",
+                                "en": "from France",
+                                "pl": "z Francji",
+                                "ru": "из Франции",
+                                "uk": "з Франції"
+                            },
+                            "country_gen_name": "from France",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p><strong>Vernon</strong> is a small French town with a population of 25,000 people, located in the Eure department, which is part of the Upper Normandy region.</p>\n\n<p>Vernon is an ancient town. Throughout its existence, it has played strategic roles and witnessed numerous battles. During World War II, Vernon was completely destroyed but was rebuilt literally from the ruins. The most famous landmark of Vernon is the Old Mill. It is a timber-framed and brick structure that rests on two piers of an old destroyed bridge across the Seine. The bridge was built in the 12th century, while the mill dates back to around the 16th century.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Vernon</strong> to niewielkie francuskie miasto liczące 25 tysięcy mieszkańc&oacute;w, położone w departamencie Eure, kt&oacute;ry wchodzi w skład regionu G&oacute;rna Normandia.</p>\n\n<p>Vernon jest starożytnym miastem. Przez całe swoje istnienie odgrywało strategiczne role i było świadkiem licznych bitew. W czasie II wojny światowej Vernon zostało doszczętnie zniszczone, ale odbudowano je dosłownie z ruin. Najbardziej znanym zabytkiem Vernon jest Stary Młyn. Jest to drewniano-ceglana konstrukcja, kt&oacute;ra opiera się na dw&oacute;ch filarach starego zniszczonego mostu na Sekwanie. Most został zbudowany w XII wieku, a młyn pochodzi z około XVI wieku.</p>",
+                                "ru": "<p><strong>Вернон</strong>&nbsp;&mdash; небольшой французский город с населением 25 тыс. человек, расположенный в департаменте Эр, который входит в состав региона&nbsp;Верхняя Нормандия.</p>\n\n<p>Вернон &mdash;&nbsp;древний город. На протяжении всего своего существования он играл стратегические роли и был свидетелем многочисленных битв. В годы Второй Мировой войны&nbsp;Вернон&nbsp;и вовсе был разрушен, но восстановлен буквально из руин. Самой известной достопримечательностью&nbsp;Вернона&nbsp;стала Старая мельница. Она представляет собой деревянно-кирпичную конструкцию, которая держится на двух опорах старого разрушенного моста через Сену. Мост был построен в XII столетии, а мельница только около XVI века.</p>",
+                                "uk": "<p>Вернон - невелике французьке місто з населенням 25 тис. Чоловік, розташований в департаменті Ер, який входить до складу регіону Верхня Нормандія.</p>\n\n<p>Вернон - стародавнє місто. Протягом усього свого існування він грав стратегічні ролі і був свідком численних битв. У роки Другої Світової війни Вернон і зовсім був зруйнований, але відновлений буквально з руїн. Найвідомішою пам&#39;яткою Вернона стала Старий млин. Вона являє собою дерев&#39;яно-цегляну конструкцію, яка тримається на двох опорах старого зруйнованого моста через Сену. Міст був побудований в XII столітті, а млин тільки близько XVI століття.</p>"
+                            },
+                            "country_name_i18n": {
+                                "de": "Frankreich",
+                                "en": "France",
+                                "pl": "Francja",
+                                "ru": "Франция",
+                                "uk": "Франція"
+                            },
+                            "country_gallery_id": 8693686426,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "0196a594-aa36-7f3c-965f-71b3fb7773b2",
+                                    "n": "690_vernon.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 8693676801,
+                            "default_file_uuid": "0196a594-aa36-7f3c-965f-71b3fb7773b2"
+                        },
+                        "itinerary": {
+                            "day": 7,
+                            "city_id": 2389394,
+                            "ordering": 7,
+                            "cruise_id": 1971007,
+                            "description": "<p>Today will probably be one of the highlights of your Seine cruise: you’ll have the opportunity to visit Claude Monet’s house and garden in Giverny. It is a magnet for art and culture lovers and those of a romantic inclination – and rightly so. The lush garden looks like a meadow of flowers straight out of an impressionist painting. The highlight is the enchanting lily pond, the subject of one of the world’s most valuable paintings. And you’ll be able to admire it up close – what a view!</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": null,
+                            "start_city_id": 2391118,
+                            "departure_time": "08:00:00",
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "lepecq2fparis",
+                            "name": "Le Pecq Paris",
+                            "city_id": 2391118,
+                            "latitude": null,
+                            "ref_city": null,
+                            "longitude": null,
+                            "name_i18n": {
+                                "de": "Le Pec Paris",
+                                "en": "Le Pecq Paris",
+                                "hy": "Լե Պեկ Փարիզ",
+                                "pl": "Le Pecq Paryż",
+                                "ru": "Ле Пек Париж",
+                                "uk": "Ле Пек Париж"
+                            },
+                            "country_id": 6202,
+                            "gallery_id": null,
+                            "is_enabled": false,
+                            "country_ufl": "6202",
+                            "description": null,
+                            "country_name": "___",
+                            "country_is_show": true,
+                            "country_to_i18n": null,
+                            "country_to_name": "___",
+                            "country_gen_i18n": null,
+                            "country_gen_name": "___",
+                            "description_i18n": null,
+                            "country_name_i18n": null,
+                            "country_gallery_id": 8693676142,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": null,
+                        "itinerary": {
+                            "day": 1,
+                            "city_id": 2391118,
+                            "ordering": 0,
+                            "cruise_id": 1971007,
+                            "description": "<p>Many places have famous sons and daughters, but the fact that the birthplace of the Sun King – Louis XlV – is very close to Le Peqc makes this charming town a popular destination for visitors.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": null,
+                            "start_city_id": 2391118,
+                            "departure_time": null,
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    },
+                    {
+                        "city": {
+                            "ufl": "lepecq2fparis",
+                            "name": "Le Pecq Paris",
+                            "city_id": 2391118,
+                            "latitude": null,
+                            "ref_city": null,
+                            "longitude": null,
+                            "name_i18n": {
+                                "de": "Le Pec Paris",
+                                "en": "Le Pecq Paris",
+                                "hy": "Լե Պեկ Փարիզ",
+                                "pl": "Le Pecq Paryż",
+                                "ru": "Ле Пек Париж",
+                                "uk": "Ле Пек Париж"
+                            },
+                            "country_id": 6202,
+                            "gallery_id": null,
+                            "is_enabled": false,
+                            "country_ufl": "6202",
+                            "description": null,
+                            "country_name": "___",
+                            "country_is_show": true,
+                            "country_to_i18n": null,
+                            "country_to_name": "___",
+                            "country_gen_i18n": null,
+                            "country_gen_name": "___",
+                            "description_i18n": null,
+                            "country_name_i18n": null,
+                            "country_gallery_id": 8693676142,
+                            "country_description": null,
+                            "country_description_i18n": null
+                        },
+                        "gallery": null,
+                        "itinerary": {
+                            "day": 2,
+                            "city_id": 2391118,
+                            "ordering": 1,
+                            "cruise_id": 1971007,
+                            "description": "<p>Many places have famous sons and daughters, but the fact that the birthplace of the Sun King – Louis XlV – is very close to Le Peqc makes this charming town a popular destination for visitors.</p>",
+                            "end_city_id": 2389373,
+                            "arrival_time": null,
+                            "start_city_id": 2391118,
+                            "departure_time": "23:59:00",
+                            "description_i18n": null,
+                            "cruise_itinerary_type_id": 3
+                        }
+                    }
+                ],
+                "portGallery": {
+                    "images": [
+                        {
+                            "i": "0195ed0e-73b2-7c23-9da3-4e3b18e6cad1",
+                            "n": "99_Paris.jpg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 8693678398,
+                    "default_file_uuid": "0195ed0e-73b2-7c23-9da3-4e3b18e6cad1"
+                },
+                "lastPortMaybe": {
+                    "ufl": "mantes-la-jolie",
+                    "name": "Mantes-la-Jolie",
+                    "city_id": 2389373,
+                    "latitude": "48.989323",
+                    "ref_city": 38501,
+                    "longitude": "1.7149580000000242",
+                    "name_i18n": {
+                        "de": "Mantes-la-Jolie",
+                        "en": "Mantes-la-Jolie",
+                        "hy": "Մանտես-լա-Ջոլի",
+                        "pl": "Mantes-la-Jolie",
+                        "ru": "Мант-ла-Жоли",
+                        "uk": "Мант-ла-Жолі"
+                    },
+                    "country_id": 6129,
+                    "gallery_id": 8693678133,
+                    "is_enabled": true,
+                    "country_ufl": "france",
+                    "description": null,
+                    "country_name": "France",
+                    "country_is_show": true,
+                    "country_to_i18n": {
+                        "de": "aus Frankreich",
+                        "en": "to France",
+                        "pl": "do Francji",
+                        "ru": "во Францию",
+                        "uk": "до Франції"
+                    },
+                    "country_to_name": "to France",
+                    "country_gen_i18n": {
+                        "de": "aus Frankreich",
+                        "en": "from France",
+                        "pl": "z Francji",
+                        "ru": "из Франции",
+                        "uk": "з Франції"
+                    },
+                    "country_gen_name": "from France",
+                    "description_i18n": null,
+                    "country_name_i18n": {
+                        "de": "Frankreich",
+                        "en": "France",
+                        "pl": "Francja",
+                        "ru": "Франция",
+                        "uk": "Франція"
+                    },
+                    "country_gallery_id": 8693686426,
+                    "country_description": null,
+                    "country_description_i18n": null
+                },
+                "lastPortGallery": {
+                    "images": [
+                        {
+                            "i": "019779b6-6c52-7638-b636-e62801b103ca",
+                            "n": "38501_Mantes-la-Jolie.jpg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 8693678133,
+                    "default_file_uuid": "019779b6-6c52-7638-b636-e62801b103ca"
+                },
+                "cruiseCategories": [
+                    {
+                        "ufl": "europe",
+                        "name": "Europe",
+                        "enabled": true,
+                        "gen_i18n": {
+                            "de": "in ganz Europa",
+                            "en": "in Europe",
+                            "hy": "",
+                            "pl": "po Europie",
+                            "ru": "по Европе",
+                            "uk": "по Європі"
+                        },
+                        "gen_name": "in Europe",
+                        "ports_id": [],
+                        "cities_id": [],
+                        "is_period": false,
+                        "name_i18n": {
+                            "de": "Europa",
+                            "en": "Europe",
+                            "hy": "",
+                            "pl": "Europa",
+                            "ru": "Европа",
+                            "uk": "Європа"
+                        },
+                        "site_code": [
+                            "any"
+                        ],
+                        "gallery_id": 8693695661,
+                        "description": "<p>Europe</p>\n",
+                        "countries_id": [
+                            13,
+                            72,
+                            85,
+                            91,
+                            6103,
+                            6104,
+                            6106,
+                            6111,
+                            6112,
+                            6114,
+                            6115,
+                            6117,
+                            6118,
+                            6120,
+                            6121,
+                            6122,
+                            6123,
+                            6124,
+                            6126,
+                            6128,
+                            6129,
+                            6130,
+                            6131,
+                            6203,
+                            6248,
+                            6250,
+                            6573
+                        ],
+                        "description_i18n": null,
+                        "cruise_category_id": 2434
+                    }
+                ],
+                "cruiseCategoryType": {
+                    "name": "River cruise",
+                    "name_i18n": {
+                        "de": "Flusskreuzfahrt",
+                        "en": "River cruise",
+                        "ru": "Речной круиз",
+                        "uk": "Річковий круїз"
+                    },
+                    "cruise_category_type_id": 50
+                }
+            },
+            "ufl": "seine-experience-normandy-with-paris-2025",
+            "vesselInfoJson": {
+                "vessel": {
+                    "ufl": "a-rosa-viva",
+                    "food": "<h3>Ресторан и Бар</h3>\n\n<ul>\n\t<li>Низкокалорийная средиземноморская кухня с региональными изысками;&nbsp;</li>\n\t<li>Рестораны в стиле &quot;Буфет&quot; с демонстрацией приготовления блюд;&nbsp;</li>\n\t<li>&ldquo;Wine &amp; Dine&rdquo;: ужин с уютной обстановке с выбором вин;</li>\n\t<li>Внутренние и внешний рестораны;</li>\n\t<li>Приятная атмосфера: отсутствие дресс-кода и фиксированных мест в ресторане;</li>\n\t<li>Винная карта и экзотические коктейли в Баре.&nbsp;</li>\n</ul>\n\n<p>Позвольте побаловать себя кулинарными изысками на борту A-Rosa&nbsp;Viva. Пообедайте на открытой палубе или в зале ресторана, насладитесь блюдами, приготовленными из самых свежих продуктов, и примите участие в кулинарных шоу, во время которых умелые повара создадут у Вас на глазах выбранные Вами кулинарные шедевры.</p>\n",
+                    "name": "A-ROSA VIVA",
+                    "dress": "<p>На борту A-Rosa Viva царит непринужденная атмосфера, поэтому вы можете носить удобную повседневную одежду. Теплую одежду для проведения вечернего время суток на открытой палубе и погодостойкую одежду с удобной обувью для экскурсий рекомендуется взять с собой в путешествие</p>\n",
+                    "speed": 12,
+                    "video": null,
+                    "width": 11,
+                    "length": 135,
+                    "onboard": "<p>Для Вас на борту теплохода:</p>\n\n<ul>\n\t<li>\n\t<h3>Комфортабельные каюты -&nbsp;</h3>\n\n\t<ul>\n\t\t<li>Каюты Стандарт: 14,5 м&sup2;;</li>\n\t\t<li>Каюты Супериор&nbsp;категории C/D: Современный дизайн и Французские балконы;&nbsp;</li>\n\t\t<li>Каюты Супериор&nbsp;категории&nbsp;S: каюты с дополнительным диваном;</li>\n\t\t<li>Каюты&nbsp;Мини-Люкс&nbsp;категории&nbsp;E: Просторные каюты площадью 21 м&sup2; с французским балконом;</li>\n\t\t<li>Каюты&nbsp;Люкс&nbsp;категории&nbsp;F: Комфортабельные каюты площадью 29 м&sup2; с балконом и французским балконом.</li>\n\t</ul>\n\n\t<p>Для гостей кают Люкс A-ROSA предлагает дополнительный сервис:&nbsp;</p>\n\t</li>\n</ul>\n\n<ul>\n\t<li>\n\t<ul>\n\t\t<li>\n\t\t<ul>\n\t\t\t<li>\n\t\t\t<ul>\n\t\t\t\t<li>Регистрация и персональный прием с 12:00;</li>\n\t\t\t\t<li>Цветы и маленькая фруктоавя корзинка в каюту;&nbsp;</li>\n\t\t\t\t<li>Пользование мини-баром без дополнительной платы (минеральная вода, яблочный сок, Pepsi Cola, Mirinda, пиво, белое вино, игристое вино, красное вино, орешки);</li>\n\t\t\t\t<li>Тапочки, халаты, лопатка для обуви, щетка для обуви, набор для шитья; &nbsp;</li>\n\t\t\t\t<li>Банные принадлежности премиум класса (мыло, гель для душа, шампунь, кондиционер, лосьон для тела);&nbsp;</li>\n\t\t\t\t<li>Приглашение на Wine &amp; Dine вечер и участие в нем без дополнительной платы;</li>\n\t\t\t\t<li>Коктейль с администрацией теплохода;&nbsp;</li>\n\t\t\t\t<li>Бесплатное пользование услугами прачечной и гладильной комнаты.&nbsp;</li>\n\t\t\t</ul>\n\t\t\t</li>\n\t\t</ul>\n\t\t</li>\n\t</ul>\n\t</li>\n</ul>\n\n<ul>\n\t<li>\n\t<h3>SPA-ROSA</h3>\n\n\t<ul>\n\t\t<li>Первоклассные СПА-продукты;</li>\n\t\t<li>Просторная площадь СПА-зоны;</li>\n\t\t<li>Профессиональные тренеры;</li>\n\t\t<li>Оздоравливающие и косметические процедуры; &nbsp;</li>\n\t\t<li>Панорамная сауна и тренаженый зал;</li>\n\t\t<li>Бассейн-вирпул на палубе.</li>\n\t</ul>\n\t</li>\n\t<li>\n\t<h3>Ресторан и Бар</h3>\n\n\t<ul>\n\t\t<li>Низкокалорийная средиземноморская кухня с региональными изысками;&nbsp;</li>\n\t\t<li>Рестораны в стиле &quot;Буфет&quot; с демонстрацией приготовления блюд;&nbsp;</li>\n\t\t<li>&ldquo;Wine &amp; Dine&rdquo;: ужин с уютной обстановке с выбором вин;</li>\n\t\t<li>Внутренние и внешний рестораны;</li>\n\t\t<li>Приятная атмосфера: отсутствие дресс-кода и фиксированных мест в ресторане;</li>\n\t\t<li>Винная карта и экзотические коктейли в Баре.&nbsp;</li>\n\t</ul>\n\t</li>\n</ul>\n",
+                    "balancer": true,
+                    "capacity": 204,
+                    "food_i18n": {
+                        "de": "",
+                        "en": "<p>ENJOY YOURSELF AND LET YOUR PALATE EXPLORE NEW TASTES:<br />\nCULINARY VARIETY<br />\n&bull; FullBoardPlus:<br />\n&bull; Daily varied buffets with live cooking<br />\n&bull; Freshly prepared regional and seasonal specialties<br />\n&bull; In the afternoon: cake buffet with coffee and tea<br />\n&bull; Mineral water during main meals<br />\n&bull; Free meal times and choice of tables in the market and caf&eacute;<br />\nrestaurant, outdoor restaurant and wine bar<br />\n&bull; Wine list adapted to the region<br />\n&bull; A-ROSA Dining bookable on board: exclusive 4-course seated<br />\ndinners (small surcharge)<br />\n&bull; BBQ buffet on the aft deck (depending on weather)<br />\n&bull; A-ROSA beverage package with a wide range of alcoholic and nonalcoholic beverages included for Premium all inclusive guests&nbsp;</p>",
+                        "hy": "",
+                        "pl": "<p><strong>Restauracja i bar na pokładzie A-ROSA VIVA</strong></p>\n\n<p>&ndash; Niskokaloryczna kuchnia śr&oacute;dziemnomorska z regionalnymi przysmakami<br />\n&ndash; Restauracje bufetowe z pokazami gotowania na żywo<br />\n&ndash; &bdquo;Wine &amp; Dine&rdquo;: kolacja w przytulnej atmosferze z wyborem win<br />\n&ndash; Restauracje wewnętrzne i na świeżym powietrzu<br />\n&ndash; Swobodna atmosfera: brak dress code&rsquo;u i przypisanych miejsc przy stolikach<br />\n&ndash; Karta win i egzotyczne koktajle w barze</p>\n\n<p>Pozw&oacute;l sobie na kulinarną przyjemność na pokładzie A-ROSA VIVA. Zjedz obiad na otwartym pokładzie lub w przestronnej sali restauracyjnej, delektując się daniami przygotowanymi ze świeżych składnik&oacute;w. Weź udział w kulinarnych pokazach na żywo, podczas kt&oacute;rych doświadczeni szefowie kuchni przygotują wybrane przez Ciebie potrawy bezpośrednio na Twoich oczach.</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                        "ru": "",
+                        "uk": "<p>Ресторан і Бар</p>\n\n<ul>\n\t<li>Низькокалорійна середземноморська кухня,</li>\n\t<li>Ресторани в стилі &quot;Буфет&quot; з демонстрацією приготування страв;</li>\n\t<li>&quot;Wine &amp; Dine&quot;: вечеря з затишній обстановці з вибором вин;</li>\n\t<li>Внутрішні і зовнішній ресторани;</li>\n\t<li>Приємна атмосфера: відсутність дрес-коду і фіксованих місць в ресторані;</li>\n\t<li>Винна карта і екзотичні коктейлі в Барі.</li>\n</ul>\n\n<p>Побалувати себе кулінарними шедеврами на борту A-Rosa Viva. Пообідайте на відкритій палубі або в залі ресторану, скуштуйте страви, приготовані з найсвіжіших продуктів, і візьміть участь в кулінарних шоу, під час яких умілі кухарі створять у Вас на очах вибрані Вами кулінарні шедеври.</p>"
+                    },
+                    "is_import": true,
+                    "name_i18n": {
+                        "de": "",
+                        "en": "A-ROSA VIVA",
+                        "hy": "",
+                        "pl": "A-ROSA VIVA",
+                        "ru": "A-ROSA VIVA",
+                        "uk": "A-ROSA VIVA"
+                    },
+                    "vessel_id": 1105009,
+                    "activities": "<h3>SPA-ROSA</h3>\n\n<ul>\n\t<li>Первоклассные СПА-продукты;</li>\n\t<li>Просторная площадь СПА-зоны;</li>\n\t<li>Профессиональные тренеры;</li>\n\t<li>Оздоравливающие и косметические процедуры; &nbsp;</li>\n\t<li>Панорамная сауна и тренаженый зал;</li>\n\t<li>Бассейн-вирпул на палубе.</li>\n</ul>\n\n<p>Для занятий спортом на борту лайнера A-Rosa Viva&nbsp;Вам предоставлены все возможности. Фитнес-зал с тренажерами для кардио-тренировок, бассейн на верхней палубе и поле для гольфа находятся к Вашим услугам. Кроме того, Вы можете принять участие в экскурсиях со скандинавской ходьбой или поездками на велосипедах. Сауна с панорамным видом, джакузи или спа-салон &ndash; прекрасное место, чтобы расслабиться и телом и душой. На борту корабля также располагается библиотека с большим выбором книг.</p>\n",
+                    "build_year": "2010-01-01",
+                    "company_id": 55,
+                    "dress_i18n": {
+                        "de": "",
+                        "en": "<p>For your comfort, A-Rosa liners do not have a strict dress code, so you can wear comfortable casual clothes. Warm clothing for evening time on the open deck and weather-resistant clothing with comfortable shoes for excursions are also recommended to take on a trip.</p>",
+                        "hy": "",
+                        "pl": "<p>Na pokładzie A-ROSA VIVA panuje swobodna i relaksująca atmosfera, dlatego możesz nosić wygodną, codzienną odzież. Zaleca się r&oacute;wnież zabranie ciepłych ubrań na wieczory spędzane na otwartym pokładzie oraz odzieży odpornej na warunki pogodowe i wygodnego obuwia na wycieczki lądowe.</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                        "ru": "",
+                        "uk": "<p>На борту A-Rosa Viva панує невимушена атмосфера, тому ви можете носити зручне повсякденне одяг. Рекомендується взяти з собою в подорож теплий одяг для проведення вечірнього часу доби на відкритій палубі і погодостійкий одяг з зручним взуттям для екскурсій.</p>"
+                    },
+                    "gallery_id": 173872989,
+                    "is_enabled": true,
+                    "renew_year": null,
+                    "description": "<p>Данное судно составляет в длину 135 м и в ширину 11,4 м. В просторных комфортабельных внешних каютах площадью 14,5 кв.м, большая часть из которых имеет французский балкон, есть две кровати, письменный стол, кресло, шкаф, персональная ванная комната с душем и туалетом, телевизором, телефоном и кондиционером. A-Rosa&nbsp;Spa&nbsp;порадует гостей превосходными спа-услугами, широким выбором косметических процедур, а также профессиональными специалистами. В этой спа-зоне есть также санариум, фитнес-центр и дополнительная зона отдыха.</p>\n\n<p>Вы можете расслабиться на просторной манящей солнечной палубе или в баре, наслаждаясь фруктовым коктейлем или бокалом превосходного вина. Ресторан а-ля фуршет побалует вас изысканной средиземноморской кухней, выбором местных фирменных блюд, а также широким ассортиментом высококачественных вин специально для ценителей. В ресторане царит атмосфера отдыха и уюта, здесь нет никаких ограничений в части размещения гостей или дресс-кода.</p>\n\n<p>На борту A-Rosa Viva&nbsp;возможно все: и расслабляющее уединение, и приятные встречи и общение. Вас порадует роскошь, спокойная атмосфера и комфорт, а ваш круиз по самой красивой реке Европы станет незабываемым!</p>\n\n<p>Теплоход&nbsp;A-ROSA VIVA - один из самых очаровательных и элегантных кораблей Европы. Построен в 2010 году.</p>\n\n<p>&nbsp;</p>\n",
+                    "last_update": "2025-06-17T09:56:41.353369",
+                    "for_children": null,
+                    "onboard_i18n": {
+                        "de": "",
+                        "en": "<ul>\n\t<li>Spacious sun deck with relaxed atmosphere</li>\n\t<li>Sufficient recliners, sunshades and awnings</li>\n\t<li>Heated outdoor Whirlpool</li>\n\t<li>Shovelboard, putting green and giant chess board</li>\n\t<li>Restaurant outdoor area</li>\n\t<li>Wine bar and Market restaurant</li>\n\t<li>Casual dress code</li>\n</ul>",
+                        "hy": "",
+                        "pl": "<p><strong>Komfortowe kabiny</strong><br />\n&ndash; <strong>Kabiny Standard</strong>: 14,5 m&sup2;<br />\n&ndash; <strong>Kabiny Superior kategorii C/D</strong>: nowoczesny design i francuskie balkony<br />\n&ndash; <strong>Kabiny Superior kategorii S</strong>: dodatkowa sofa w kabinie<br />\n&ndash; <strong>Kabiny Mini Suite kategorii E</strong>: przestronne kabiny o powierzchni 21 m&sup2; z francuskim balkonem<br />\n&ndash; <strong>Kabiny Suite kategorii F</strong>: komfortowe kabiny o powierzchni 29 m&sup2; z balkonem i francuskim balkonem</p>\n\n<p><strong>Dodatkowe usługi dla gości kabin Suite:</strong><br />\n&ndash; Zameldowanie i osobiste powitanie od godziny 12:00<br />\n&ndash; Kwiaty i mały kosz owoc&oacute;w w kabinie<br />\n&ndash; Bezpłatne korzystanie z minibaru (woda mineralna, sok jabłkowy, Pepsi Cola, Mirinda, piwo, białe wino, wino musujące, czerwone wino, orzeszki)<br />\n&ndash; Kapcie, szlafroki, łyżka do but&oacute;w, szczotka do obuwia, zestaw do szycia<br />\n&ndash; Kosmetyki premium (mydło, żel pod prysznic, szampon, odżywka, balsam do ciała)<br />\n&ndash; Zaproszenie na kolację &bdquo;Wine &amp; Dine&rdquo; i udział bez dodatkowych opłat<br />\n&ndash; Koktajl z kadrą kierowniczą statku<br />\n&ndash; Bezpłatne korzystanie z pralni i prasowalni</p>\n\n<p><strong>SPA-ROSA</strong><br />\n&ndash; Ekskluzywne produkty SPA<br />\n&ndash; Przestronna strefa wellness<br />\n&ndash; Profesjonalni trenerzy i terapeuci<br />\n&ndash; Zabiegi zdrowotne i kosmetyczne<br />\n&ndash; Panoramiczna sauna i nowoczesna siłownia<br />\n&ndash; Jacuzzi (basen z hydromasażem) na g&oacute;rnym pokładzie</p>\n\n<p><strong>Restauracja i bar</strong><br />\n&ndash; Niskokaloryczna kuchnia śr&oacute;dziemnomorska z regionalnymi przysmakami<br />\n&ndash; Restauracje bufetowe z pokazami gotowania na żywo<br />\n&ndash; &bdquo;Wine &amp; Dine&rdquo;: kolacja w przytulnej atmosferze z wyborem win<br />\n&ndash; Restauracje wewnętrzne i na świeżym powietrzu<br />\n&ndash; Swobodna atmosfera: brak dress code&rsquo;u i przypisanych miejsc<br />\n&ndash; Bogata karta win i egzotyczne koktajle w barze</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                        "ru": "",
+                        "uk": "<p>Для Вас на борту теплохода:</p>\n\n<ul>\n\t<li>Комфортабельні каюти -</li>\n\t<li>Каюти Стандарт: 14,5 м&sup2;;</li>\n\t<li>Каюти Суперіор категорії C / D: Сучасний дизайн і Французькі балкони;</li>\n\t<li>Каюти Суперіор категорії S: каюти з додатковим диваном;</li>\n\t<li>Каюти Міні-Люкс категорії E: Просторі каюти площею 21 м&sup2; з французьким балконом;</li>\n\t<li>Каюти Люкс категорії F: Комфортабельні каюти площею 29 м&sup2; з балконом і французьким балконом.</li>\n</ul>\n\n<p>Для гостей кают Люкс A-ROSA пропонує додатковий сервіс:</p>\n\n<ul>\n\t<li>Реєстрація та персональний прийом з 12:00;</li>\n\t<li>Квіти і маленька фруктовий кошик в каюту;</li>\n\t<li>Користування міні-баром без додаткової плати (мінеральна вода, яблучний сік, Pepsi Cola, Mirinda, пиво, біле вино, ігристе вино, червоне вино, горішки);</li>\n\t<li>Тапочки, халати, лопатка для взуття, щітка для взуття, набір для шиття;</li>\n\t<li>Банні преміум класу (мило, гель для душу, шампунь, кондиціонер, лосьйон для тіла);</li>\n\t<li>Запрошення на Wine &amp; Dine вечір і участь в ньому без додаткової плати;</li>\n\t<li>Коктейль з адміністрацією теплохода;</li>\n\t<li>Безкоштовне користування послугами пральні</li>\n</ul>\n\n<p>SPA-ROSA</p>\n\n<ul>\n\t<li>Першокласні СПА-продукти;</li>\n\t<li>Простора площа СПА-зони;</li>\n\t<li>Професійні тренери;</li>\n\t<li>Оздоровлюючі і косметичні процедури;</li>\n\t<li>Панорамна сауна і тренажерний зал;</li>\n\t<li>Басейн-вирпул на палубі.</li>\n</ul>\n\n<p>Ресторан і Бар</p>\n\n<ul>\n\t<li>Низькокалорійна середземноморська кухня,</li>\n\t<li>Ресторани в стилі &quot;Буфет&quot; з демонстрацією приготування страв;</li>\n\t<li>&quot;Wine &amp; Dine&quot;: вечеря в затишній обстановці з вибором вин;</li>\n\t<li>Внутрішні і зовнішній ресторани;</li>\n\t<li>Приємна атмосфера: відсутність дрес-коду і фіксованих місць в ресторані;</li>\n\t<li>Винна карта і екзотичні коктейлі в Барі.</li>\n</ul>"
+                    },
+                    "deck_quantity": 4,
+                    "lift_quantity": null,
+                    "pool_quantity": null,
+                    "cabin_quantity": 100,
+                    "activities_i18n": {
+                        "de": "",
+                        "en": "<p>THE FEELING OF A HOLIDAY WHILE BEING ON HOLIDAY: SPA-ROSA<br />\n&bull; Wide range of beauty and body treatments with high-quality<br />\nBABOR and ST BARTH products<br />\n&bull; Professionally trained spa and beauty team<br />\n&bull; Sanarium with panoramic view<br />\n&bull; Gym with modern cardio equipment: Elliptical trainer and bicycle<br />\nergometer<br />\n&bull; Massage showers and relaxation area<br />\n&bull; Outdoor area with whirlpool, recliners and panoramic view</p>",
+                        "hy": "",
+                        "pl": "<p><strong>SPA-ROSA na pokładzie A-ROSA VIVA</strong></p>\n\n<p>&ndash; Ekskluzywne produkty SPA najwyższej jakości<br />\n&ndash; Przestronna strefa wellness<br />\n&ndash; Profesjonalni trenerzy i terapeuci<br />\n&ndash; Zabiegi zdrowotne i kosmetyczne<br />\n&ndash; Panoramiczna sauna z widokiem na rzekę<br />\n&ndash; Jacuzzi (basen z hydromasażem) na g&oacute;rnym pokładzie<br />\n&ndash; Nowoczesna siłownia z urządzeniami do treningu cardio</p>\n\n<p><strong>Aktywność i relaks</strong></p>\n\n<p>Na pokładzie A-ROSA VIVA stworzono doskonałe warunki zar&oacute;wno do aktywnego wypoczynku, jak i do pełnego relaksu. Do Twojej dyspozycji:<br />\n&ndash; siłownia z urządzeniami do treningu cardio<br />\n&ndash; basen na g&oacute;rnym pokładzie<br />\n&ndash; pole do mini golfa</p>\n\n<p>Podczas wycieczek lądowych możesz wziąć udział w spacerach nordic walking lub wyprawach rowerowych. Po aktywnym dniu odpręż się w panoramicznej saunie, jacuzzi lub skorzystaj z oferty zabieg&oacute;w w SPA-ROSA.</p>\n\n<p>Na miłośnik&oacute;w spokoju czeka r&oacute;wnież biblioteka z dużym wyborem książek &ndash; idealna na popołudnie z lekturą w ręku.</p>",
+                        "ru": "",
+                        "uk": "<p>SPA-ROSA</p>\n\n<ul>\n\t<li>Першокласні СПА-продукти;</li>\n\t<li>Простора площа СПА-зони;</li>\n\t<li>Професійні тренери;</li>\n\t<li>Оздоровлюючі і косметичні процедури;</li>\n\t<li>Панорамна сауна і тренажений зал;</li>\n\t<li>Басейн-вирпул на палубі.</li>\n</ul>\n\n<p>Для занять спортом на борту лайнера A-Rosa Viva Вам надані всі можливості. Фітнес-зал з тренажерами для кардіо-тренувань, басейн на верхній палубі і поле для гольфу до Ваших послуг. Крім того, Ви можете взяти участь в екскурсіях зі скандинавською ходьбою або поїздками на велосипедах. Сауна з панорамним видом, джакузі або спа-салон - прекрасне місце, щоб розслабитися і тілом і душею. На борту корабля також розташовується бібліотека з великим вибором книжок.</p>"
+                    },
+                    "description_i18n": {
+                        "de": "",
+                        "en": "<p>Relax during a variety of activities on or below deck or during stimulating conversations with your fellow travellers. And during our many different stops, you will have plenty of time to get to know the country and its people better, no matter whether on your own or on one of our guided excursions. Whatever you want to do during your trip, we look forward to helping you make the most of it.</p>\n\n<p>LANGUAGE ON BOARD</p>\n\n<p>The languages on board our A-ROSA VIVA are English and German. Documents are available in English and our international hosts are on hand to give assistance.</p>",
+                        "hy": "",
+                        "pl": "<p><strong>A-ROSA VIVA &ndash; elegancja, komfort i relaks w sercu Europy</strong></p>\n\n<p>Statek A-ROSA VIVA to jeden z najbardziej eleganckich i przytulnych statk&oacute;w rzecznych w Europie. Został zbudowany w 2010 roku. Jego długość wynosi 135 metr&oacute;w, a szerokość 11,4 metra, co zapewnia pasażerom komfortową przestrzeń zar&oacute;wno w kabinach, jak i na pokładach wypoczynkowych.</p>\n\n<p><strong>Kabiny</strong><br />\nNa gości czekają przestronne, komfortowe kabiny zewnętrzne o powierzchni 14,5 m&sup2;. Większość z nich posiada francuski balkon, co pozwala cieszyć się widokami bez wychodzenia z pokoju.</p>\n\n<p>Wyposażenie kabiny obejmuje:<br />\n&ndash; dwa ł&oacute;żka<br />\n&ndash; biurko<br />\n&ndash; fotel<br />\n&ndash; szafę<br />\n&ndash; łazienkę z prysznicem i toaletą<br />\n&ndash; telewizor<br />\n&ndash; telefon<br />\n&ndash; klimatyzację</p>\n\n<p><strong>SPA i wellness &ndash; A-ROSA SPA</strong><br />\nStrefa SPA na pokładzie to prawdziwe centrum relaksu. Goście mogą skorzystać z:<br />\n&ndash; wysokiej jakości zabieg&oacute;w kosmetycznych<br />\n&ndash; profesjonalnych masaży<br />\n&ndash; sanarium<br />\n&ndash; sali fitness<br />\n&ndash; osobnej strefy relaksu</p>\n\n<p><strong>Gastronomia i atmosfera na pokładzie</strong><br />\nNa pokładzie A-ROSA VIVA panuje swobodna atmosfera &ndash; bez przypisanych miejsc przy stolikach i bez dress code&rsquo;u. Restauracja w formie bufetu oferuje:<br />\n&ndash; wykwintną kuchnię śr&oacute;dziemnomorską<br />\n&ndash; regionalne specjały<br />\n&ndash; bogaty wyb&oacute;r win</p>\n\n<p>Dodatkowo, bar na pokładzie to idealne miejsce na owocowy koktajl lub lampkę wyśmienitego wina w promieniach zachodzącego słońca.</p>\n\n<p><strong>Dla każdego coś wyjątkowego</strong><br />\nA-ROSA VIVA łączy w sobie kameralność i luksus. To idealne miejsce zar&oacute;wno dla tych, kt&oacute;rzy pragną ciszy i relaksu, jak i dla os&oacute;b ceniących towarzystwo, rozmowy i nowe znajomości.</p>\n\n<p><strong>Rejs A-ROSA VIVA po najpiękniejszych rzekach Europy będzie niezapomnianym przeżyciem.</strong></p>",
+                        "ru": "",
+                        "uk": "<p>Дане судно становить в довжину 135 м і завширшки 11,4 м. У просторих комфортабельних зовнішніх каютах площею 14,5 кв.м, велика частина з яких має французький балкон, є два ліжка, письмовий стіл, крісло, шафа, персональна ванна кімната з душем і туалетом, телевізором, телефоном і кондиціонером. A-Rosa Spa порадує гостей чудовими спа-послугами, широким вибором косметичних процедур, а також професійними фахівцями.</p>\n\n<p>Ви можете розслабитися на просторій сонячній палубі або в барі, насолоджуючись фруктовим коктейлем або келихом чудового вина. Ресторан а-ля фуршет побалує вас вишуканою середземноморською кухнею, вибором місцевих фірмових страв, а також широким асортиментом високоякісних вин. У ресторані панує атмосфера відпочинку і затишку, тут немає ніяких обмежень в частині розміщення гостей або дрес-коду.</p>\n\n<p>На борту A-Rosa Viva можливо все: Вас порадує розкіш, спокійна атмосфера і комфорт, приємні зустрічі та спілкування, а ваш круїз по найкрасивішій річці Європи стане незабутнім!</p>\n\n<p>Теплохід A-ROSA VIVA - один з найчарівніших і елегантних кораблів Європи. Побудований в 2010 році.</p>"
+                    },
+                    "for_children_i18n": null,
+                    "schema_gallery_id": 173872988,
+                    "vessel_category_id": 2,
+                    "restaurant_quantity": 3,
+                    "description_gallery_id": 173872987
+                },
+                "company": {
+                    "company": {
+                        "ufl": "a-rosa",
+                        "name": "A-Rosa",
+                        "enabled": true,
+                        "name_i18n": {
+                            "de": "",
+                            "en": "A-Rosa",
+                            "hy": "",
+                            "pl": "",
+                            "ru": "A-Rosa",
+                            "uk": "A-Rosa"
+                        },
+                        "site_code": [
+                            "any"
+                        ],
+                        "company_id": 55,
+                        "gallery_id": 68830,
+                        "description": "<p>Лайнеры компании <strong>A-rosa &nbsp;</strong>оборудованы по последнем слову техники, на борту есть всё, что необходимо для шикарного отдыха: комфортные каюты, спа-салоны, проводится множество интересных спортивных мероприятий, которые могут удовлетворить все желания активных гостей.</p>\n\n<p>Вас также ждет роскошный шведский стол. Шеф-повара сделают все, чтобы на Вашем столе были самые изысканные и, конечно же, вкусные блюда &mdash;&nbsp;любые, какие Вам будет угодно. Регулярно проводятся музыкальные и театральные вечера.</p>\n\n<p>Круизы компании также представят Вашему вниманию многочисленные береговые экскурсии, которые оставят в Вашей памяти множество положительных эмоций. Вы посетите такие знаменитые порты, как Пассау, Вена, Будапешт и многие другие. Познакомиться с Рейном Вы сможете на любом из двух предоставляемых судов компании A-rosa.</p>\n\n<p>Также Вас ждут незабываемые файершоу и в целом &mdash;&nbsp;масса незабываемых эмоций.</p>\n",
+                        "last_update": "2025-05-16T23:09:09.141849",
+                        "cruise_type_id": 50,
+                        "description_i18n": {
+                            "de": "",
+                            "en": "<p>A city break sounds good. But a succession of cities sounds even better. And this is exactly what you can look forward to when you get on board an A-ROSA ship. The best cr&ecirc;pes in the city? Shopping streets that will set your heart racing? Or how about that quirky museum you&rsquo;ve heard so much about?</p>\n\n<p>Everything is practically at the doorstep of your hotel room. Our berths in the major cities of Europe are mostly in the very centre of the city. So, arrive in the city, grab your handbag or backpack, and get going! Take photos, make memories, experience the city! Alone or on guided tours. By foot or on an A-ROSA bicycle. Your holiday, your decision.</p>\n\n<p>And as your premium hotel moves from city to city, you have everything you would expect from a premium hotel on deck &ndash; views of the spectacular landscape, delicious drinks, minigolf, a spa and a whole lot of sunshine. Whether you&rsquo;re in your spacious cabin, at the pool or in the restaurant. Simply drift along and enjoy your dream holiday, which has just become a reality.</p>",
+                            "hy": "",
+                            "pl": "",
+                            "ru": "",
+                            "uk": "<p>Лайнери компанії A-rosa обладнані по останньому слову техніки, на борту є все, що необхідно для шикарного відпочинку: комфортні каюти, спа-салони, проводиться безліч цікавих спортивних заходів, які можуть задовольнити всі бажання активних гостей.</p>\n\n<p>Вас також чекає розкішний шведський стіл. Шеф-кухарі зроблять все, щоб на Вашому столі були найвишуканіші і, звичайно ж, смачні страви - будь-які, які Вам буде завгодно. Регулярно проводяться музичні та театральні вечори.</p>\n\n<p>Круїзи компанії також представлять Вашій увазі численні берегові екскурсії, які залишать у Вашій пам&#39;яті безліч позитивних емоцій. Ви відвідаєте такі знамениті порти, як Пассау, Відень, Будапешт і багато інших. Познайомитися з Рейном Ви зможете на будь-якому з двох наданих судів компанії A-rosa.</p>\n\n<p>Також Вас чекають незабутні файершоу і в цілому - маса незабутніх емоцій.</p>"
+                        },
+                        "company_category_id": 3
+                    },
+                    "gallery": {
+                        "images": [
+                            {
+                                "i": "00000000-0000-0000-0000-056287335003",
+                                "n": "A-ROSA_Logo_international.png",
+                                "t": "image/png"
+                            }
+                        ],
+                        "gallery_id": 68830,
+                        "default_file_uuid": "00000000-0000-0000-0000-056287335003"
+                    },
+                    "companyCategory": {
+                        "ufl": "premium",
+                        "name": "Premium",
+                        "name_i18n": {
+                            "en": "Premium",
+                            "ru": "Премиум",
+                            "uk": "Преміум"
+                        },
+                        "company_category_id": 3
+                    },
+                    "additional_information": [
+                        {
+                            "name": "CruiseNotInclude",
+                            "field": "cruiseNotInclude",
+                            "value": "<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">В стоимость круиза не входят следующие услуги и требуют дополнительной оплаты:</span></span></p>\n\n<ul>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Экскурсии.</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Чаевые персоналу&nbsp;</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Пользование спа-зоной и косметические услуги</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Авиаперелет</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Трансферы до и/или после круиза</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Медицинская страховка</span></span></li>\n</ul>\n",
+                            "domain": "company",
+                            "enabled": true,
+                            "ordering": 0,
+                            "domain_id": 55,
+                            "name_i18n": {
+                                "de": "Zusätzliche Dienste",
+                                "en": "Additional services",
+                                "pl": "Dodatkowe usługi",
+                                "ru": "Дополнительные услуги",
+                                "uk": "Додаткові послуги"
+                            },
+                            "site_code": [
+                                "any"
+                            ],
+                            "gallery_id": null,
+                            "value_i18n": {
+                                "de": "",
+                                "en": "<p>Cruise fare does not include the following services and should be paid additionaly:</p>\n\n<ul>\n\t<li>Excusions</li>\n\t<li>Tips</li>\n\t<li>SPA and cosmetological services</li>\n\t<li>Air tickets</li>\n\t<li>Transfers before/after cruises</li>\n\t<li>Medical insurance</li>\n</ul>",
+                                "hy": "",
+                                "pl": "",
+                                "ru": "<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">В стоимость круиза не входят следующие услуги и требуют дополнительной оплаты:</span></span></p>\n\n<ul>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Экскурсии.</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Чаевые персоналу&nbsp;</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Пользование спа-зоной и косметические услуги</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Авиаперелет</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Трансферы до и/или после круиза</span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Медицинская страховка</span></span></li>\n</ul>",
+                                "uk": "<p style=\"margin-left:0cm; margin-right:0cm\"><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">У вартість круїзу не входять такі послуги та вимагають додаткової оплати: </span></span></p>\n\n<ul>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Екскурсії. </span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Чайові персоналу </span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Користування спа-зоною та косметичні послуги </span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Авіапереліт </span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Трансфери до та/або після круїзу </span></span></li>\n\t<li><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Медичне страхування</span></span></li>\n</ul>"
+                            },
+                            "is_multi_line": true
+                        },
+                        {
+                            "name": "CruiseInclude",
+                            "field": "cruiseInclude",
+                            "value": "<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">We offer two distinct types of bookings to cater to different needs: A‑ROSA Premium All‑Inclusive for unlimited indulgence and A‑ROSA Basic incl. Full Board for a more flexible experience.</span></span></p>\n\n<p><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Premium All-Inclusive 2025</span></span></strong><br />\n<span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Indulge all day, every day with high-quality buffets<br />\nHigh-quality drinks included throughout the day: tea, coffee and coffee specialities, water, soft drinks, beer, prosecco, as well as a selection of wines<br />\nReduced prices for additional on board services and offerings, e.g. SPA treatments, workshops (except A-ROSA ALEA and A-ROSA CLEA)<br />\nFree use of onboard amenities, such as sauna and gym (No sauna on A-ROSA ALEA and A-ROSA CLEA)<br />\nTransfer between airport or TGV train station and ship when arrival is booked through A-ROSA<br />\nKids Club on Family Cruises as well as all-year round on A-ROSA SENA<br />\nToiletries in cabin and bathrobes on request<br />\nSpecial Welcome and Farewell dinners for cruises of 5 nights and more<br />\nGuest Relations Management at our guests&#39; service<br />\nVaried onboard entertainment for cruises of 7 nights or more with local performers<br />\nRoom service in every cabin grade, during bar opening hours**<br />\nFree e-bike depending on availability</span></span></p>\n\n<p>&nbsp;</p>\n\n<p><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">A-ROSA Basic incl. Full Board</span></span></strong></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">A-ROSA Basic incl. Full Board is the perfect alternative for more spontaneous A-ROSA guests who are flexible in their choice of dates and itineraries.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">This booking offers the following amenities:</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Full Board: Extensive breakfast, lunch and dinner buffet, additional embarkation snack and coffee and tea hour<br />\nDaily varied onboard entertainment<br />\nFree use of onboard facilities such as sauna and fitness area<br />\nFree choice of date, ship, route and cabin category<br />\nAll port charges<br />\nA-ROSA Basic Full Board is only available on selected departures, with limited availability. You will be informed of your cabin number on board.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Suites, A-ROSA Cruise Specials, A-ROSA Packages and other benefits, such as Early Booking Discounts or children travelling for free, are not available for an A-ROSA Basic booking.</span></span></p>\n",
+                            "domain": "company",
+                            "enabled": true,
+                            "ordering": 0,
+                            "domain_id": 55,
+                            "name_i18n": {
+                                "de": "In der Kreuzfahrt enthalten",
+                                "en": "Included in The Cruise",
+                                "hy": "",
+                                "pl": "Zawarte w rejsie",
+                                "ru": "Включено в круиз",
+                                "uk": "Включено в круїз"
+                            },
+                            "site_code": [
+                                "any"
+                            ],
+                            "gallery_id": 8693731083,
+                            "value_i18n": {
+                                "de": "",
+                                "en": "<p>We offer two distinct types of bookings to cater to different needs: A‑ROSA Premium All‑Inclusive for unlimited indulgence and A‑ROSA Basic incl. Full Board for a more flexible experience.</p>\n\n<p><strong>Premium All-Inclusive 2025</strong><br />\nIndulge all day, every day with high-quality buffets<br />\nHigh-quality drinks included throughout the day: tea, coffee and coffee specialities, water, soft drinks, beer, prosecco, as well as a selection of wines<br />\nReduced prices for additional on board services and offerings, e.g. SPA treatments, workshops (except A-ROSA ALEA and A-ROSA CLEA)<br />\nFree use of onboard amenities, such as sauna and gym (No sauna on A-ROSA ALEA and A-ROSA CLEA)<br />\nTransfer between airport or TGV train station and ship when arrival is booked through A-ROSA<br />\nKids Club on Family Cruises as well as all-year round on A-ROSA SENA<br />\nToiletries in cabin and bathrobes on request<br />\nSpecial Welcome and Farewell dinners for cruises of 5 nights and more<br />\nGuest Relations Management at our guests&#39; service<br />\nVaried onboard entertainment for cruises of 7 nights or more with local performers<br />\nRoom service in every cabin grade, during bar opening hours**<br />\nFree e-bike depending on availability</p>\n\n<p><strong>A-ROSA Basic incl. Full Board</strong></p>\n\n<p>A-ROSA Basic incl. Full Board is the perfect alternative for more spontaneous A-ROSA guests who are flexible in their choice of dates and itineraries.</p>\n\n<p>This booking offers the following amenities:</p>\n\n<p>Full Board: Extensive breakfast, lunch and dinner buffet, additional embarkation snack and coffee and tea hour<br />\nDaily varied onboard entertainment<br />\nFree use of onboard facilities such as sauna and fitness area<br />\nFree choice of date, ship, route and cabin category<br />\nAll port charges<br />\nA-ROSA Basic Full Board is only available on selected departures, with limited availability. You will be informed of your cabin number on board.</p>\n\n<p>Suites, A-ROSA Cruise Specials, A-ROSA Packages and other benefits, such as Early Booking Discounts or children travelling for free, are not available for an A-ROSA Basic booking.</p>\n\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:800px\">\n\t<thead>\n\t\t<tr>\n\t\t\t<th scope=\"col\">\n\t\t\t<h4>SERVICES &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h4>\n\t\t\t</th>\n\t\t\t<th scope=\"col\">Premium &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; All-Inclusive</th>\n\t\t\t<th scope=\"col\">Basic &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Full &nbsp;Board &nbsp;</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>Early Booking Price for bookings made until 28 February 2025 or 31 August 2025. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp; &nbsp; -</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Change of reservation fee (until 30 days prior to cruise)</td>\n\t\t\t<td>once free of charge</td>\n\t\t\t<td>&nbsp;</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Cancellation fee (until 31 days prior to cruise)</td>\n\t\t\t<td>40 %</td>\n\t\t\t<td>50 %</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Free choice of cabin number</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-&nbsp;</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Reserve preferred cabin of choice for a limited period of time free of charge</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Balcony and Junior Suite available</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Children up to and including 15 years of age travel free of charge on deck 1 (except A-ROSA ALVA, A-ROSA ALEA, A-ROSA CLEA)&sup1;</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>10 % Back-to-back cruise discount (only on the cruise fare)&sup2;</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>4 % mini group discount (min. 6 full-paying passengers)&sup2;</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Book additional e-bike packages (terranova)</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Reserve excursions online in advance</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Indulge all day, every day: Comprehensive breakfast, lunch and dinner buffets, embarkation refreshment and daily teatime snack</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes&nbsp;</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Tea, coffee and coffee specialities, water, soft drinks, sparkling wine as well as a selection of wine &amp; beer, during bar opening hours&sup3;</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>for &nbsp;fee</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Water dispensers⁴</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Mineral water in the cabin (A-ROSA ALEA &amp; A-ROSA CLEA)</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;-&nbsp;</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Special Welcome &amp; Farewell dinners</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Comprehensive service concept with guest relations management</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes&nbsp;</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Onboard entertainment with local performers (7 nights+)</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Kids Club available on family cruises and all year round on the A-ROSA SENA</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp;Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Reduced prices on wellness and beauty treatments at SPA-ROSA⁵</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; &nbsp; &nbsp;-</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Toiletries in cabin and bathrobe on request</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>for a fee</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>A-ROSA App with information about your cruise</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>&nbsp; Yes</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Room service in every cabin category (during bar opening hours)⁶</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>for a fee</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>E-bikes for independent exploration (subject to availability)⁷</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>for a fee</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Transfer between the airport or TGV train station and the ship, if travelling via A-ROSA⁸</td>\n\t\t\t<td>Yes</td>\n\t\t\t<td>Yes</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p>&nbsp;</p>\n\n<h4>PREMIUM ALL-INCLUSIVE PLUS:</h4>\n\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:700px\">\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>&nbsp;</td>\n\t\t\t<td>Premium All-Inclusive</td>\n\t\t\t<td>Basic FullBoard</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Cocktails and long drinks from renowned brands during bar opening hours<sup>3</sup></td>\n\t\t\t<td>&euro; 19 pp/night</td>\n\t\t\t<td>&euro; 39 pp/night</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>Transfer train station-ship-train station Danube &amp; Rhine<sup>9</sup></td>\n\t\t\t<td>&euro; 20 pp/one way</td>\n\t\t\t<td>&euro; 20 pp/one way</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p>&nbsp;</p>\n\n<p>1 Children up to and including 15 years of age travel free of charge when accompanied by at least one (two in Cat. G) supervising adult on Deck 1. From Deck 2 children receive a 30 % discount. Furthermore, children up to 7 years of age accompanied by 2 supervising adults can use a sofa bed free of charge on the A-ROSA SENA in categories B - D. On the A-ROSA ALVA, A-ROSA ALEA &amp; A-ROSA CLEA children accompanied by at least one supervising adult receive a 30 % discount. The children&rsquo;s discount is only valid for the cruise itself. Limited availabilities on all cruises.</p>\n\n<p>2 Cannot be combined with other discounts or reductions.</p>\n\n<p>3 On board A-ROSA ALVA drinks are included all day, including cocktails, long drinks and more.</p>\n\n<p>4 Except on board A-ROSA ALEA and A-ROSA CLEA.</p>\n\n<p>5 No treatments on board A-ROSA ALEA and A-ROSA CLEA.</p>\n\n<p>6 Room service for drinks according to the room service menu. Except on board A-ROSA ALVA, A-ROSA ALEA and A-ROSA CLEA.</p>\n\n<p>7 Rental is not possible on board A-ROSA ALVA, A-ROSA ALEA and A-ROSA CLEA.</p>\n\n<p>8 Flight from/to Lyon, Paris, Porto and Vienna. If the flight or TGV is booked via A-ROSA, the transfer is included. You will receive a voucher with your travel information.</p>\n\n<p>9 Available for cruises from Passau and Cologne. Transfer times will be specified in the travel information.</p>",
+                                "hy": "",
+                                "pl": "",
+                                "ru": "<p><br />\n<span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Компания A-Rosa предлагает на выбор два разных типа бронирования, чтобы удовлетворить всех гостей: A-ROSA Premium All-Inclusive для полного удовольствия и A-ROSA Basic с полным пансионом для более гибкого подхода.</span></span></p>\n\n<p><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">&nbsp;All-Inclusive 2025</span></span></strong></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Погружайтесь в атмосферу удовольствия каждый день с высококачественными шведскими столами. &nbsp;<br />\nВысококачественные напитки в течение всего дня: чай, кофе и кофейные напитки, вода, безалкогольные напитки, пиво, просекко, а также выбор вин. &nbsp;<br />\nСкидки на дополнительные услуги и предложения на борту, например, СПА-процедуры, мастер-классы (кроме A-ROSA ALEA и A-ROSA CLEA). &nbsp;<br />\nБесплатное пользование удобствами на борту, такими как сауна и тренажерный зал (сауны нет на A-ROSA ALEA и A-ROSA CLEA). &nbsp;<br />\nТрансфер между аэропортом или железнодорожным вокзалом TGV и судном, если прибытие забронировано через A-ROSA. &nbsp;<br />\nДетский клуб на семейных круизах, а также круглогодично на A-ROSA SENA. &nbsp;<br />\nГигиенические принадлежности в каюте и халаты по запросу. &nbsp;<br />\nОсобенные ужины для приветствия и прощания на круизах продолжительностью 5 ночей и более. &nbsp;<br />\nУправление обслуживанием гостей на службе у наших гостей. &nbsp;<br />\nРазнообразные развлекательные программы на борту для круизов продолжительностью 7 ночей и более с местными исполнителями. &nbsp;<br />\nУслуга доставки в каюту в каждом классе кают, в часы работы бара. &nbsp;<br />\nБесплатный электровелосипед в зависимости от наличия</span></span></p>\n\n<p><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">A-ROSA Basic с полным пансионом</span></span></strong></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">&nbsp;Это идеальный вариант для более спонтанных гостей, которые готовы к гибкости в выборе дат и маршрутов.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">- Полный пансион: обширные шведские столы на завтрак, обед и ужин, дополнительные закуски при посадке, а также время для чая и кофе<br />\n- Ежедневные развлекательные программы на борту<br />\n- Бесплатное использование бортовых удобств, таких как сауна и фитнес-зона<br />\n- Все портовые сборы<br />\n- A-ROSA Basiс с полным пансионом доступен только на отдельных круизах, с ограниченным количеством мест. Номер каюты будет сообщен на борту.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Обратите внимание: Люксы, специальные предложения A-ROSA, пакеты A-ROSA и другие преимущества, такие как скидки за раннее бронирование или бесплатное путешествие для детей, не доступны для бронирования по тарифу A-ROSA Basic</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Пожалуйста, при бронировании обязательно проверяйте, по какому тарифу осуществляется ваша бронь.</span></span></p>",
+                                "uk": "<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Компанія A-Rosa&nbsp;пропонує на вибір два різних типи бронювання, щоб задовольнити всіх гостей: <strong>A-ROSA Premium All-Inclusive</strong> для повного задоволення і <strong>A-ROSA Basic&nbsp;</strong>з повним пансіоном для більш гнучкого підходу.</span></span></p>\n\n<p><strong><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">All-Inclusive 2025</span></span></strong></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Пориньте в атмосферу задоволення кожного дня з високоякісними шведськими столами. &nbsp;<br />\nВисокоякісні напої протягом усього дня: чай, кава та кавові напої, вода, безалкогольні напої, пиво, просекко, а також вибір вин. &nbsp;<br />\nЗнижки на додаткові послуги та пропозиції на борту, наприклад, СПА-процедури, майстер-класи (окрім A-ROSA ALEA та A-ROSA CLEA). &nbsp;<br />\nБезкоштовне користування зручностями на борту, такими як сауна і тренажерний зал (сауни немає на A-ROSA ALEA та A-ROSA CLEA). &nbsp;<br />\nТрансфер між аеропортом або залізничним вокзалом TGV і судном, якщо прибуття заброньовано через A-ROSA. &nbsp;<br />\nДитячий клуб на сімейних круїзах, а також цілий рік на A-ROSA SENA. &nbsp;<br />\nГігієнічні приналежності в каюті та халати за запитом. &nbsp;<br />\nОсобливі вечері для вітання та прощання на круїзах тривалістю 5 ночей і більше. &nbsp;<br />\nМенеджмент обслуговування гостей на службі у наших гостей. &nbsp;<br />\nРізноманітні розважальні програми на борту для круїзів тривалістю 7 ночей і більше з місцевими виконавцями. &nbsp;<br />\nПослуга доставки в каюту в кожному класі кают, під час роботи бару. &nbsp;<br />\nБезкоштовний електровелосипед залежно від наявності.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\"><strong>A-ROSA Basic</strong>з повним пансіоном</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Це ідеальний варіант для більш спонтанних гостей, які готові до гнучкості у виборі дат і маршрутів.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">- Повний пансіон: обширні шведські столи на сніданок, обід і вечерю, додаткові закуски при посадці, а також час для чаю і кави<br />\n- Щоденні розважальні програми на борту<br />\n- Безкоштовне використання бортових зручностей, таких як сауна та фітнес-зона<br />\n- Усі портові збори<br />\n- A-ROSA Basic&nbsp;з повним пансіоном доступний лише на окремих круїзах, з обмеженою кількістю місць. Номер каюти буде повідомлений на борту.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Зверніть увагу:Люкси, спеціальні пропозиції A-ROSA, пакети A-ROSA&nbsp;та інші переваги, такі як знижки за раннє бронювання або безкоштовне подорожування для дітей, не доступні для бронювання за тарифом A-ROSA Basic.</span></span></p>\n\n<p><span style=\"font-size:11pt\"><span style=\"font-family:Calibri,&quot;sans-serif&quot;\">Будь ласка, при бронюванні обов&rsquo;язково перевіряйте, за яким тарифом здійснюється ваша бронь.</span></span></p>"
+                            },
+                            "is_multi_line": true
+                        },
+                        {
+                            "name": "CruisePenalties",
+                            "field": "cruisePenalties",
+                            "value": "<p>a) Standard rate for &quot;A-ROSA Premium All-Inclusive&quot; prices</p>\n\n<p>&bull; up to 31 days before departure 25%<br />\n&bull; 30 days or less before departure 40%<br />\n&bull; 24 days or less before departure 50%<br />\n&bull; 17 days or less before departure 60%<br />\n&bull; 10 days or less before departure 80%<br />\n&bull; 3 days before departure until the day of departure or cancellation on the day of arrival or no-show 90%</p>\n\n<p>b) Special rate for &quot;A-ROSA Basic Full Board&quot; prices</p>\n\n<p>&bull; up to 31 days before departure 35%<br />\n&bull; 30 days or less before departure 50%<br />\n&bull; 24 days or less before departure 60%<br />\n&bull; 17 days or less before departure 75%<br />\n&bull; 10 days or less before departure 85%<br />\n&bull; 3 days before departure until the day of departure or no-show 90%</p>\n\n<p>&nbsp;</p>\n\n<p><strong>A-ROSA Cruise Booking Terms</strong><br />\n30% deposit upon booking<br />\n100% 60 &nbsp;days before the start of the cruise</p>\n",
+                            "domain": "company",
+                            "enabled": true,
+                            "ordering": 0,
+                            "domain_id": 55,
+                            "name_i18n": {
+                                "de": "Buchungsbedingungen",
+                                "en": "Booking conditions",
+                                "hy": "",
+                                "pl": "Warunki rezerwacji",
+                                "ru": "Условия бронирования",
+                                "uk": "Умови бронювання"
+                            },
+                            "site_code": [
+                                "any"
+                            ],
+                            "gallery_id": 8693731084,
+                            "value_i18n": {
+                                "de": "",
+                                "en": "<p>a) Standard rate for &quot;A-ROSA Premium All-Inclusive&quot; prices</p>\n\n<p>&bull; up to 31 days before departure 25%<br />\n&bull; 30 days or less before departure 40%<br />\n&bull; 24 days or less before departure 50%<br />\n&bull; 17 days or less before departure 60%<br />\n&bull; 10 days or less before departure 80%<br />\n&bull; 3 days before departure until the day of departure or cancellation on the day of arrival or no-show 90%</p>\n\n<p>b) Special rate for &quot;A-ROSA Basic Full Board&quot; prices</p>\n\n<p>&bull; up to 31 days before departure 35%<br />\n&bull; 30 days or less before departure 50%<br />\n&bull; 24 days or less before departure 60%<br />\n&bull; 17 days or less before departure 75%<br />\n&bull; 10 days or less before departure 85%<br />\n&bull; 3 days before departure until the day of departure or no-show 90%</p>\n\n<p><strong>A-ROSA Cruise Booking Terms</strong><br />\n30% deposit upon booking<br />\n100% 45 days before the start of the cruis</p>",
+                                "hy": "",
+                                "pl": "",
+                                "ru": "<p>Условия бронирования круизов A-ROSA</p>\n\n<p><br />\nМинимальный депозит при бронировании -&nbsp;30%<br />\nФинальная оплата за 60&nbsp;&nbsp;дней до начала круиза - 100%</p>\n\n<p>Условия аннуляции круиза:</p>\n\n<p>a) Стандартная ставка для цен &quot;A-ROSA Premium All-Inclusive&quot;</p>\n\n<p>&bull; до 31 дня до отъезда &mdash; 25% &nbsp;<br />\n&bull; 30 дней или меньше до отъезда &mdash; 40% &nbsp;<br />\n&bull; 24 дня или меньше до отъезда &mdash; 50% &nbsp;<br />\n&bull; 17 дней или меньше до отъезда &mdash; 60% &nbsp;<br />\n&bull; 10 дней или меньше до отъезда &mdash; 80% &nbsp;<br />\n&bull; 3 дня до отъезда до дня отъезда или отмена в день прибытия или неявка &mdash; 90%</p>\n\n<p>b) Специальная ставка для цен &quot;A-ROSA Basic Full Board&quot;</p>\n\n<p>&bull; до 31 дня до отъезда &mdash; 35% &nbsp;<br />\n&bull; 30 дней или меньше до отъезда &mdash; 50% &nbsp;<br />\n&bull; 24 дня или меньше до отъезда &mdash; 60% &nbsp;<br />\n&bull; 17 дней или меньше до отъезда &mdash; 75% &nbsp;<br />\n&bull; 10 дней или меньше до отъезда &mdash; 85% &nbsp;<br />\n&bull; 3 дня до отъезда до дня отъезда или неявка &mdash; 90%<br />\n&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "uk": "<p>Умови бронювання круїзів A-ROSA</p>\n\n<p><br />\nМінімальний депозит при бронюванні - 30%<br />\nФінальна оплата за 60 днів до початку круїзу - 100%</p>\n\n<p>Умови ануляції подорожі:</p>\n\n<p>a) Стандартна ставка для цін &quot;A-ROSA Premium All-Inclusive&quot;</p>\n\n<p>&bull; до 31 дня до від&#39;їзду &mdash; 25% &nbsp;<br />\n&bull; 30 днів або менше до від&#39;їзду &mdash; 40% &nbsp;<br />\n&bull; 24 дні або менше до від&#39;їзду &mdash; 50% &nbsp;<br />\n&bull; 17 днів або менше до від&#39;їзду &mdash; 60% &nbsp;<br />\n&bull; 10 днів або менше до від&#39;їзду &mdash; 80% &nbsp;<br />\n&bull; 3 дні до від&#39;їзду до дня від&#39;їзду або скасування в день прибуття або неявка &mdash; 90%</p>\n\n<p>b) Спеціальна ставка для цін &quot;A-ROSA Basic Full Board&quot;</p>\n\n<p>&bull; до 31 дня до від&#39;їзду &mdash; 35% &nbsp;<br />\n&bull; 30 днів або менше до від&#39;їзду &mdash; 50% &nbsp;<br />\n&bull; 24 дні або менше до від&#39;їзду &mdash; 60% &nbsp;<br />\n&bull; 17 днів або менше до від&#39;їзду &mdash; 75% &nbsp;<br />\n&bull; 10 днів або менше до від&#39;їзду &mdash; 85% &nbsp;<br />\n&bull; 3 дні до від&#39;їзду до дня від&#39;їзду або неявка &mdash; 90%</p>\n\n<p>&nbsp;</p>"
+                            },
+                            "is_multi_line": true
+                        },
+                        {
+                            "name": "Rules",
+                            "field": "rules",
+                            "value": "<p>IMPORTANT INFORMATION</p>\n\n<p>Important: The ship&#39;s manifest is a mandatory form that we must have to ensure a smooth process with customs, port and border authorities. Please fill in the form three weeks prior to departure at the latest.</p>\n\n<p>Please note that admission to the ship and luggage service as well as check-in and occupation of the cabin is possible from 15:00 at<br />\nthe earliest. Please have your valid identification documents ready when you check in.<br />\nNOTE The provision of some personal data in the ship&#39;s manifest is mandatory. Please complete your personal details here:<br />\nwww.arosa-cruises.com/manifest</p>\n\n<p>CHECK-OUT<br />\nPlease plan your departure by 9:00. You will receive detailed departure information on board.</p>\n\n<p>WHAT DO YOU NEED TO COMPLETE THE MANIFEST?<br />\nWe need the following information:</p>\n\n<p>Full name and address (street, post code, city)<br />\nNote: please make sure that the manifest data conform to the data in your booking/confirmation and invoice<br />\nDate of birth<br />\nPhone number (can be the same for all passengers)<br />\nMobile phone number (can be the same for all passengers)<br />\nEmail (can be the same for all passengers)<br />\nEmergency contact number (e.g. family, friends, travel agency)<br />\nPassport/ID card number&nbsp;</p>\n",
+                            "domain": "company",
+                            "enabled": true,
+                            "ordering": 0,
+                            "domain_id": 55,
+                            "name_i18n": {
+                                "de": "СheckIn",
+                                "en": "СheckIn",
+                                "pl": "СheckIn",
+                                "ru": "СheckIn",
+                                "uk": "СheckIn"
+                            },
+                            "site_code": [
+                                "any"
+                            ],
+                            "gallery_id": null,
+                            "value_i18n": {
+                                "de": "",
+                                "en": "<p>IMPORTANT INFORMATION</p>\n\n<p>Important: The ship&#39;s manifest is a mandatory form that we must have to ensure a smooth process with customs, port and border authorities. Please fill in the form three weeks prior to departure at the latest.</p>\n\n<p>Please note that admission to the ship and luggage service as well as check-in and occupation of the cabin is possible from 15:00 at<br />\nthe earliest. Please have your valid identification documents ready when you check in.<br />\nNOTE The provision of some personal data in the ship&#39;s manifest is mandatory. Please complete your personal details here:<br />\nwww.arosa-cruises.com/manifest</p>\n\n<p>CHECK-OUT<br />\nPlease plan your departure by 9:00. You will receive detailed departure information on board.</p>\n\n<p>WHAT DO YOU NEED TO COMPLETE THE MANIFEST?<br />\nWe need the following information:</p>\n\n<p>Full name and address (street, post code, city)<br />\nNote: please make sure that the manifest data conform to the data in your booking/confirmation and invoice<br />\nDate of birth<br />\nPhone number (can be the same for all passengers)<br />\nMobile phone number (can be the same for all passengers)<br />\nEmail (can be the same for all passengers)<br />\nEmergency contact number (e.g. family, friends, travel agency)<br />\nPassport/ID card number&nbsp;</p>",
+                                "hy": "",
+                                "pl": "",
+                                "ru": "<p>Важно: список пассажиров судна &mdash; это обязательная форма, которую мы должны получить для обеспечения бесперебойного прохождения таможенных, портовых и пограничных процедур. Пожалуйста, заполните форму не позднее чем за три недели до отправления.</p>\n\n<p>Пожалуйста, обратите внимание, что посадка на судно, обслуживание багажа, а также регистрация и заселение в каюту возможны не ранее 15:00. При регистрации подготовьте действительные удостоверения личности.</p>\n\n<p>Внимание: Предоставление некоторых личных данных в списке пассажиров судна является обязательным. Пожалуйста, заполните свои персональные данные здесь:<br />\nwww.arosa-cruises.com/manifest</p>\n\n<p>Что необходимо для заполнения манифеста?<br />\nНам требуется следующая информация:</p>\n\n<p>Полное имя и адрес (улица, почтовый индекс, город)<br />\nПримечание: Убедитесь, что данные в манифесте соответствуют данным в вашем бронировании/подтверждении и счёте.<br />\nДата рождения<br />\nНомер телефона (может быть одинаковым для всех пассажиров)<br />\nНомер мобильного телефона (может быть одинаковым для всех пассажиров)<br />\nЭлектронная почта (может быть одинаковой для всех пассажиров)<br />\nНомер экстренного контакта (например, семьи, друзей или туристического агентства)<br />\nНомер паспорта или удостоверения личности</p>",
+                                "uk": "<p>Важливо: список пасажирів судна &mdash; це обов&rsquo;язкова форма, яку ми повинні отримати для забезпечення безперебійного проходження митних, портових і прикордонних процедур. Будь ласка, заповніть форму не пізніше ніж за три тижні до відправлення.</p>\n\n<p>Зверніть увагу, що посадка на судно, обслуговування багажу, а також реєстрація і заселення в каюту можливі не раніше 15:00. Під час реєстрації підготуйте дійсні документи, що посвідчують особу.</p>\n\n<p>Примітка: Надання деяких особистих даних у списку пасажирів судна є обов&rsquo;язковим. Будь ласка, заповніть свої персональні дані тут:<br />\nwww.arosa-cruises.com/manifest</p>\n\n<p>Виселення.<br />\nБудь ласка, плануйте свій виїзд до 9:00. Детальну інформацію про виїзд ви отримаєте на борту.</p>\n\n<p>Що необхiдно для заповнення манiфесту?<br />\nНам потрібна наступна інформація:</p>\n\n<p>Повне ім&#39;я та адреса (вулиця, поштовий індекс, місто)<br />\nПримітка: Переконайтеся, що дані у маніфесті відповідають даним у вашому бронюванні/підтвердженні та рахунку.<br />\nДата народження<br />\nНомер телефону (може бути однаковим для всіх пасажирів)<br />\nНомер мобільного телефону (може бути однаковим для всіх пасажирів)<br />\nЕлектронна пошта (може бути однаковою для всіх пасажирів)<br />\nНомер екстреного контакту (наприклад, сім&#39;ї, друзів або туристичного агентства)<br />\nНомер паспорта або посвідчення особи</p>"
+                            },
+                            "is_multi_line": true
+                        },
+                        {
+                            "name": "Bonuses",
+                            "field": "bonuses",
+                            "value": "<p>При бронировании тарифа Премиум для родителей, дети путешествуют бесплатно!&nbsp;</p>\n",
+                            "domain": "company",
+                            "enabled": true,
+                            "ordering": 0,
+                            "domain_id": 55,
+                            "name_i18n": {
+                                "de": "Geschenkpakete",
+                                "en": "Gift packages",
+                                "pl": "Paczki prezentowe",
+                                "ru": "Подарочные пакеты",
+                                "uk": "Подарункові пакети"
+                            },
+                            "site_code": [
+                                "any"
+                            ],
+                            "gallery_id": null,
+                            "value_i18n": {
+                                "de": "",
+                                "en": "<p>When booking a Premium rate for parents, children travel for free!</p>",
+                                "hy": "",
+                                "pl": "",
+                                "ru": "",
+                                "uk": "<p>При бронюванні тарифу Преміум для батьків, діти подорожують безкоштовно!</p>"
+                            },
+                            "is_multi_line": true
+                        }
+                    ]
+                },
+                "gallery": {
+                    "images": [
+                        {
+                            "i": "00000000-0000-0000-0000-001125745262",
+                            "n": "RN_DLX_KABINE_09_39L_12_0586de611b.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745263",
+                            "n": "RH_DLX_PEOPLE_FRUEHSTUECK_03_39L_02_dec25c0a13.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745264",
+                            "n": "RH_DLX_PEOPLE_LIVE_COOKING_02_web_02_240b482e39.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745265",
+                            "n": "RH_DLX_PEOPLE_MARKT_04_web_02_be2fef15e2.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745266",
+                            "n": "RN_DLX_FITNESS_01_web_06_69338a4485.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745267",
+                            "n": "RN_DLX_SONNENDECK_RUHE_PEOPLE_01_web_06_af68993486.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745269",
+                            "n": "RN_DLX_YC_RESTRAURANT_ESSEN_01_web_08_4efc254bf2.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745270",
+                            "n": "RN_DLX_YC_SPA_SAUNA_01_web_14_de5b7f4bfb.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745259",
+                            "n": "RN_DLX_KABINE_06_web_10_daea8fe5bb.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745268",
+                            "n": "RN_DLX_WHIRLPOOL_PEOPLE_06_web_06_4aa6580662.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745258",
+                            "n": "111111111111.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745260",
+                            "n": "RN_DLX_KABINE_07_web_06a2be916a.jpg",
+                            "t": "image/jpeg"
+                        },
+                        {
+                            "i": "00000000-0000-0000-0000-001125745261",
+                            "n": "RH_DLX_KABINE_13_39L_df660083a7.jpg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 173872989,
+                    "default_file_uuid": "00000000-0000-0000-0000-001125745258"
+                },
+                "gallerySchema": {
+                    "images": [
+                        {
+                            "i": "00000000-0000-0000-0000-001125745257",
+                            "n": "11111111111111111111111111111.jpg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 173872988,
+                    "default_file_uuid": "00000000-0000-0000-0000-001125745257"
+                },
+                "vesselCategory": {
+                    "ufl": "river-ship",
+                    "name": "Речные суда",
+                    "name_i18n": null,
+                    "vessel_category_id": 2
+                },
+                "cabinCategories": [
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745249",
+                                    "n": "s1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872980,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745249"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745248",
+                                    "n": "s.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872979,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745248"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "Category S ",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "Category S",
+                                "hy": "",
+                                "pl": "Category S",
+                                "ru": "Категория S",
+                                "uk": "Категорiя S"
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872979,
+                            "description": "<h3>Комфортабельные каюты -&nbsp;Каюты Стандарт: 14,5 м&sup2; с двумя иллюминаторами.</h3>\n\n<p>Для Вас в каюте:</p>\n\n<ul>\n\t<li>Два иллюминатора;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться) и дополнительная кровать в трехместных каютах;</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, S&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny &ndash; Kabiny Standard: 14,5 m&sup2; z dwoma bulajami</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Dwa bulaje (okrągłe okna)<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić) oraz dodatkowe ł&oacute;żko w kabinach trzyosobowych<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "ru": "",
+                                "uk": "<h3>Комфортабельні каюти - Каюти Стандарт: 14,5 м&sup2; з вікном або двома ілюмінаторами.</h3>\n\n<h3>Для Вас в каюті:</h3>\n\n<ul>\n\t<li>\n\t<ul>\n\t\t<li>\n\t\t<ul>\n\t\t\t<li>\n\t\t\t<h3>Два ілюмінатора або вікно;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>2 односпальні ліжка (конфігурація ліжок може змінюватися) і додатковий диван-ліжко;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Ванна кімната з душем і туалетом;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>фен;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>крісло;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>телевізор;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Телефон;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>кондиціонер;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Сейф.</h3>\n\t\t\t</li>\n\t\t</ul>\n\t\t</li>\n\t</ul>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 173748,
+                            "schema_gallery_id": 173872980
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745249",
+                                    "n": "s1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872980,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745249"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745248",
+                                    "n": "s.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872979,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745248"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "BAIS",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "S",
+                                "en": "S",
+                                "hy": "",
+                                "pl": "BAIS",
+                                "ru": "S",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872979,
+                            "description": "<h3>Комфортабельные каюты -&nbsp;Каюты Стандарт: 14,5 м&sup2; с двумя иллюминаторами.</h3>\n\n<p>Для Вас в каюте:</p>\n\n<ul>\n\t<li>Два иллюминатора;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться) и дополнительная кровать в трехместных каютах;</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, S&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny &ndash; Kabiny Standard: 14,5 m&sup2; z dwoma bulajami</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Dwa bulaje (okrągłe okna)<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić) oraz dodatkowe ł&oacute;żko w kabinach trzyosobowych<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>",
+                                "ru": "",
+                                "uk": "<h3>Комфортабельні каюти - Каюти Стандарт: 14,5 м&sup2; з вікном або двома ілюмінаторами.</h3>\n\n<h3>Для Вас в каюті:</h3>\n\n<ul>\n\t<li>\n\t<ul>\n\t\t<li>\n\t\t<ul>\n\t\t\t<li>\n\t\t\t<h3>Два ілюмінатора або вікно;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>2 односпальні ліжка (конфігурація ліжок може змінюватися) і додатковий диван-ліжко;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Ванна кімната з душем і туалетом;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>фен;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>крісло;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>телевізор;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Телефон;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>кондиціонер;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Сейф.</h3>\n\t\t\t</li>\n\t\t</ul>\n\t\t</li>\n\t</ul>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 181109,
+                            "schema_gallery_id": 173872980
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745251",
+                                    "n": "a1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872982,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745251"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745250",
+                                    "n": "a.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872981,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745250"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "Category A",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "Category A",
+                                "hy": "",
+                                "pl": "Category A",
+                                "ru": "Категория А",
+                                "uk": "Категорiя А"
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872981,
+                            "description": "<h3>Комфортабельные каюты -&nbsp;Каюты Стандарт: 14,5 м&sup2; с двумя иллюминаторами.</h3>\n\n<p>Для Вас в каюте:</p>\n\n<ul>\n\t<li>Два иллюминатора;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться) и дополнительная кровать в трехместных каютах;</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p>2-bed outside cabin, A 14,5 m&sup2;<br />\nSpacious, comfortable outside cabin. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny &ndash; Kabiny Standard: 14,5 m&sup2; z dwoma bulajami</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Dwa bulaje (okrągłe okna)<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić) oraz dodatkowe ł&oacute;żko w kabinach trzyosobowych<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>",
+                                "ru": "",
+                                "uk": "<h3>Комфортабельні каюти - Каюти Стандарт: 14,5 м&sup2; з вікном або двома ілюмінаторами.</h3>\n\n<h3>Для Вас в каюті:</h3>\n\n<ul>\n\t<li>\n\t<ul>\n\t\t<li>\n\t\t<ul>\n\t\t\t<li>\n\t\t\t<h3>Два ілюмінатора або вікно;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>2 односпальні ліжка (конфігурація ліжок може змінюватися) і додатковий диван-ліжко;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Ванна кімната з душем і туалетом;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>фен;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>крісло;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>телевізор;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Телефон;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>кондиціонер;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Сейф.</h3>\n\t\t\t</li>\n\t\t</ul>\n\t\t</li>\n\t</ul>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 173745,
+                            "schema_gallery_id": 173872982
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745251",
+                                    "n": "a1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872982,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745251"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745250",
+                                    "n": "a.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872981,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745250"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "BAIA",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "A",
+                                "en": "A",
+                                "hy": "",
+                                "pl": "BAIA",
+                                "ru": "A",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872981,
+                            "description": "<h3>Комфортабельные каюты -&nbsp;Каюты Стандарт: 14,5 м&sup2; с двумя иллюминаторами.</h3>\n\n<p>Для Вас в каюте:</p>\n\n<ul>\n\t<li>Два иллюминатора;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться) и дополнительная кровать в трехместных каютах;</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<p>2-bed outside cabin, A 14,5 m&sup2;<br />\nSpacious, comfortable outside cabin. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny &ndash; Kabiny Standard: 14,5 m&sup2; z dwoma bulajami</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Dwa bulaje (okrągłe okna)<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić) oraz dodatkowe ł&oacute;żko w kabinach trzyosobowych<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>",
+                                "ru": "",
+                                "uk": "<h3>Комфортабельні каюти - Каюти Стандарт: 14,5 м&sup2; з вікном або двома ілюмінаторами.</h3>\n\n<h3>Для Вас в каюті:</h3>\n\n<ul>\n\t<li>\n\t<ul>\n\t\t<li>\n\t\t<ul>\n\t\t\t<li>\n\t\t\t<h3>Два ілюмінатора або вікно;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>2 односпальні ліжка (конфігурація ліжок може змінюватися) і додатковий диван-ліжко;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Ванна кімната з душем і туалетом;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>фен;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>крісло;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>телевізор;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Телефон;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>кондиціонер;</h3>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t<h3>Сейф.</h3>\n\t\t\t</li>\n\t\t</ul>\n\t\t</li>\n\t</ul>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 181106,
+                            "schema_gallery_id": 173872982
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745253",
+                                    "n": "c1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872984,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745253"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745252",
+                                    "n": "с.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872983,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745252"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "BAIC",
+                            "location": "WITH_BALCONY",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "C",
+                                "en": "C",
+                                "hy": "",
+                                "pl": "BAIC",
+                                "ru": "C",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872983,
+                            "description": "<p><strong>Комфортабельные каюты Супериор&nbsp;категории C/D - Современный дизайн и Французские балконы.</strong></p>\n\n<p>&nbsp;</p>\n\n<p>Для вас в каюте:</p>\n\n<ul>\n\t<li>Французский балкон;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться);</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, C&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, fly screen, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny Superior kategorii C/D &ndash; nowoczesny design i francuskie balkony</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Francuski balkon<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić)<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "ru": "",
+                                "uk": "<p>Комфортабельні каюти Суперіор категорії C / D - Сучасний дизайн і Французькі балкони.</p>\n\n<p>Для Вас в каюті:</p>\n\n<ul>\n\t<li>\n\t<p>Французький балкон;</p>\n\t</li>\n\t<li>\n\t<p>2 односпальні ліжка (конфігурація ліжок може змінюватися);</p>\n\t</li>\n\t<li>\n\t<p>Ванна кімната з душем і туалетом;</p>\n\t</li>\n\t<li>\n\t<p>фен;</p>\n\t</li>\n\t<li>\n\t<p>крісло;</p>\n\t</li>\n\t<li>\n\t<p>телевізор;</p>\n\t</li>\n\t<li>\n\t<p>Телефон;</p>\n\t</li>\n\t<li>\n\t<p>кондиціонер;</p>\n\t</li>\n\t<li>\n\t<p>Сейф.</p>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 181107,
+                            "schema_gallery_id": 173872984
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745253",
+                                    "n": "c1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872984,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745253"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745252",
+                                    "n": "с.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872983,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745252"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "Category C",
+                            "location": "WITH_BALCONY",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "Category C",
+                                "hy": "",
+                                "pl": "Category C",
+                                "ru": "Категория С",
+                                "uk": "Категорiя С"
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872983,
+                            "description": "<p><strong>Комфортабельные каюты Супериор&nbsp;категории C/D - Современный дизайн и Французские балконы.</strong></p>\n\n<p>&nbsp;</p>\n\n<p>Для вас в каюте:</p>\n\n<ul>\n\t<li>Французский балкон;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться);</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, C&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, fly screen, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny Superior kategorii C/D &ndash; nowoczesny design i francuskie balkony</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Francuski balkon<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić)<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>",
+                                "ru": "",
+                                "uk": "<p>Комфортабельні каюти Суперіор категорії C / D - Сучасний дизайн і Французькі балкони.</p>\n\n<p>Для Вас в каюті:</p>\n\n<ul>\n\t<li>\n\t<p>Французький балкон;</p>\n\t</li>\n\t<li>\n\t<p>2 односпальні ліжка (конфігурація ліжок може змінюватися);</p>\n\t</li>\n\t<li>\n\t<p>Ванна кімната з душем і туалетом;</p>\n\t</li>\n\t<li>\n\t<p>фен;</p>\n\t</li>\n\t<li>\n\t<p>крісло;</p>\n\t</li>\n\t<li>\n\t<p>телевізор;</p>\n\t</li>\n\t<li>\n\t<p>Телефон;</p>\n\t</li>\n\t<li>\n\t<p>кондиціонер;</p>\n\t</li>\n\t<li>\n\t<p>Сейф.</p>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 173746,
+                            "schema_gallery_id": 173872984
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745255",
+                                    "n": "d1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872986,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745255"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745254",
+                                    "n": "в.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872985,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745254"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "Category D",
+                            "location": "WITH_BALCONY",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "Category D",
+                                "hy": "",
+                                "pl": "Category D",
+                                "ru": "Категория D",
+                                "uk": "Категорiя D"
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872985,
+                            "description": "<p><strong>Комфортабельные каюты Супериор&nbsp;категории C/D - Современный дизайн и Французские балконы.</strong></p>\n\n<p>&nbsp;</p>\n\n<p>Для вас в каюте:</p>\n\n<ul>\n\t<li>Французский балкон;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться);</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, D&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, fly screen, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny Superior kategorii C/D &ndash; nowoczesny design i francuskie balkony</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Francuski balkon<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić)<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "ru": "",
+                                "uk": "<p>Комфортабельні каюти Суперіор категорії C / D - Сучасний дизайн і Французькі балкони.</p>\n\n<p>Для Вас в каюті:</p>\n\n<ul>\n\t<li>\n\t<p>Французький балкон;</p>\n\t</li>\n\t<li>\n\t<p>2 односпальні ліжка (конфігурація ліжок може змінюватися);</p>\n\t</li>\n\t<li>\n\t<p>Ванна кімната з душем і туалетом;</p>\n\t</li>\n\t<li>\n\t<p>фен;</p>\n\t</li>\n\t<li>\n\t<p>крісло;</p>\n\t</li>\n\t<li>\n\t<p>телевізор;</p>\n\t</li>\n\t<li>\n\t<p>Телефон;</p>\n\t</li>\n\t<li>\n\t<p>кондиціонер;</p>\n\t</li>\n\t<li>\n\t<p>Сейф.</p>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 173747,
+                            "schema_gallery_id": 173872986
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745255",
+                                    "n": "d1.png",
+                                    "t": "image/png"
+                                }
+                            ],
+                            "gallery_id": 173872986,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745255"
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": "00000000-0000-0000-0000-001125745254",
+                                    "n": "в.jpg",
+                                    "t": "image/jpeg"
+                                }
+                            ],
+                            "gallery_id": 173872985,
+                            "default_file_uuid": "00000000-0000-0000-0000-001125745254"
+                        },
+                        "category": {
+                            "area": "14,5 м кв ",
+                            "name": "BAID",
+                            "location": "WITH_BALCONY",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "D",
+                                "en": "D",
+                                "hy": "",
+                                "pl": "BAID",
+                                "ru": "D",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 173872985,
+                            "description": "<p><strong>Комфортабельные каюты Супериор&nbsp;категории C/D - Современный дизайн и Французские балконы.</strong></p>\n\n<p>&nbsp;</p>\n\n<p>Для вас в каюте:</p>\n\n<ul>\n\t<li>Французский балкон;</li>\n\t<li>2 односпальные кровати (конфигурация кроватей может меняться);</li>\n\t<li>Ванная комната с душем и туалетом;</li>\n\t<li>Фен;</li>\n\t<li>Кресло;</li>\n\t<li>Телевизор;</li>\n\t<li>Телефон;</li>\n\t<li>Кондиционер;</li>\n\t<li>Сейф.&nbsp;</li>\n</ul>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "<h3>2-bed outside cabin, D&nbsp;14,5 m&sup2;</h3>\n\n<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being. Cabin facilities: safe, air-conditioning, TV, fly screen, hair dryer, bathroom with shower and toilet, sauna towel, wool blanket, telephone, bathrobe.</p>",
+                                "hy": "",
+                                "pl": "<p><strong>Komfortowe kabiny Superior kategorii C/D &ndash; nowoczesny wystr&oacute;j i francuskie balkony</strong></p>\n\n<p>Wyposażenie kabiny:<br />\n&ndash; Francuski balkon<br />\n&ndash; Dwa ł&oacute;żka pojedyncze (układ ł&oacute;żek może się r&oacute;żnić)<br />\n&ndash; Łazienka z prysznicem i toaletą<br />\n&ndash; Suszarka do włos&oacute;w<br />\n&ndash; Fotel<br />\n&ndash; Telewizor<br />\n&ndash; Telefon<br />\n&ndash; Klimatyzacja<br />\n&ndash; Sejf</p>",
+                                "ru": "",
+                                "uk": "<p>Комфортабельні каюти Суперіор категорії C / D - Сучасний дизайн і Французькі балкони.</p>\n\n<p>Для Вас в каюті:</p>\n\n<ul>\n\t<li>\n\t<p>Французький балкон;</p>\n\t</li>\n\t<li>\n\t<p>2 односпальні ліжка (конфігурація ліжок може змінюватися);</p>\n\t</li>\n\t<li>\n\t<p>Ванна кімната з душем і туалетом;</p>\n\t</li>\n\t<li>\n\t<p>фен;</p>\n\t</li>\n\t<li>\n\t<p>крісло;</p>\n\t</li>\n\t<li>\n\t<p>телевізор;</p>\n\t</li>\n\t<li>\n\t<p>Телефон;</p>\n\t</li>\n\t<li>\n\t<p>кондиціонер;</p>\n\t</li>\n\t<li>\n\t<p>Сейф.</p>\n\t</li>\n</ul>"
+                            },
+                            "cabin_category_id": 181108,
+                            "schema_gallery_id": 173872986
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735052,
+                            "default_file_uuid": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735051,
+                            "default_file_uuid": null
+                        },
+                        "category": {
+                            "area": "14.5 sqm",
+                            "name": "BSFA",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "BSFA",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 8693735051,
+                            "description": "<p>Spacious, comfortable outside cabin. Elegant design and first-class materials ensure an atmosphere of well-being.</p>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "<p>Przestronna i komfortowa kabina zewnętrzna. Elegancki wystr&oacute;j oraz najwyższej klasy materiały zapewniają atmosferę relaksu i dobrego samopoczucia.</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "cabin_category_id": 182094,
+                            "schema_gallery_id": 8693735052
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735054,
+                            "default_file_uuid": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735053,
+                            "default_file_uuid": null
+                        },
+                        "category": {
+                            "area": "14.5 sqm",
+                            "name": "BSFC",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "BSFC",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 8693735053,
+                            "description": "<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being.</p>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "<p>Przestronna i komfortowa kabina zewnętrzna z balkonem francuskim (Juliette). Stylowy wystr&oacute;j oraz najwyższej jakości materiały zapewniają atmosferę relaksu i pełnego komfortu.</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "cabin_category_id": 182095,
+                            "schema_gallery_id": 8693735054
+                        }
+                    },
+                    {
+                        "schema": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735056,
+                            "default_file_uuid": null
+                        },
+                        "gallery": {
+                            "images": [
+                                {
+                                    "i": null,
+                                    "n": null,
+                                    "t": null
+                                }
+                            ],
+                            "gallery_id": 8693735055,
+                            "default_file_uuid": null
+                        },
+                        "category": {
+                            "area": "14.5 sqm",
+                            "name": "BSFD",
+                            "location": "WITH_WINDOW",
+                            "area_i18n": null,
+                            "name_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "BSFD",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "vessel_id": 1105009,
+                            "gallery_id": 8693735055,
+                            "description": "<p>Spacious, comfortable outside cabin with Juliette balcony. Elegant design and first-class materials ensure an atmosphere of well-being.</p>\n",
+                            "description_i18n": {
+                                "de": "",
+                                "en": "",
+                                "hy": "",
+                                "pl": "<p>Przestronna i komfortowa kabina zewnętrzna z balkonem francuskim (Juliette). Elegancki wystr&oacute;j oraz najwyższej klasy materiały tworzą atmosferę relaksu i dobrego samopoczucia.</p>",
+                                "ru": "",
+                                "uk": ""
+                            },
+                            "cabin_category_id": 182096,
+                            "schema_gallery_id": 8693735056
+                        }
+                    }
+                ],
+                "galleryDescription": {
+                    "images": [
+                        {
+                            "i": "00000000-0000-0000-0000-001125745256",
+                            "n": "111111111111.jpg",
+                            "t": "image/jpeg"
+                        }
+                    ],
+                    "gallery_id": 173872987,
+                    "default_file_uuid": "00000000-0000-0000-0000-001125745256"
+                }
+            },
+            "cruiseSiteCode": []
+        }

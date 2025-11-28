@@ -5,6 +5,8 @@ import os
 from datetime import date, timedelta
 from typing import List, Tuple, Optional
 
+from dotenv import load_dotenv
+
 from src.vector_db.query import query_chroma_db
 from src.util.date_utils import validate_and_correct_date_range
 from src.util.cruise_utils import parse_cruise_results
@@ -81,7 +83,26 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
         cruise_info = cruise_data.get('cruiseInfoJson', {}).get('cruise', {})
         range_info = cruise_data.get('cruiseDateRangeInfoJson', {})
         vessel_info = cruise_data.get('vesselInfoJson', {}).get('vessel', {})
-        
+        cabins_info = cruise_data.get('vesselInfoJson', {}).get('cabinCategories', {})
+
+        min_price_info = range_info.get('minPriceInfo', [])
+        cabin_prices = [item for item in min_price_info if item.get('currency_id') == 2]
+
+        cabins_info_result = []
+        for c in cabin_prices:
+            try:
+                id = c.get('cabin_category_id')
+                cabin_info = [info for info in cabins_info if info.get('category', {}).get('cabin_category_id') == id]
+                cabins_info_result.append({
+                    'price': c.get('price_value'),
+                    'description': cabin_info[0].get('category', {}).get('description')
+                })
+            except Exception:
+                cabins_info_result.append({
+                    'minimal_price': 'none',
+                    'description': 'none'
+                })
+
         # Extract relevant information
         result = {
             'cruise_name': cruise_info.get('name_i18n', {}).get('en', cruise_info.get('name', '')),
@@ -90,6 +111,7 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
             'vessel_food': vessel_info.get('food', ''),
             'vessel_activities': vessel_info.get('activities', ''),
             'vessel_for_children': vessel_info.get('for_children', ''),
+            'cabins_info': cabins_info_result,
             'min_price': range_info.get('minPrice').get('2'),
             'website': build_cruise_url(cruise_data.get('cruiseDateRangeId'), cruise_data.get('ufl')),
             'itineraries': []
@@ -157,7 +179,5 @@ def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> s
 
 
 if __name__ == "__main__":
-    from dotenv import load_dotenv
-
     load_dotenv()
-    print(find_cruise_info('1104706', desired_date=date.fromisoformat("2026-07-10")))
+    find_cruise_info(cruise_id="1249652")
