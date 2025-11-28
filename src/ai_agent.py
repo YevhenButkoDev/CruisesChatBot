@@ -28,7 +28,7 @@ class CruiseAgent:
         load_dotenv()
         
         self.llm = ChatOpenAI(model=model_name)
-        self.tools = tools or [find_relevant_cruises, find_cruise_info, get_current_date]
+        self.tools = tools or [search_cruises, find_cruise_info, get_current_date]
         self.system_prompt = system_prompt or self._default_system_prompt()
         
         self.history_manager = MessageHistoryManager()

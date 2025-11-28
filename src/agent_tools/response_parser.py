@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from src.agent_tools.agent_tools import build_cruise_url
 from src.transformation.semantic import get_descriptive_text_and_meta
 
 
@@ -85,6 +86,7 @@ def transform_data(cruise_data):
             "min_price": data_and_price_info.get("prices", [])[0],
             "max_price": data_and_price_info.get("prices", [])[1],
             "dates": ", ".join(data_and_price_info.get("dates", [])),
-            "ranges": ", ".join(data_and_price_info.get("ranges", []))
+            "ranges": ", ".join(data_and_price_info.get("ranges", [])),
+            "website_urls": ", ".join([build_cruise_url(r, cruise_data["ufl"]) for r in data_and_price_info.get("ranges", [])])
         }
     }

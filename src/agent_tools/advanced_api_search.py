@@ -121,3 +121,4 @@ def _convert_to_request_params(param_name: str, values):
         # Handle single value: param=value
         return f"{param_name}={values}"
 
+search_cruises()
