@@ -10,8 +10,8 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Missing message" });
     }
 
-    const API_URL = "https://cruise-ai-agent-620626195243.europe-central2.run.app/ask";
-    const TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY3J1aXNlX2NsaWVudCIsImV4cCI6MTc5MzgwMzM0OSwiaWF0IjoxNzYyMjY3MzQ5fQ.ZCLt-pkUIqpPrG2EwgLCaaS7eDYlDKQ_cO3rlzAO61g";
+    const API_URL = process.env.API_URL;
+    const TOKEN = process.env.TOKEN;
 
     const response = await fetch(API_URL, {
       method: "POST",
@@ -26,8 +26,6 @@ router.post("/", async (req, res) => {
     });
 
     const data = await response.json();
-
-    console.log("AI RAW RESPONSE:", data);
 
     // --- FIX: твой API возвращает массив сообщений ---
     let reply = "AI returned empty response";

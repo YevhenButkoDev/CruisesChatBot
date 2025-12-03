@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: cruises-api-yevhen-dev
   SERVICE_NAME: cruise-ai-agent
-  EXTRACTOR_SERVICE_NAME: cruise-data-extractor
+  WIDGET_NAME: cruise-ai-widget
   REGION: europe-central2
 
 jobs:
@@ -44,6 +44,12 @@ jobs:
         docker build -f devops/DockerfileApi -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
         echo "Build completed successfully"
 
+    - name: Build Widget Docker image
+      run: |
+        echo "Building Docker image..."
+        docker build -f AI_CenterCruise-main/devops/Dockerfile -t gcr.io/$PROJECT_ID/$WIDGET_NAME:latest .
+        echo "Build completed successfully"
+
     - name: Push Api Docker image
       timeout-minutes: 15
       run: |
@@ -51,7 +57,14 @@ jobs:
         docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
         echo "Push completed successfully"
 
-    - name: Deploy to Cloud Run
+    - name: Push Widget Docker image
+      timeout-minutes: 15
+      run: |
+        echo "Pushing Docker image..."
+        docker push gcr.io/$PROJECT_ID/$WIDGET_NAME:latest
+        echo "Push completed successfully"
+
+    - name: Deploy API to Cloud Run
       timeout-minutes: 10
       run: |
         echo "Deploying to Cloud Run..."
@@ -63,7 +76,24 @@ jobs:
           --memory 2Gi \
           --cpu 1 \
           --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
-          --set-env-vars CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="https://uat.center.cruises",GCS_BUCKET_NAME=cruise_bucket \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="https://uat.center.cruises" \
           --set-secrets JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,POSTGRES_DB_URL=db-url:latest \
+          --project $PROJECT_ID
+        echo "Deployment completed successfully"
+
+    - name: Deploy Widget to Cloud Run
+      timeout-minutes: 10
+      run: |
+        echo "Deploying to Cloud Run..."
+        gcloud run deploy $WIDGET_NAME \
+          --image gcr.io/$PROJECT_ID/$WIDGET_NAME:latest \
+          --platform managed \
+          --region $REGION \
+          --allow-unauthenticated \
+          --memory 2Gi \
+          --cpu 1 \
+          --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="https://uat.center.cruises" \
+          --set-secrets API_URL=api_url:latest,TOKEN=token:latest \
           --project $PROJECT_ID
         echo "Deployment completed successfully"
