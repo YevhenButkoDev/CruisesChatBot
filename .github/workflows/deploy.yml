@@ -47,7 +47,8 @@ jobs:
     - name: Build Widget Docker image
       run: |
         echo "Building Docker image..."
-        docker build -f AI_CenterCruise-main/devops/Dockerfile -t gcr.io/$PROJECT_ID/$WIDGET_NAME:latest .
+        cd AI_CenterCruise-main
+        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$WIDGET_NAME:latest .
         echo "Build completed successfully"
 
     - name: Push Api Docker image
