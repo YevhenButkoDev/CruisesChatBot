@@ -45,7 +45,7 @@ class CruiseAgent:
             - Keep responses concise unless listing cruise options.
             
             OUTPUT FORMAT
-            When you present cruise results, ALWAYS use this structure:
+            When you present cruise results, ALWAYS use this structure, translated into user's language:
             
             {INTRO TEXT}
             
