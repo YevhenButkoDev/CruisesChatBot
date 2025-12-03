@@ -15,6 +15,16 @@ build({
   outfile: out,
   format: "iife",
   target: "es2020",
+
+  // 🔥 КЛЮЧЕВЫЕ ФИКСЫ:
+  platform: "browser",       // Собираем для браузера, не Node
+  define: {
+    "process.env.NODE_ENV": `"production"`
+  },
+  external: [
+    "fs", "path", "crypto", "express", "http", "https",
+    "os", "zlib", "net", "url", "buffer", "stream"
+  ],
 })
   .then(() => console.log("✅ Widget build complete"))
   .catch((err) => {
