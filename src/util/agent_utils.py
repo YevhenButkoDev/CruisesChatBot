@@ -3,7 +3,7 @@ import logging
 import psycopg2
 from contextlib import contextmanager
 from typing import List, Any
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import SystemMessage
 
 logger = logging.getLogger(__name__)
 

@@ -5,7 +5,6 @@ import requests
 from src.agent_tools.city_tool import get_city_id
 from src.agent_tools.country_tool import get_country_id
 from src.agent_tools.cruise_type_tool import get_type_id
-from src.agent_tools.direction_tool import get_direction_id
 from src.agent_tools.ports_tool import get_port_id
 from src.agent_tools.response_parser import extract_cruise_summary
 from src.agent_tools.rivers_tool import get_river_id

@@ -7,7 +7,6 @@ import os
 import logging
 
 from src.ai_agent import CruiseAgent
-from src.util.cloud_storage import sync_chroma_data_from_gcs, fetch_sqlite_db_from_gcs
 from dotenv import load_dotenv
 
 from src.util.jwt_utils import create_jwt_token
@@ -24,10 +23,6 @@ ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000").split(",
 
 app = FastAPI()
 security = HTTPBearer()
-
-# Sync data when module is imported (runs in Docker)
-sync_chroma_data_from_gcs()
-fetch_sqlite_db_from_gcs()
 
 agent = CruiseAgent()
 

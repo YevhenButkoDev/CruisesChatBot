@@ -8,7 +8,7 @@ import os
 import logging
 
 from src.agent_tools.advanced_api_search import search_cruises
-from src.agent_tools.agent_tools import find_relevant_cruises, find_cruise_info, get_current_date
+from src.agent_tools.agent_tools import find_cruise_info, get_current_date
 from src.util.agent_utils import AgentTimer, MessageHistoryManager, ConversationSummarizer
 
 # Configure logging

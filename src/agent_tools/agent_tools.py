@@ -2,15 +2,9 @@ import logging
 import time
 import requests
 import os
-from datetime import date, timedelta
-from typing import List, Tuple, Optional
+from datetime import date
 
 from dotenv import load_dotenv
-
-from src.vector_db.query import query_chroma_db
-from src.util.date_utils import validate_and_correct_date_range
-from src.util.cruise_utils import parse_cruise_results
-from src.util.sqlite_storage import CruiseDataStorage
 
 logger = logging.getLogger(__name__)
 
@@ -26,28 +20,6 @@ def get_current_date() -> str:
 def build_cruise_url(range, ufl):
     base_url = os.getenv('CRUISE_BASE_URL', 'http://uat.center.cruises/cruise-')
     return f"{base_url}{range}-{ufl}"
-
-def filter_cruises_by_date_range(date_from: date, date_to: date) -> List[str]:
-    """Filter enabled cruise IDs by date range."""
-    start_time = time.time()
-    
-    try:
-        # Convert dates to yyyyMM format
-        date_start = int(date_from.strftime("%Y%m"))
-        date_end = int(date_to.strftime("%Y%m"))
-        
-        storage = CruiseDataStorage()
-        cruise_ids = storage.get_cruise_ids_by_date_range(date_start, date_end)
-        
-        elapsed = time.time() - start_time
-        print(f"⏱️ DB filter cruises: {elapsed:.2f}s")
-        
-        return cruise_ids
-        
-    except Exception as e:
-        logger.error(f"❌ Database error in filter_cruises_by_date_range: {str(e)}")
-        return []
-
 
 def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
     """
@@ -136,45 +108,6 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
         
     except Exception as e:
         logger.error(f"❌ Error finding cruise info for ID {cruise_id}: {str(e)}")
-        return "no data"
-
-
-def find_relevant_cruises(user_question: str, date_from: str, date_to: str) -> str:
-    """
-    Find cruises relevant to user query within date range.
-    
-    :param user_question: English natural-language search query
-    :param date_from: Start date in ISO format 'YYYY-MM-DD'
-    :param date_to: End date in ISO format 'YYYY-MM-DD'
-    :return: Parsed cruise results or "no data"
-    """
-    start_time = time.time()
-    
-    try:
-        # Validate and correct date range
-        date_from_corrected, date_to_corrected, is_valid = validate_and_correct_date_range(date_from, date_to)
-        
-        # Filter by date if valid range provided
-        cruise_ids = []
-        if is_valid:
-            cruise_ids = filter_cruises_by_date_range(date_from_corrected, date_to_corrected)
-
-        # Query vector database
-        vector_start = time.time()
-        results = query_chroma_db(query_text=user_question, cruise_ids=cruise_ids)
-        vector_elapsed = time.time() - vector_start
-        print(f"⏱️ Vector DB query: {vector_elapsed:.2f}s")
-        
-        # Parse and format results
-        parsed_results = parse_cruise_results(results)
-
-        total_elapsed = time.time() - start_time
-        print(f"⏱️ Find relevant cruises: {total_elapsed:.2f}s")
-        
-        return parsed_results
-        
-    except Exception as e:
-        logger.error(f"❌ Error finding relevant cruises: {str(e)}")
         return "no data"
 
 
