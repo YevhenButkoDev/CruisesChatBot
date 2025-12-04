@@ -20,7 +20,7 @@ build({
   platform: "browser",       // Собираем для браузера, не Node
   define: {
     "process.env.NODE_ENV": `"production"`,
-    "process.env.API_URL": `"${process.env.API_URL || 'http://localhost:3000/api/chat'}"`
+    "process.env.WIDGET_SERVER_URL": `"${process.env.WIDGET_SERVER_URL || 'http://localhost:3000/api/chat'}"`
   },
   external: [
     "fs", "path", "crypto", "express", "http", "https",

@@ -500,7 +500,7 @@ function convertCruiseMarkdown(text) {
       const typingMsg = showTyping();
 
       try {
-        const response = await fetch(process.env.API_URL || "http://localhost:3000/api/chat", {
+        const response = await fetch(process.env.WIDGET_SERVER_URL || "http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -518,7 +518,8 @@ function convertCruiseMarkdown(text) {
 
       } catch (error) {
         typingMsg.remove();
-        addMessage("Error contacting server", "bot");
+        const errorText = error?.message || "Unknown error";
+        addMessage("Error contacting server: " + errorText, "bot");
       }
 
       isSending = false;
