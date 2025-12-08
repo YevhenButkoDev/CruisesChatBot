@@ -18,8 +18,8 @@ def get_current_date() -> str:
 
 
 def build_cruise_url(range, ufl):
-    base_url = os.getenv('CRUISE_BASE_URL', 'http://uat.center.cruises/cruise-')
-    return f"{base_url}{range}-{ufl}"
+    base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+    return f"{base_url}/cruise-{range}-{ufl}"
 
 def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
     """
