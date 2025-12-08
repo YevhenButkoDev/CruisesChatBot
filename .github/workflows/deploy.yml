@@ -10,6 +10,7 @@ env:
   SERVICE_NAME: cruise-ai-agent
   WIDGET_NAME: cruise-ai-widget
   REGION: europe-central2
+  ORIGINS: 'https://uat.center.cruises,https://center.cruises'
 
 jobs:
   deploy:
@@ -77,7 +78,7 @@ jobs:
           --memory 2Gi \
           --cpu 1 \
           --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
-          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS='https://uat.center.cruises,https://center.cruises' \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=$ORIGINS \
           --set-secrets JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,POSTGRES_DB_URL=db-url:latest \
           --project $PROJECT_ID
         echo "Deployment completed successfully"
@@ -94,7 +95,7 @@ jobs:
           --memory 2Gi \
           --cpu 1 \
           --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
-          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS='https://uat.center.cruises,https://center.cruises' \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=$ORIGINS \
           --set-secrets API_URL=api_url:latest,TOKEN=token:latest \
           --project $PROJECT_ID
         echo "Deployment completed successfully"
