@@ -97,7 +97,7 @@ def search_cruises(
 
     search_parameters = [x for x in search_parameters if x is not None]
 
-    base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises') + '/api/chatbot/cruises/batch-data?'
+    base_url = 'https://center.cruises/api/chatbot/cruises/batch-data?'
     search_url = base_url + '&'.join(search_parameters)
     print(search_url)
 
