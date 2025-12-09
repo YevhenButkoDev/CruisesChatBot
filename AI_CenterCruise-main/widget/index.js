@@ -189,7 +189,7 @@ function convertCruiseMarkdown(text) {
     html += `
       <div class="cru-card">
 
-        <div class="cc-cru-title">🌴 Круиз</div>
+        <div class="cc-cru-title">Круиз</div>
 
         <div class="cc-cru-desc">
 
