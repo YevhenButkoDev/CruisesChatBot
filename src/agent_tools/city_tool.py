@@ -39,7 +39,7 @@ def get_city_id(city_name: str):
 def _get_cities_data():
     """Load cities data from API or cache."""
     try:
-        base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+        base_url = os.getenv('CRUISE_API_BASE_URL', 'https://center.cruises')
         response = requests.get(base_url + "/api/filter/cruise-cities.json")
 
         data = response.json()

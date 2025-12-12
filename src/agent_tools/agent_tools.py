@@ -18,7 +18,7 @@ def get_current_date() -> str:
 
 
 def build_cruise_url(range, ufl):
-    base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+    base_url = os.getenv('CRUISE_API_BASE_URL', 'https://center.cruises')
     return f"{base_url}/cruise-{range}-{ufl}"
 
 def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
@@ -30,7 +30,7 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
     start_time = time.time()
     
     try:
-        base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+        base_url = os.getenv('CRUISE_API_BASE_URL', 'https://center.cruises')
         url = f"{base_url}/en/api/chatbot/cruises/batch-data?cruiseId[]={cruise_id}"
         response = requests.get(url)
         response.raise_for_status()
@@ -66,11 +66,13 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
                 id = c.get('cabin_category_id')
                 cabin_info = [info for info in cabins_info if info.get('category', {}).get('cabin_category_id') == id]
                 cabins_info_result.append({
+                    'cabin_id': id,
                     'price': c.get('price_value'),
                     'description': cabin_info[0].get('category', {}).get('description')
                 })
             except Exception:
                 cabins_info_result.append({
+                    'cabin_id': 'none',
                     'minimal_price': 'none',
                     'description': 'none'
                 })

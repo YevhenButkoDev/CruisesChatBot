@@ -9,6 +9,7 @@ import logging
 
 from src.agent_tools.advanced_api_search import search_cruises
 from src.agent_tools.agent_tools import find_cruise_info, get_current_date
+from src.agent_tools.price_calculator_tool import calculate_price
 from src.util.agent_utils import AgentTimer, MessageHistoryManager, ConversationSummarizer
 
 # Configure logging
@@ -28,7 +29,7 @@ class CruiseAgent:
         load_dotenv()
         
         self.llm = ChatOpenAI(model=model_name)
-        self.tools = tools or [search_cruises, find_cruise_info, get_current_date]
+        self.tools = tools or [search_cruises, find_cruise_info, get_current_date, calculate_price]
         self.system_prompt = system_prompt or self._default_system_prompt()
         
         self.history_manager = MessageHistoryManager()
@@ -38,6 +39,11 @@ class CruiseAgent:
         return (
             """
             You are a Cruise Travel Assistant. Your task is to guide the user from having no idea to selecting a specific cruise and cabin.
+            You can ONLY provide information to cruises, no extra functionality
+            All prices are in EUR, do not change currency
+            Always use tool to calculate final price with cabin, do not calculate on your own, if you don't know how many adults and children 
+            will be in the cabin just ask user, do not show cabin_id to a user
+            If the price can't be calculated please ask user to use calculator on the website, for that user should open cruise url and go to the bookings page
 
             LANGUAGE
             - Always reply in the user's language (English / Russian / Ukrainian). Detect automatically.

@@ -222,7 +222,7 @@ def _translate_to_russian(text: str) -> str:
 def _get_countries_data():
     """Load countries data from API or cache."""
     try:
-        base_url = os.getenv('CRUISE_API_BASE_URL', 'http://uat.center.cruises')
+        base_url = os.getenv('CRUISE_API_BASE_URL', 'https://center.cruises')
         response = requests.get(base_url + "/api/filter/cruise-countries.json")
         return response.json() if response.status_code == 200 else []
     except Exception as e:
