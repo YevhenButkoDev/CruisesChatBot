@@ -1,6 +1,8 @@
 import os
 import requests
 
+from src.agent_tools.playwright_scraper import scrape_custom_dropdown
+
 
 def calculate_price(
         range_id: int,
@@ -20,10 +22,10 @@ def calculate_price(
 
     try:
         base_url = os.getenv('CRUISE_API_BASE_URL', 'https://center.cruises')
-        response = requests.get(base_url + f"/api/chatbot/cruises/prices?cruiseDateRangeId={range_id}&cabinCategoryId={cabin_id}&adultCount={adults_count}&childCount={children_count}")
-
-        data = response.json()
-        return data['data'][0]['price']
+        return scrape_custom_dropdown(base_url + '/cruise-booking/' + str(range_id), adults_count, children_count)
     except Exception:
         return -1
 
+
+if __name__ == "__main__":
+    print(calculate_price(30948807, 1, 3, 1))
