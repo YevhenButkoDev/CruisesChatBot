@@ -2,43 +2,75 @@ name: Deploy to Cloud Run
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 env:
   PROJECT_ID: cruises-api-yevhen-dev
   SERVICE_NAME: cruise-ai-agent
+  WIDGET_NAME: cruise-ai-widget
   REGION: europe-central2
+  ORIGINS: "https://uat.center.cruises https://center.cruises"
+  CRUISE_BASE_URL: "https://center.cruises"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
     - name: Set up Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v2
-      with:
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        project_id: ${{ env.PROJECT_ID }}
+
+    - name: Verify authentication
+      run: |
+        echo "Current authenticated account:"
+        gcloud auth list
+        echo "Current project:"
+        gcloud config get-value project
 
     - name: Configure Docker for GCR
-      run: gcloud auth configure-docker
+      run: gcloud auth configure-docker --quiet
 
-    - name: Build Docker image
+    - name: Build Api Docker image
       run: |
-        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
-        docker tag gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
+        echo "Building Docker image..."
+        docker build -f devops/DockerfileApi -t gcr.io/$PROJECT_ID/$SERVICE_NAME:latest .
+        echo "Build completed successfully"
 
-    - name: Push Docker image
+    - name: Build Widget Docker image
       run: |
-        docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+        echo "Building Docker image..."
+        cd AI_CenterCruise-main
+        docker build -f devops/Dockerfile -t gcr.io/$PROJECT_ID/$WIDGET_NAME:latest .
+        echo "Build completed successfully"
+
+    - name: Push Api Docker image
+      timeout-minutes: 15
+      run: |
+        echo "Pushing Docker image..."
         docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:latest
+        echo "Push completed successfully"
 
-    - name: Deploy to Cloud Run
+    - name: Push Widget Docker image
+      timeout-minutes: 15
       run: |
+        echo "Pushing Docker image..."
+        docker push gcr.io/$PROJECT_ID/$WIDGET_NAME:latest
+        echo "Push completed successfully"
+
+    - name: Deploy API to Cloud Run
+      timeout-minutes: 10
+      run: |
+        echo "Deploying to Cloud Run..."
         gcloud run deploy $SERVICE_NAME \
           --image gcr.io/$PROJECT_ID/$SERVICE_NAME:latest \
           --platform managed \
@@ -47,6 +79,24 @@ jobs:
           --memory 2Gi \
           --cpu 1 \
           --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
-          --set-env-vars "CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080,http://127.0.0.1:3000,https://your-frontend-domain.com,GCS_BUCKET_NAME=cruise_bucket,DB_HOST=uat-db-do-user-2290310-0.d.db.ondigitalocean.com,DB_PORT=25060,DB_NAME=db_cruise,DB_USER=llm_user" \
-          --set-secrets "JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,DB_PASSWORD=db-password:latest" \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="$ORIGINS",CRUISE_API_BASE_URL=$CRUISE_BASE_URL \
+          --set-secrets JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,POSTGRES_DB_URL=db-url:latest \
           --project $PROJECT_ID
+        echo "Deployment completed successfully"
+
+    - name: Deploy Widget to Cloud Run
+      timeout-minutes: 10
+      run: |
+        echo "Deploying to Cloud Run..."
+        gcloud run deploy $WIDGET_NAME \
+          --image gcr.io/$PROJECT_ID/$WIDGET_NAME:latest \
+          --platform managed \
+          --region $REGION \
+          --allow-unauthenticated \
+          --memory 2Gi \
+          --cpu 1 \
+          --service-account cruise-ai-agent@$PROJECT_ID.iam.gserviceaccount.com \
+          --set-env-vars FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS="$ORIGINS",CRUISE_API_BASE_URL=$CRUISE_BASE_URL \
+          --set-secrets API_URL=api_url:latest,TOKEN=token:latest \
+          --project $PROJECT_ID
+        echo "Deployment completed successfully"

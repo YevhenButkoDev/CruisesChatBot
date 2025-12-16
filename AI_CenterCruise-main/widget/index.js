@@ -189,7 +189,7 @@ function convertCruiseMarkdown(text) {
     html += `
       <div class="cru-card">
 
-        <div class="cc-cru-title">🌴 Круиз</div>
+        <div class="cc-cru-title">Круиз</div>
 
         <div class="cc-cru-desc">
 
@@ -500,7 +500,7 @@ function convertCruiseMarkdown(text) {
       const typingMsg = showTyping();
 
       try {
-        const response = await fetch("http://localhost:3000/api/chat", {
+        const response = await fetch(process.env.WIDGET_SERVER_URL || "http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -518,7 +518,8 @@ function convertCruiseMarkdown(text) {
 
       } catch (error) {
         typingMsg.remove();
-        addMessage("Error contacting server", "bot");
+        const errorText = error?.message || "Unknown error";
+        addMessage("Error contacting server: " + errorText, "bot");
       }
 
       isSending = false;

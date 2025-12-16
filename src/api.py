@@ -7,8 +7,9 @@ import os
 import logging
 
 from src.ai_agent import CruiseAgent
-from src.util.cloud_storage import sync_chroma_data_from_gcs
 from dotenv import load_dotenv
+
+from src.util.jwt_utils import create_jwt_token
 
 load_dotenv()
 
@@ -18,13 +19,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Configuration
 JWT_SECRET = os.getenv("JWT_SECRET", "your-secret-key")
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000").split(",")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000").split(" ")
 
 app = FastAPI()
 security = HTTPBearer()
-
-# Sync data when module is imported (runs in Docker)
-sync_chroma_data_from_gcs()
 
 agent = CruiseAgent()
 
@@ -44,7 +42,8 @@ def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(security)):
         return payload
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
-    except jwt.InvalidTokenError:
+    except jwt.InvalidTokenError as er:
+        logging.info(er)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
 
@@ -77,8 +76,14 @@ async def ask_agent(request: AgentRequest, user: dict = Depends(verify_jwt)):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/debug-token")
+def debug_token():
+    return {
+        "token": create_jwt_token(user_id="cruise_client", expires_in_hours=24 * 365),
+        "secret": JWT_SECRET
+    }
+
 if __name__ == "__main__":
     import uvicorn
 
-    sync_chroma_data_from_gcs()
     uvicorn.run(app, host="0.0.0.0", port=8000)

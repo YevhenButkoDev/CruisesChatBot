@@ -35,6 +35,16 @@ gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
     --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
     --role="roles/secretmanager.secretAccessor"
 
+# Grant Artifact Registry permissions (for pushing Docker images)
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+    --role="roles/artifactregistry.writer"
+
+# Grant Service Account User permissions (for Cloud Run deployment)
+gcloud projects add-iam-policy-binding cruises-api-yevhen-dev \
+    --member="serviceAccount:cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com" \
+    --role="roles/iam.serviceAccountUser"
+
 # Create service account key for local development
 gcloud iam service-accounts keys create devops/secret/service-account-key.json \
     --iam-account=cruise-ai-agent@cruises-api-yevhen-dev.iam.gserviceaccount.com

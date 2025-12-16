@@ -14,11 +14,7 @@ services:
       GOOGLE_APPLICATION_CREDENTIALS: /app/service-account-key.json
       CHROMA_DATA_DIR: ${CHROMA_DATA_DIR}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
       FIRESTORE_PROJECT_ID: ${FIRESTORE_PROJECT_ID}
+      POSTGRES_DB_URL: ${POSTGRES_DB_URL}
     ports:
-      - "8000:8000"
+      - "8000:8080"
