@@ -252,7 +252,7 @@
     }
 
     .cc-msg {
-    max-width: 80%;
+    max-width: 100%;
     padding: 0px 10px;
     border-radius: 16px;
     font-size: 14px;
@@ -663,9 +663,7 @@ width: 30px;
 .cc-dash {
   display: none !important;
 }
-.cc-text.bot br + "-" {
-  display: none;
-}
+
 /* Красивая кнопка-ссылка */
 .cc-cruise-btn {
   display: block;
