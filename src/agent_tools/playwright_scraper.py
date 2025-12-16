@@ -40,5 +40,5 @@ if __name__ == "__main__":
     url = "https://center.cruises/cruise-booking/30948807/"
     option_selector = "2"  # Option to select
 
-    result_html = scrape_custom_dropdown(url, option_selector)
+    result_html = scrape_custom_dropdown(url, 2, 0)
     print(result_html)

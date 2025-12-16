@@ -27,8 +27,8 @@ gcloud run deploy $SERVICE_NAME \
   --memory 2Gi \
   --cpu 1 \
   --service-account $SERVICE_ACCOUNT \
-  --set-env-vars "CHROMA_DATA_DIR=/tmp/chroma_data,FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=https://uat.center.cruises,GCS_BUCKET_NAME=cruise_bucket,DB_HOST=uat-db-do-user-2290310-0.d.db.ondigitalocean.com,DB_PORT=25060,DB_NAME=db_cruise,DB_USER=llm_user" \
-  --set-secrets "JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,DB_PASSWORD=db-password:latest" \
+  --set-env-vars "FIRESTORE_PROJECT_ID=$PROJECT_ID,JWT_ALGORITHM=HS256,ALLOWED_ORIGINS=https://uat.center.cruises,DB_PORT=25060,DB_NAME=db_cruise,DB_USER=llm_user" \
+  --set-secrets "JWT_SECRET=jwt-secret:latest,OPENAI_API_KEY=openai-api-key:latest,DB_PASSWORD=db-password:latest,SERGEY_API=sergey_api:latest" \
   --project $PROJECT_ID
 
 echo "Deployment complete!"
