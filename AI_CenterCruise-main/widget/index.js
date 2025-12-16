@@ -109,7 +109,7 @@ function convertCruiseMarkdown(text) {
   const URL_REG = /(https?:\/\/\S+)/i;
 
   const PRICE_REG =
-    /(?:Price[:\s-]*from\s*\$?|Цена[:\s-]*(?:от|from)\s*)(\d[\d\s]*)/i;
+    /(?:Price[:\s-]*from\s*|Цена[:\s-]*от\s*)(\d[\d\s]*)/i;
 
   const NIGHTS_REG =
     /(?:Nights[:\s-]*(\d+)|Ночей[:\s-]*(\d+)|(\d+)\s*ноч)/i;
@@ -135,7 +135,9 @@ function convertCruiseMarkdown(text) {
     const price = priceMatch ? priceMatch[1].trim() : "";
 
     const nightsMatch = raw.match(NIGHTS_REG);
-    const nights = nightsMatch ? (nightsMatch[1] || nightsMatch[2] || nightsMatch[3]) : "";
+    const nights = nightsMatch
+      ? (nightsMatch[1] || nightsMatch[2] || nightsMatch[3])
+      : "";
 
     const depMatch = raw.match(DEPARTURE_REG);
     const departure = depMatch ? depMatch[1].trim() : "";
@@ -202,21 +204,29 @@ function convertCruiseMarkdown(text) {
   // ---------- RENDER ----------
   let html = "";
 
+  // free text
   freeText.forEach(t => {
     html += `<div class="cc-cru-text">${t}</div>`;
   });
 
+  // cruise cards
   cruises.forEach(c => {
     html += `
-      <div class="cru-card">
+      <div class="cc-cru-card">
 
         <div class="cc-cru-title">Круиз</div>
 
         <div class="cc-cru-desc">
 
           <div class="cc-cru-toprow">
-            ${c.nights ? `<div class="cc-cru-nights"><b>${c.nights} ночей</b></div>` : ""}
-            ${c.price ? `<div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>` : ""}
+            ${c.nights
+              ? `<div class="cc-cru-nights"><b>${c.nights} ночей</b></div>`
+              : ""
+            }
+            ${c.price
+              ? `<div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>`
+              : ""
+            }
           </div>
 
           ${c.departure
@@ -247,69 +257,6 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
-
-
-    // Non-cruise text:
-    freeText.push(line);
-  });
-
-  saveBlock();
-
-  // ---------- RENDER ----------
-  let html = "";
-
-  // Render free text normally
-  freeText.forEach(t => {
-    html += `<div class="cc-cru-text">${t}</div>`;
-  });
-
-  // Render cruise cards
-  cruises.forEach(c => {
-    html += `
-      <div class="cru-card">
-
-        <div class="cc-cru-title">Круиз</div>
-
-        <div class="cc-cru-desc">
-
-          <div class="cc-cru-toprow">
-            <div class="cc-cru-nights"><b>${c.nights || "7"} ночей</b></div>
-            <div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>
-          </div>
-
-          ${
-            c.departure
-              ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
-              : ""
-          }
-
-          ${
-            c.routeList.length
-              ? `
-              <div class="cc-cru-route-wrapper">
-                <div class="cc-cru-route-title">Маршрут:</div>
-                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
-              </div>`
-              : ""
-          }
-
-        </div>
-
-        ${
-          c.url
-            ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
-            : `<button class="cc-cru-btn">Подробнее →</button>`
-        }
-
-      </div>
-    `;
-  });
-
-  return html;
-}
-
-
-
     //
     // СОЗДАНИЕ UI
     //
