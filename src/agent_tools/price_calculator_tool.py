@@ -1,8 +1,6 @@
 import os
 import requests
 
-from src.agent_tools.playwright_scraper import scrape_custom_dropdown
-
 
 def calculate_price(
         range_id: int,
