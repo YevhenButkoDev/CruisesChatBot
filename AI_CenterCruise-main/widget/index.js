@@ -102,104 +102,115 @@ function convertCruiseMarkdown(text) {
   const cruises = [];
   const freeText = [];
 
-  let block = [];
-  let inCruiseBlock = false;
+  let block = null;
 
-  // ---------- REGEX ----------
-  const URL_REG = /(https?:\/\/\S+)/i;
+  // ===== REGEX =====
+  const URL_REG = /(https?:\/\/[^\s]+)/i;
 
   const PRICE_REG =
-    /(?:Price[:\s-]*from\s*\$?|Цена[:\s-]*(?:от|from)\s*)(\d[\d\s]*)/i;
+    /(?:Price|Цена)\s*[:\-]?\s*(?:from|от)?\s*([0-9][0-9\s]*)/i;
 
   const NIGHTS_REG =
-    /(?:Nights[:\s-]*(\d+)|Ночей[:\s-]*(\d+)|(\d+)\s*ноч)/i;
+    /(?:Nights?|Ночей?|ночей?)\s*[:\-]?\s*([0-9]+)/i;
 
-  const DEPARTURE_REG =
-    /(?:Departure\/Return|Отправление\/Возврат)[:\s-]*(.+)/i;
+  const DEPARTURE_START_REG =
+    /^(?:Departure\/Return|Departure|Отправление\/Возврат|Отправление)/i;
 
   const ROUTE_TITLE_REG =
-    /^(Route|Маршрут)[:\s-]*/i;
+    /^(?:Route|Маршрут)\s*[:\-]?$/i;
 
-  const STOP_REG =
-    /^(Nights|Ночей|Price|Цена|Link|Ссылка)/i;
-
-  // ---------- SAVE BLOCK ----------
+  // ===== SAVE BLOCK =====
   function saveBlock() {
-    if (!block.length) return;
+    if (!block || !block.length) return;
 
     const raw = block.join("\n");
 
-    const url = (raw.match(URL_REG) || [])[1] || "";
+    const cruise = {
+      url: (raw.match(URL_REG) || [])[1] || "",
+      price: "",
+      nights: "",
+      departure: "",
+      routeList: []
+    };
 
     const priceMatch = raw.match(PRICE_REG);
-    const price = priceMatch ? priceMatch[1].trim() : "";
+    if (priceMatch) cruise.price = priceMatch[1].trim();
 
     const nightsMatch = raw.match(NIGHTS_REG);
-    const nights = nightsMatch ? (nightsMatch[1] || nightsMatch[2] || nightsMatch[3]) : "";
+    if (nightsMatch) cruise.nights = nightsMatch[1];
 
-    const depMatch = raw.match(DEPARTURE_REG);
-    const departure = depMatch ? depMatch[1].trim() : "";
+    // departure
+    block.forEach(line => {
+      if (DEPARTURE_START_REG.test(line)) {
+        cruise.departure = line.replace(DEPARTURE_START_REG, "").replace(/^[:\-]/, "").trim();
+      }
+    });
 
-    // ---- ROUTE (multiline safe) ----
-    let routeList = [];
-    const routeStart = block.findIndex(l => ROUTE_TITLE_REG.test(l));
+    // route (multiline)
+    let routeStarted = false;
+    const routeLines = [];
 
-    if (routeStart !== -1) {
-      const routeLines = [];
-
-      for (let i = routeStart + 1; i < block.length; i++) {
-        if (STOP_REG.test(block[i])) break;
-        routeLines.push(block[i]);
+    block.forEach(line => {
+      if (ROUTE_TITLE_REG.test(line)) {
+        routeStarted = true;
+        return;
       }
 
-      routeList = routeLines
-        .join(" ")
-        .split(/→|,/)
-        .map(s => s.trim())
-        .filter(Boolean);
-    }
+      if (routeStarted) {
+        if (
+          PRICE_REG.test(line) ||
+          URL_REG.test(line) ||
+          NIGHTS_REG.test(line) ||
+          DEPARTURE_START_REG.test(line)
+        ) {
+          routeStarted = false;
+          return;
+        }
+        routeLines.push(line);
+      }
+    });
 
-    const hasCruiseData =
-      url || price || nights || departure || routeList.length;
+    cruise.routeList = routeLines
+      .join(" ")
+      .split(/→|,/)
+      .map(s => s.trim())
+      .filter(Boolean);
 
-    if (hasCruiseData) {
-      cruises.push({ nights, price, url, departure, routeList });
+    const hasData =
+      cruise.url ||
+      cruise.price ||
+      cruise.nights ||
+      cruise.departure ||
+      cruise.routeList.length;
+
+    if (hasData) {
+      cruises.push(cruise);
     } else {
       freeText.push(raw);
     }
 
-    block = [];
-    inCruiseBlock = false;
+    block = null;
   }
 
-  // ---------- BUILD BLOCKS ----------
+  // ===== PARSE =====
   lines.forEach(line => {
-    // START cruise block
-    if (DEPARTURE_REG.test(line)) {
+    if (DEPARTURE_START_REG.test(line)) {
       saveBlock();
-      inCruiseBlock = true;
+      block = [line];
+      return;
+    }
+
+    if (block) {
       block.push(line);
       return;
     }
 
-    if (inCruiseBlock) {
-      block.push(line);
-
-      // END cruise block when link found
-      if (URL_REG.test(line)) {
-        saveBlock();
-      }
-
-      return;
-    }
-
-    // free text
     freeText.push(line);
   });
 
   saveBlock();
 
-  // ---------- RENDER ----------
+  // ===== RENDER =====
   let html = "";
 
   freeText.forEach(t => {
@@ -208,7 +219,7 @@ function convertCruiseMarkdown(text) {
 
   cruises.forEach(c => {
     html += `
-      <div class="cru-card">
+      <div class="cc-cru-card">
 
         <div class="cc-cru-title">Круиз</div>
 
@@ -225,12 +236,10 @@ function convertCruiseMarkdown(text) {
           }
 
           ${c.routeList.length
-            ? `
-              <div class="cc-cru-route-wrapper">
-                <div class="cc-cru-route-title">Маршрут:</div>
-                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
-              </div>
-            `
+            ? `<div class="cc-cru-route-wrapper">
+                 <div class="cc-cru-route-title">Маршрут:</div>
+                 <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
+               </div>`
             : ""
           }
 
@@ -247,68 +256,6 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
-
-
-    // Non-cruise text:
-    freeText.push(line);
-  });
-
-  saveBlock();
-
-  // ---------- RENDER ----------
-  let html = "";
-
-  // Render free text normally
-  freeText.forEach(t => {
-    html += `<div class="cc-cru-text">${t}</div>`;
-  });
-
-  // Render cruise cards
-  cruises.forEach(c => {
-    html += `
-      <div class="cru-card">
-
-        <div class="cc-cru-title">Круиз</div>
-
-        <div class="cc-cru-desc">
-
-          <div class="cc-cru-toprow">
-            <div class="cc-cru-nights"><b>${c.nights || "7"} ночей</b></div>
-            <div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>
-          </div>
-
-          ${
-            c.departure
-              ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
-              : ""
-          }
-
-          ${
-            c.routeList.length
-              ? `
-              <div class="cc-cru-route-wrapper">
-                <div class="cc-cru-route-title">Маршрут:</div>
-                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
-              </div>`
-              : ""
-          }
-
-        </div>
-
-        ${
-          c.url
-            ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
-            : `<button class="cc-cru-btn">Подробнее →</button>`
-        }
-
-      </div>
-    `;
-  });
-
-  return html;
-}
-
-
 
     //
     // СОЗДАНИЕ UI
