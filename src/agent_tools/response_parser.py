@@ -30,7 +30,7 @@ def extract_cruise_summary(data):
             transformed = transform_data(cruise_record)
             batch_data.append(transformed)
         return batch_data
-    except:
+    except Exception as e:
         return {}
 
 
@@ -136,7 +136,7 @@ def get_descriptive_text_and_meta(cruise_data):
 
     # Extract and format data points
     name = get_i18n_text(cruise_info, ["cruise", "name_i18n"])
-    description = remove_html_tags(get_nested(cruise_info, ["cruise", "description"])).split()[:200]
+    description = " ".join(remove_html_tags(get_nested(cruise_info, ["cruise", "description"])).split()[:200])
     simple_itinerary = remove_html_tags(get_nested(cruise_info, ["cruise", "simple_itinerary_description"]))
 
     rivers = ", ".join([get_i18n_text(r, ["name_i18n"]) for r in get_nested(cruise_info, ["rivers"]) or []])

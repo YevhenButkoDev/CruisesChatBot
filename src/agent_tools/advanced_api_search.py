@@ -87,7 +87,7 @@ def search_cruises(
         search_parameters.append(_convert_to_request_params("time.toDate", time_to_date))
 
     if time_duration is not None:
-        search_parameters.append(_convert_to_request_params("time.durations", time_to_date))
+        search_parameters.append(_convert_to_request_params("time.durations", time_duration))
 
     if price_min is not None:
         search_parameters.append(_convert_to_request_params("price.price", price_min))
