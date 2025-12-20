@@ -27,4 +27,4 @@ def calculate_price(
 
 
 if __name__ == "__main__":
-    print(calculate_price(30948807, 1, 3, 1))
+    print(calculate_price(30936434,1, 2, 0))
