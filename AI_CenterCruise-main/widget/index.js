@@ -101,193 +101,44 @@
       </svg>
     `;
 
-function convertCruiseMarkdown(text, t) {
-  if (!text) return "";
-
-
-
-  const lines = text
-    .split("\n")
-    .map(line => line.trim())
-    .filter(Boolean);
-
-  const cruises = [];
-  const freeText = [];
-
-  let block = null;
-
-  // =========================
-  // REGEX (EN / RU / UA)
-  // =========================
-
-  const BLOCK_START_REG =
-    /^(?:Ship|Судно|Корабель|Departure\/Return|Departure|Отправление\/Возврат|Отправление|Відправлення\/Повернення|Відправлення)/i;
-
-  const SHIP_REG =
-    /^(?:Ship|Судно|Корабель)\s*[:\-]?\s*(.+)$/i;
-
-  const DATES_REG =
-    /^(?:Dates|Даты|Дати)\s*[:\-]?\s*(.+)$/i;
-
-  const PRICE_REG =
-    /(?:Price|Цена|Ціна)\s*[:\-]?\s*(?:from|от|від)?\s*([0-9][0-9\s]*)/i;
-
-  const NIGHTS_REG =
-    /(?:Nights?|Ночей?|Ночі)\s*[:\-]?\s*([0-9]+)/i;
-
-  const DEPARTURE_REG =
-    /^(?:Departure\/Return|Departure|Отправление\/Возврат|Отправление|Відправлення\/Повернення|Відправлення)\s*[:\-]?\s*(.+)$/i;
-
-  const ROUTE_TITLE_REG =
-    /^(?:Route|Маршрут)\s*[:\-]?$/i;
-
-  const URL_REG =
-    /(https?:\/\/[^\s]+)/i;
-
-  // =========================
-  // SAVE BLOCK
-  // =========================
-
-  function saveBlock() {
-    if (!block || !block.length) return;
-
-    const raw = block.join("\n");
-
-    const cruise = {
-      ship: "",
-      dates: "",
-      nights: "",
-      price: "",
-      departure: "",
-      routeList: [],
-      url: ""
-    };
-
-    const shipMatch = raw.match(SHIP_REG);
-    if (shipMatch) cruise.ship = shipMatch[1].trim();
-
-    const datesMatch = raw.match(DATES_REG);
-    if (datesMatch) cruise.dates = datesMatch[1].trim();
-
-    const priceMatch = raw.match(PRICE_REG);
-    if (priceMatch) cruise.price = priceMatch[1].trim();
-
-    const nightsMatch = raw.match(NIGHTS_REG);
-    if (nightsMatch) cruise.nights = nightsMatch[1];
-
-    block.forEach(line => {
-      const depMatch = line.match(DEPARTURE_REG);
-      if (depMatch) cruise.departure = depMatch[1].trim();
-    });
-
-    let routeStarted = false;
-    const routeLines = [];
-
-    block.forEach(line => {
-      if (ROUTE_TITLE_REG.test(line)) {
-        routeStarted = true;
-        return;
-      }
-
-      if (routeStarted) {
-        if (
-          SHIP_REG.test(line) ||
-          DATES_REG.test(line) ||
-          PRICE_REG.test(line) ||
-          NIGHTS_REG.test(line) ||
-          DEPARTURE_REG.test(line) ||
-          URL_REG.test(line)
-        ) {
-          routeStarted = false;
-          return;
-        }
-        routeLines.push(line);
-      }
-    });
-
-    cruise.routeList = routeLines
-      .join(" ")
-      .split(/→|,/)
-      .map(s => s.trim())
-      .filter(Boolean);
-
-    const urlMatch = raw.match(URL_REG);
-    if (urlMatch) cruise.url = urlMatch[1];
-
-    if (cruise.ship || cruise.departure || cruise.routeList.length) {
-      cruises.push(cruise);
-    } else {
-      freeText.push(raw);
-    }
-
-    block = null;
+function renderCruisesFromJson(data, t) {
+  if (!data || !Array.isArray(data.cruises)) {
+    return `<div class="cc-cru-text">${t.invalidResponse || "No cruise data available"}</div>`;
   }
-
-  // =========================
-  // PARSE
-  // =========================
-
-  lines.forEach(line => {
-    if (BLOCK_START_REG.test(line)) {
-      saveBlock();
-      block = [line];
-      return;
-    }
-
-    if (block) block.push(line);
-    else freeText.push(line);
-  });
-
-  saveBlock();
-
-  // =========================
-  // RENDER
-  // =========================
 
   let html = "";
 
-  freeText.forEach(tl => {
-    html += `<div class="cc-cru-text">${tl}</div>`;
-  });
-
-  cruises.forEach((c, index) => {
+  data.cruises.forEach((c, index) => {
     html += `
       <div class="cc-cru-card">
-
         <div class="cc-cru-header">
           <div class="cc-cru-index">${index + 1}</div>
-          <div class="cc-cru-ship">${c.ship || t.cruise}</div>
+          <div class="cc-cru-ship">${c.ship}</div>
         </div>
 
         <div class="cc-cru-desc">
-
           <div class="cc-cru-toprow">
-            ${c.nights ? `<div>${c.nights} ${t.nights}</div>` : ""}
-            ${c.price ? `<div>${t.priceFrom} ${c.price} €</div>` : ""}
+            <div>${c.nights} ${t.nights}</div>
+            <div>${t.priceFrom} ${c.price_from} ${c.currency}</div>
           </div>
 
-          ${c.dates ? `<div><b>${t.dates}:</b> ${c.dates}</div>` : ""}
-
-          ${c.departure ? `<div><b>${t.departure}:</b> ${c.departure}</div>` : ""}
-
-          ${c.routeList.length
-            ? `<div><b>${t.route}:</b> ${c.routeList.join(" → ")}</div>`
-            : ""
-          }
-
+          <div><b>${t.dates}:</b> ${c.dates}</div>
+          <div><b>${t.departure}:</b> ${c.departure_return}</div>
+          <div><b>${t.route}:</b> ${c.route}</div>
         </div>
 
-        ${c.url
-          ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">${t.details}</a>`
-          : ""
-        }
-
+        <a href="${c.link}" class="cc-cru-btn" target="_blank">${t.details}</a>
       </div>
     `;
   });
 
+  if (data.next_step) {
+    html += `<div class="cc-cru-text">${data.next_step}</div>`;
+  }
+
   return html;
 }
+
 
 
 
@@ -417,26 +268,26 @@ function convertCruiseMarkdown(text, t) {
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
-    function addMessage(text, who = "bot") {
+   function addMessage(content, who = "bot") {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
   if (who === "bot") {
-    msg.innerHTML = `
-      <div class="cc-avatar">
-        ${BOT_AVATAR_SVG}
-      </div>
+    let html = content;
 
-      <div class="cc-bot-wrapper">
-${convertCruiseMarkdown(text, t)}
-      </div>
+    try {
+      const json = JSON.parse(content);
+      html = renderCruisesFromJson(json, t);
+    } catch (e) {
+      html = `<div class="cc-cru-text">${content}</div>`;
+    }
+
+    msg.innerHTML = `
+      <div class="cc-avatar">${BOT_AVATAR_SVG}</div>
+      <div class="cc-bot-wrapper">${html}</div>
     `;
   } else {
-    msg.innerHTML = `
-      <div class="cc-text user">
-        ${text}
-      </div>
-    `;
+    msg.innerHTML = `<div class="cc-text user">${content}</div>`;
   }
 
   body.append(msg);
