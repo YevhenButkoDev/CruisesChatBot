@@ -101,11 +101,10 @@
       </svg>
     `;
 
-function convertCruiseMarkdown(text) {
+function convertCruiseMarkdown(text, t) {
   if (!text) return "";
 
-  const lang = detectLanguage(text);
-  const t = UI_TEXT[lang];
+
 
   const lines = text
     .split("\n")
@@ -429,7 +428,7 @@ function convertCruiseMarkdown(text) {
       </div>
 
       <div class="cc-bot-wrapper">
-        ${convertCruiseMarkdown(text)}
+${convertCruiseMarkdown(text, t)}
       </div>
     `;
   } else {
