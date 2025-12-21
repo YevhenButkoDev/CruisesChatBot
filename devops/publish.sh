@@ -7,7 +7,7 @@ TAG="latest"
 
 # Build the image
 echo "Building Docker image..."
-docker build -f Dockerfile -t $IMAGE_NAME ..
+docker build -f DockerfileApi -t $IMAGE_NAME ..
 
 # Tag for Docker Hub
 echo "Tagging image for Docker Hub..."

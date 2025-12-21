@@ -53,4 +53,6 @@ app.get("/widget/style.css", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running: http://localhost:${PORT}`);
+  console.log('Environment:', process.env.NODE_ENV || 'development');
+  console.log('Logging enabled for Docker container');
 });

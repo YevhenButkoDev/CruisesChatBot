@@ -15,6 +15,17 @@ build({
   outfile: out,
   format: "iife",
   target: "es2020",
+
+  // 🔥 КЛЮЧЕВЫЕ ФИКСЫ:
+  platform: "browser",       // Собираем для браузера, не Node
+  define: {
+    "process.env.NODE_ENV": `"production"`,
+    "process.env.WIDGET_SERVER_URL": `"${process.env.WIDGET_SERVER_URL || 'http://localhost:3000/api/chat'}"`
+  },
+  external: [
+    "fs", "path", "crypto", "express", "http", "https",
+    "os", "zlib", "net", "url", "buffer", "stream"
+  ],
 })
   .then(() => console.log("✅ Widget build complete"))
   .catch((err) => {

@@ -1,12 +1,9 @@
 psycopg2-binary
+psycopg[binary]
 fastapi
 uvicorn
-chromadb
 beautifulsoup4
-googletrans
-langdetect
 python-dotenv
-sentence-transformers
 langchain
 langchain-core
 langchain-community
@@ -14,5 +11,6 @@ langchain-openai
 langgraph
 pydantic>=2.0
 PyJWT==2.8.0
-google-cloud-storage
-langgraph-checkpoint-firestore
+langgraph-checkpoint-postgres
+psutil
+
