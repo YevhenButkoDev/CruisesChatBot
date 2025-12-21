@@ -8,6 +8,16 @@
     }
   }
 
+  function detectLanguage(text) {
+  if (!text) return "ru";
+
+  if (/[іїєґ]/i.test(text)) return "ua";
+  if (/[a-z]/i.test(text)) return "en";
+
+  return "ru";
+}
+
+
   runOutsideAngular(function () {
 
     const script = document.currentScript;
