@@ -8,16 +8,6 @@
     }
   }
 
-  function detectLanguage(text) {
-  if (!text) return "ru";
-
-  if (/[іїєґ]/i.test(text)) return "ua";
-  if (/[a-z]/i.test(text)) return "en";
-
-  return "ru";
-}
-
-
   runOutsideAngular(function () {
 
     const script = document.currentScript;
@@ -101,44 +91,143 @@
       </svg>
     `;
 
-function renderCruisesFromJson(data, t) {
-  if (!data || !Array.isArray(data.cruises)) {
-    return `<div class="cc-cru-text">${t.invalidResponse || "No cruise data available"}</div>`;
+function convertCruiseMarkdown(text) {
+  if (!text) return "";
+
+  const lines = text
+    .split("\n")
+    .map(l => l.trim())
+    .filter(Boolean);
+
+  const cruises = [];
+  const freeText = [];
+  let block = [];
+  let inCruiseBlock = false;
+
+  const URL_REG = /(https?:\/\/\S+)/i;
+  const PRICE_REG = /(?:Price[:\s-]*from\s*\$?|Цена[:\s-]*от\s*\$?)(\d[\d\s]*)/i;
+  const NIGHTS_REG = /Nights[:\s-]*(\d+)|(\d+)\s*ноч/i;
+
+  // SAVE BLOCK
+  function saveBlock() {
+    if (!block.length) return;
+
+    const raw = block.join("\n");
+
+    // extract fields
+    const url = (raw.match(URL_REG) || [])[1] || "";
+    const price = (raw.match(PRICE_REG) || [])[1] || "";
+    const nm = raw.match(NIGHTS_REG);
+    const nights = nm ? nm[1] || nm[2] : "";
+
+    const depMatch = raw.match(/Departure\/Return[:\s-]*([^\n]+)/i);
+    const departure = depMatch ? depMatch[1].trim() : "";
+
+    // ROUTE multiline
+    let routeList = [];
+    const startIdx = block.findIndex(l => /^Route[:\s-]*/i.test(l));
+    if (startIdx !== -1) {
+      const routeLines = [];
+      for (let i = startIdx + 1; i < block.length; i++) {
+        if (/^(Nights|Price|Link)/i.test(block[i])) break;
+        routeLines.push(block[i]);
+      }
+      routeList = routeLines.join(" ")
+        .split(/→|,/)
+        .map(s => s.trim())
+        .filter(Boolean);
+    }
+
+    const hasData = url || price || nights || departure || routeList.length;
+
+    if (hasData) {
+      cruises.push({ nights, price, url, departure, routeList });
+    } else {
+      freeText.push(raw);
+    }
+
+    block = [];
+    inCruiseBlock = false;
   }
 
+  // BUILD BLOCKS
+  lines.forEach(line => {
+    // START new cruise block only if Departure/Return found
+    if (/^Departure\/Return/i.test(line)) {
+      saveBlock();
+      inCruiseBlock = true;
+      block.push(line);
+      return;
+    }
+
+    if (inCruiseBlock) {
+      block.push(line);
+
+      if (URL_REG.test(line)) {
+        saveBlock();
+      }
+
+      return;
+    }
+
+    // Non-cruise text:
+    freeText.push(line);
+  });
+
+  saveBlock();
+
+  // ---------- RENDER ----------
   let html = "";
 
-  data.cruises.forEach((c, index) => {
+  // Render free text normally
+  freeText.forEach(t => {
+    html += `<div class="cc-cru-text">${t}</div>`;
+  });
+
+  // Render cruise cards
+  cruises.forEach(c => {
     html += `
-      <div class="cc-cru-card">
-        <div class="cc-cru-header">
-          <div class="cc-cru-index">${index + 1}</div>
-          <div class="cc-cru-ship">${c.ship}</div>
-        </div>
+      <div class="cru-card">
+
+        <div class="cc-cru-title">Круиз</div>
 
         <div class="cc-cru-desc">
+
           <div class="cc-cru-toprow">
-            <div>${c.nights} ${t.nights}</div>
-            <div>${t.priceFrom} ${c.price_from} ${c.currency}</div>
+            <div class="cc-cru-nights"><b>${c.nights || "7"} ночей</b></div>
+            <div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>
           </div>
 
-          <div><b>${t.dates}:</b> ${c.dates}</div>
-          <div><b>${t.departure}:</b> ${c.departure_return}</div>
-          <div><b>${t.route}:</b> ${c.route}</div>
+          ${
+            c.departure
+              ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
+              : ""
+          }
+
+          ${
+            c.routeList.length
+              ? `
+              <div class="cc-cru-route-wrapper">
+                <div class="cc-cru-route-title">Маршрут:</div>
+                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
+              </div>`
+              : ""
+          }
+
         </div>
 
-        <a href="${c.link}" class="cc-cru-btn" target="_blank">${t.details}</a>
+        ${
+          c.url
+            ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
+            : `<button class="cc-cru-btn">Подробнее →</button>`
+        }
+
       </div>
     `;
   });
 
-  if (data.next_step) {
-    html += `<div class="cc-cru-text">${data.next_step}</div>`;
-  }
-
   return html;
 }
-
 
 
 
@@ -268,26 +357,26 @@ function renderCruisesFromJson(data, t) {
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
-   function addMessage(content, who = "bot") {
+    function addMessage(text, who = "bot") {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
   if (who === "bot") {
-    let html = content;
-
-    try {
-      const json = JSON.parse(content);
-      html = renderCruisesFromJson(json, t);
-    } catch (e) {
-      html = `<div class="cc-cru-text">${content}</div>`;
-    }
-
     msg.innerHTML = `
-      <div class="cc-avatar">${BOT_AVATAR_SVG}</div>
-      <div class="cc-bot-wrapper">${html}</div>
+      <div class="cc-avatar">
+        ${BOT_AVATAR_SVG}
+      </div>
+
+      <div class="cc-bot-wrapper">
+        ${convertCruiseMarkdown(text)}
+      </div>
     `;
   } else {
-    msg.innerHTML = `<div class="cc-text user">${content}</div>`;
+    msg.innerHTML = `
+      <div class="cc-text user">
+        ${text}
+      </div>
+    `;
   }
 
   body.append(msg);
@@ -411,7 +500,7 @@ function renderCruisesFromJson(data, t) {
       const typingMsg = showTyping();
 
       try {
-        const response = await fetch(process.env.WIDGET_SERVER_URL || "http://localhost:3000/api/chat", {
+        const response = await fetch("http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -429,8 +518,7 @@ function renderCruisesFromJson(data, t) {
 
       } catch (error) {
         typingMsg.remove();
-        const errorText = error?.message || "Unknown error";
-        addMessage("Error contacting server: " + errorText, "bot");
+        addMessage("Error contacting server", "bot");
       }
 
       isSending = false;
