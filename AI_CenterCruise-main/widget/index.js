@@ -90,172 +90,22 @@
         <rect x="14" y="4" width="4" height="16"></rect>
       </svg>
     `;
+if (who === "bot") {
+  msg.innerHTML = `
+    <div class="cc-avatar">
+      ${BOT_AVATAR_SVG}
+    </div>
 
-function convertCruiseMarkdown(text) {
-  if (!text) return "";
-
-  const lines = text
-    .split("\n")
-    .map(l => l.trim())
-    .filter(Boolean);
-
-  const cruises = [];
-  const freeText = [];
-
-  let block = null;
-
-  // ===== REGEX =====
-  const URL_REG = /(https?:\/\/[^\s]+)/i;
-
-  const PRICE_REG =
-    /(?:Price|Цена)\s*[:\-]?\s*(?:from|от)?\s*([0-9][0-9\s]*)/i;
-
-  const NIGHTS_REG =
-    /(?:Nights?|Ночей?|ночей?)\s*[:\-]?\s*([0-9]+)/i;
-
-  const DEPARTURE_START_REG =
-    /^(?:Departure\/Return|Departure|Отправление\/Возврат|Отправление)/i;
-
-  const ROUTE_TITLE_REG =
-    /^(?:Route|Маршрут)\s*[:\-]?$/i;
-
-  // ===== SAVE BLOCK =====
-  function saveBlock() {
-    if (!block || !block.length) return;
-
-    const raw = block.join("\n");
-
-    const cruise = {
-      url: (raw.match(URL_REG) || [])[1] || "",
-      price: "",
-      nights: "",
-      departure: "",
-      routeList: []
-    };
-
-    const priceMatch = raw.match(PRICE_REG);
-    if (priceMatch) cruise.price = priceMatch[1].trim();
-
-    const nightsMatch = raw.match(NIGHTS_REG);
-    if (nightsMatch) cruise.nights = nightsMatch[1];
-
-    // departure
-    block.forEach(line => {
-      if (DEPARTURE_START_REG.test(line)) {
-        cruise.departure = line.replace(DEPARTURE_START_REG, "").replace(/^[:\-]/, "").trim();
-      }
-    });
-
-    // route (multiline)
-    let routeStarted = false;
-    const routeLines = [];
-
-    block.forEach(line => {
-      if (ROUTE_TITLE_REG.test(line)) {
-        routeStarted = true;
-        return;
-      }
-
-      if (routeStarted) {
-        if (
-          PRICE_REG.test(line) ||
-          URL_REG.test(line) ||
-          NIGHTS_REG.test(line) ||
-          DEPARTURE_START_REG.test(line)
-        ) {
-          routeStarted = false;
-          return;
-        }
-        routeLines.push(line);
-      }
-    });
-
-    cruise.routeList = routeLines
-      .join(" ")
-      .split(/→|,/)
-      .map(s => s.trim())
-      .filter(Boolean);
-
-    const hasData =
-      cruise.url ||
-      cruise.price ||
-      cruise.nights ||
-      cruise.departure ||
-      cruise.routeList.length;
-
-    if (hasData) {
-      cruises.push(cruise);
-    } else {
-      freeText.push(raw);
-    }
-
-    block = null;
-  }
-
-  // ===== PARSE =====
-  lines.forEach(line => {
-    if (DEPARTURE_START_REG.test(line)) {
-      saveBlock();
-      block = [line];
-      return;
-    }
-
-    if (block) {
-      block.push(line);
-      return;
-    }
-
-    freeText.push(line);
-  });
-
-  saveBlock();
-
-  // ===== RENDER =====
-  let html = "";
-
-  freeText.forEach(t => {
-    html += `<div class="cc-cru-text">${t}</div>`;
-  });
-
-  cruises.forEach(c => {
-    html += `
-      <div class="cc-cru-card">
-
-        <div class="cc-cru-title">Круиз</div>
-
-        <div class="cc-cru-desc">
-
-          <div class="cc-cru-toprow">
-            ${c.nights ? `<div class="cc-cru-nights"><b>${c.nights} ночей</b></div>` : ""}
-            ${c.price ? `<div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>` : ""}
-          </div>
-
-          ${c.departure
-            ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
-            : ""
-          }
-
-          ${c.routeList.length
-            ? `<div class="cc-cru-route-wrapper">
-                 <div class="cc-cru-route-title">Маршрут:</div>
-                 <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
-               </div>`
-            : ""
-          }
-
-        </div>
-
-        ${c.url
-          ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
-          : ""
-        }
-
+    <div class="cc-bot-wrapper">
+      <div class="cc-text bot" style="white-space: pre-line;">
+        ${text}
       </div>
-    `;
-  });
-
-  return html;
+    </div>
+  `;
 }
+
+
+
 
     //
     // СОЗДАНИЕ UI
@@ -526,7 +376,7 @@ function convertCruiseMarkdown(text) {
       const typingMsg = showTyping();
 
       try {
-        const response = await fetch(process.env.WIDGET_SERVER_URL || "http://localhost:3000/api/chat", {
+        const response = await fetch("http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -544,8 +394,7 @@ function convertCruiseMarkdown(text) {
 
       } catch (error) {
         typingMsg.remove();
-        const errorText = error?.message || "Unknown error";
-        addMessage("Error contacting server: " + errorText, "bot");
+        addMessage("Error contacting server", "bot");
       }
 
       isSending = false;
