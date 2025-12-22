@@ -476,7 +476,7 @@ ease;
     align-items: flex-start;
     gap: 8px;
     /* margin-bottom: 12px; */
-    max-width: 90%;
+    max-width: 100%;
 }
 
 /* Сообщение бота */

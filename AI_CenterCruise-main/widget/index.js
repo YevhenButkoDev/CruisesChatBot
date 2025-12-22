@@ -177,29 +177,34 @@ function convertCruiseMarkdown(text) {
     `;
   }
 
-  cruises.forEach(c => {
-    html += `
-      <div class="cc-cru-card">
+ cruises.forEach((c, index) => {
+  const num = index + 1;
 
-        <div class="cc-cru-title">${c.ship}</div>
+  html += `
+    <div class="cc-cru-card">
 
-        <div class="cc-cru-desc">
-          ${c.nights ? `<div><b>Ночей:</b> ${c.nights}</div>` : ""}
-          ${c.dates ? `<div><b>Даты:</b> ${c.dates}</div>` : ""}
-          ${c.departure ? `<div><b>Отправление / возврат:</b> ${c.departure}</div>` : ""}
-          ${c.route ? `<div><b>Маршрут:</b> ${c.route}</div>` : ""}
-          ${c.price ? `<div class="cc-cru-price">Цена — от ${c.price}</div>` : ""}
-        </div>
-
-        ${
-          c.link
-            ? `<a href="${c.link}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
-            : ""
-        }
-
+      <div class="cc-cru-title">
+        ${num}. ${c.ship}
       </div>
-    `;
-  });
+
+      <div class="cc-cru-desc">
+        ${c.nights ? `<div><b>Ночей:</b> ${c.nights}</div>` : ""}
+        ${c.dates ? `<div><b>Даты:</b> ${c.dates}</div>` : ""}
+        ${c.departure ? `<div><b>Отправление / возврат:</b> ${c.departure}</div>` : ""}
+        ${c.route ? `<div><b>Маршрут:</b> ${c.route}</div>` : ""}
+        ${c.price ? `<div class="cc-cru-price">Цена — от ${c.price}</div>` : ""}
+      </div>
+
+      ${
+        c.link
+          ? `<a href="${c.link}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
+          : ""
+      }
+
+    </div>
+  `;
+});
+
 
   return html;
 }
