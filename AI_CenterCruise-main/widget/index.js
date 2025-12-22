@@ -73,9 +73,10 @@
     // SVG АВАТАР
     const BOT_AVATAR_SVG = `
       <svg viewBox="0 0 186 186" xmlns="http://www.w3.org/2000/svg">
-        <path d="M93.3 140.4h0c-6.9.1-13.5-1.5-19.4-4.9l-5.5 9.9c7.5 4.3 15.7 6.4 24.4 6.4h.5c8.9 0 17.3-2.1 25-6.4l-5.5-9.9c-5.9 3.4-12.4 5-19.4 4.9h0zM186 0H0v186h186V0zM92.8 175.6c-44.1 0-80.3-34.7-82.7-78.2 1.1 0 2.2-.6 3-1.6l35.4-41.3c2.1-2.4 5.7-2.4 7.8 0l28.1 31.8c2.1 2.4 5.2 3.8 8.4 3.8h0c3.2 0 6.2-1.4 8.4-3.7l28.5-31.9c1-1.1 2.4-2.4 3.9-2.4s2.9 1.3 3.8 2.3l35 41.4c.8.9 1.9 1.5 3 1.6-2.4 43.5-38.6 78.2-82.7 78.2h0z"/>
+        <path d="M93.3 140.4h0c-6.9.1-13.5-1.5-19.4-4.9l-5.5 9.9c7.5 4.3 15.7 6.4 24.4 6.4h.5c8.9 0 17.3-2.1 25-6.4l-5.5-9.9c-5.9 3.4-12.4 5-19.4 4.9h0zM186 0H0v186h186V0zM92.8 175.6c-44.1 0-80.3-34.7-82.7-78.2 1.1 0 2.2-.6 3-1.6l35.4-41.3c2.1-2.4 5.7-2.4 7.8 0l28.1 31.8c2.1 2.4 5.2 3.8 8.4 3.8h0c3.2 0 6.2-1.4 8.4-3.7l28.5-31.9c1-1.1 2.4-2.4 3.9-2.4s2.9 1.3 3.8 2.3l35 41.4c.8.9 1.9 1.5 3 1.6-2.4 43.5-38.6 78.2-82.7 78.2h0zM55.7 94.3c-6.4 0-11.5 5.2-11.5 11.5s5.2 11.5 11.5 11.5 11.5-5.2 11.5-11.5S62 94.3 55.7 94.3zm-1.4 8.9l-1 3.1-1-3.1-3.1-1 3.1-1 1-3.1 1 3.1 3.1 1-3.1 1zm79.4-8.9c-6.4 0-11.5 5.2-11.5 11.5s5.2 11.5 11.5 11.5 11.5-5.2 11.5-11.5-5.2-11.5-11.5-11.5zm-1.4 8.9l-1 3.1-1-3.1-3.1-1 3.1-1 1-3.1 1 3.1 3.1 1-3.1 1z"/>
       </svg>
     `;
+
     // ИКОНКИ ДЛЯ КНОПКИ ОТПРАВКИ / ПАУЗЫ
     const SEND_ICON_SVG = `
       <svg viewBox="0 0 24 24">
@@ -90,28 +91,167 @@
       </svg>
     `;
 
+function convertCruiseMarkdown(text) {
+  if (!text) return "";
+
+  const lines = text
+    .split("\n")
+    .map(l => l.trim())
+    .filter(Boolean);
+
+  const cruises = [];
+  const freeText = [];
+  let block = [];
+  let inCruiseBlock = false;
+
+  const URL_REG = /(https?:\/\/\S+)/i;
+  const PRICE_REG = /(?:Price[:\s-]*from\s*\$?|Цена[:\s-]*от\s*\$?)(\d[\d\s]*)/i;
+  const NIGHTS_REG = /Nights[:\s-]*(\d+)|(\d+)\s*ноч/i;
+
+  // SAVE BLOCK
+  function saveBlock() {
+    if (!block.length) return;
+
+    const raw = block.join("\n");
+
+    // extract fields
+    const url = (raw.match(URL_REG) || [])[1] || "";
+    const price = (raw.match(PRICE_REG) || [])[1] || "";
+    const nm = raw.match(NIGHTS_REG);
+    const nights = nm ? nm[1] || nm[2] : "";
+
+    const depMatch = raw.match(/Departure\/Return[:\s-]*([^\n]+)/i);
+    const departure = depMatch ? depMatch[1].trim() : "";
+
+    // ROUTE multiline
+    let routeList = [];
+    const startIdx = block.findIndex(l => /^Route[:\s-]*/i.test(l));
+    if (startIdx !== -1) {
+      const routeLines = [];
+      for (let i = startIdx + 1; i < block.length; i++) {
+        if (/^(Nights|Price|Link)/i.test(block[i])) break;
+        routeLines.push(block[i]);
+      }
+      routeList = routeLines.join(" ")
+        .split(/→|,/)
+        .map(s => s.trim())
+        .filter(Boolean);
+    }
+
+    const hasData = url || price || nights || departure || routeList.length;
+
+    if (hasData) {
+      cruises.push({ nights, price, url, departure, routeList });
+    } else {
+      freeText.push(raw);
+    }
+
+    block = [];
+    inCruiseBlock = false;
+  }
+
+  // BUILD BLOCKS
+  lines.forEach(line => {
+    // START new cruise block only if Departure/Return found
+    if (/^Departure\/Return/i.test(line)) {
+      saveBlock();
+      inCruiseBlock = true;
+      block.push(line);
+      return;
+    }
+
+    if (inCruiseBlock) {
+      block.push(line);
+
+      if (URL_REG.test(line)) {
+        saveBlock();
+      }
+
+      return;
+    }
+
+    // Non-cruise text:
+    freeText.push(line);
+  });
+
+  saveBlock();
+
+  // ---------- RENDER ----------
+  let html = "";
+
+  // Render free text normally
+  freeText.forEach(t => {
+    html += `<div class="cc-cru-text">${t}</div>`;
+  });
+
+  // Render cruise cards
+  cruises.forEach(c => {
+    html += `
+      <div class="cru-card">
+
+        <div class="cc-cru-title">Круиз</div>
+
+        <div class="cc-cru-desc">
+
+          <div class="cc-cru-toprow">
+            <div class="cc-cru-nights"><b>${c.nights || "7"} ночей</b></div>
+            <div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>
+          </div>
+
+          ${
+            c.departure
+              ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
+              : ""
+          }
+
+          ${
+            c.routeList.length
+              ? `
+              <div class="cc-cru-route-wrapper">
+                <div class="cc-cru-route-title">Маршрут:</div>
+                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
+              </div>`
+              : ""
+          }
+
+        </div>
+
+        ${
+          c.url
+            ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
+            : `<button class="cc-cru-btn">Подробнее →</button>`
+        }
+
+      </div>
+    `;
+  });
+
+  return html;
+}
+
+
+
     //
     // СОЗДАНИЕ UI
     //
     const wrapper = document.createElement("div");
     wrapper.className = "cc-wrapper";
 
-    // FAB кнопка
+    // FAB кнопка чата
     const fab = document.createElement("button");
     fab.className = "cc-fab";
-    fab.innerHTML = `
-      <svg viewBox="0 0 40 40">
-        <path d="M5.33333 6H32C33.8333 6 35.3333 7.5 35.3333 9.33333V29.3333C35.3333 31.1667 33.8333 32.6667 32 32.6667H8.66667L2 39.3333V9.33333C2 7.5 3.5 6 5.33333 6Z"></path>
-      </svg>
-    `;
+    fab.innerHTML =
+      `<svg viewBox="0 0 40 40">
+         <path d="M5.33333 6H32C33.8333 6 35.3333 7.5 35.3333 9.33333V29.3333C35.3333 31.1667 33.8333 32.6667 32 32.6667H8.66667L2 39.3333V9.33333C2 7.5 3.5 6 5.33333 6Z"></path>
+       </svg>`;
 
-    // Панель
+    // Основная панель
     const panel = document.createElement("div");
     panel.className = "cc-panel";
     panel.style.height = "390px";
 
     //
-    // SCREEN 1 — Welcome
+    // SCREEN 1 (welcome экран)
     //
     const screen1 = document.createElement("div");
     screen1.className = "cc-screen1";
@@ -149,12 +289,13 @@
     `;
 
     //
-    // SCREEN 2 — Chat
+    // SCREEN 2 (основной чат)
     //
     const screen2 = document.createElement("div");
     screen2.className = "cc-screen2";
     screen2.style.display = "none";
 
+    // HEADER
     const header = document.createElement("div");
     header.className = "cc-header";
     header.innerHTML = `
@@ -162,9 +303,13 @@
       <button class="cc-close">✕</button>
     `;
 
+    // Тело переписки
     const body = document.createElement("div");
     body.className = "cc-body";
 
+    //
+    // Ввод почты
+    //
     const emailArea = document.createElement("div");
     emailArea.className = "cc-email-area";
     emailArea.innerHTML = `
@@ -172,23 +317,32 @@
       <button class="cc-email-btn">${t.continue}</button>
     `;
 
+    //
+    // Поле ввода текста
+    //
     const inputArea = document.createElement("div");
     inputArea.className = "cc-input-area";
     inputArea.style.display = "none";
+
     inputArea.innerHTML = `
       <div class="cc-input-container">
         <input class="cc-input" placeholder="${t.typeMessage}">
-        <button class="cc-input-send">${SEND_ICON_SVG}</button>
+        <button class="cc-input-send">
+          ${SEND_ICON_SVG}
+        </button>
       </div>
     `;
 
+    // Формируем screen2
     screen2.append(header, body, emailArea, inputArea);
+
+    // FINALLY: assemble widget
     panel.append(screen1, screen2);
     wrapper.append(fab, panel);
     document.body.append(wrapper);
 
     //
-    // ЭЛЕМЕНТЫ
+    // ПОЛУЧАЕМ ЭЛЕМЕНТЫ ДЛЯ ЛОГИКИ
     //
     const closeScreen1Btn = screen1.querySelector(".cc-screen1-close");
     const closeBtn = header.querySelector(".cc-close");
@@ -201,47 +355,56 @@
     let userEmail = null;
 
     //
-    // ADD MESSAGE
+    // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
     function addMessage(text, who = "bot") {
-      const msg = document.createElement("div");
-      msg.className = "cc-msg " + who;
+  const msg = document.createElement("div");
+  msg.className = "cc-msg " + who;
 
-      if (who === "bot") {
-        msg.innerHTML = `
-          <div class="cc-avatar">${BOT_AVATAR_SVG}</div>
-          <div class="cc-bot-wrapper">
-            <div style="white-space: pre-line;">${text}</div>
-          </div>
-        `;
-      } else {
-        msg.innerHTML = `<div class="cc-text user">${text}</div>`;
-      }
+  msg.innerHTML = `
+      <div class="cc-avatar">
+        ${BOT_AVATAR_SVG}
+      </div>
 
-      body.append(msg);
-      body.scrollTop = body.scrollHeight;
-    }
+    <div style={{ whiteSpace: 'pre-line' }}>
+      ${text}
+    </div>
+    `;
+
+  body.append(msg);
+  body.scrollTop = body.scrollHeight;
+}
+
 
     //
-    // TYPING
+    // ФУНКЦИЯ: показать индикатор "бот печатает..."
     //
     function showTyping() {
       const msg = document.createElement("div");
       msg.className = "cc-msg bot typing";
+
       msg.innerHTML = `
-        <div class="cc-avatar">${BOT_AVATAR_SVG}</div>
+        <div class="cc-avatar">
+          ${BOT_AVATAR_SVG}
+        </div>
+
         <div class="cc-text bot">
           <div class="typing-dots">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       `;
+
       body.append(msg);
       body.scrollTop = body.scrollHeight;
+
       return msg;
     }
+
     //
-    // ОТКРЫТИЕ / ЗАКРЫТИЕ ПАНЕЛИ
+    // ОТКРЫТИЕ/ЗАКРЫТИЕ ПАНЕЛИ
     //
     fab.onclick = function () {
       panel.style.height = "390px";
@@ -254,6 +417,7 @@
 
     function closePanel() {
       panel.classList.remove("visible");
+
       setTimeout(() => {
         panel.style.height = "390px";
       }, 300);
@@ -263,7 +427,7 @@
     closeBtn.onclick = closePanel;
 
     //
-    // ПЕРЕХОД С WELCOME НА ЧАТ
+    // ПЕРЕХОД С Welcome-экрана на основной чат
     //
     startBtn.onclick = function () {
       screen1.style.display = "none";
@@ -271,6 +435,7 @@
 
       panel.style.height = "600px";
 
+      // ТЕПЕРЬ: только одно сообщение про email
       body.innerHTML = "";
       addMessage(t.enterEmailFirst, "bot");
 
@@ -279,7 +444,7 @@
     };
 
     //
-    // EMAIL
+    // ОБРАБОТКА EMAIL
     //
     emailBtn.onclick = function () {
       const mail = emailInput.value.trim();
@@ -295,24 +460,29 @@
       emailArea.style.display = "none";
       inputArea.style.display = "flex";
 
-      // ВАЖНО: бот снова пишет
       addMessage(t.start, "bot");
     };
 
     //
-    // ОТПРАВКА СООБЩЕНИЙ
+    // ОТПРАВКА СООБЩЕНИЯ
     //
     let isSending = false;
 
     async function sendMessage() {
-      if (isSending) return;
+      // Если сейчас идёт запрос к бэку — блокируем отправку, но не блокируем ввод текста
+      if (isSending) {
+        return;
+      }
 
       const text = messageInput.value.trim();
       if (!text) return;
 
       isSending = true;
       sendBtn.disabled = true;
+      // поле ввода НЕ блокируем
+      messageInput.disabled = false;
 
+      // меняем кнопку на "Пауза"
       sendBtn.classList.add("pause");
       sendBtn.innerHTML = PAUSE_ICON_SVG;
 
@@ -322,9 +492,7 @@
       const typingMsg = showTyping();
 
       try {
-        // ❗❗❗ ВАЖНО
-        // НЕ localhost — ИНАЧЕ НА ПРОДЕ ВСЁ ЛОМАЕТСЯ
-        const response = await fetch("https://cruise-ai-widget-620626195243.europe-central2.run.app/api/chat", {
+        const response = await fetch("http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -336,48 +504,36 @@
           })
         });
 
-        if (!response.ok) {
-          throw new Error("Server error");
-        }
-
         const data = await response.json();
-
         typingMsg.remove();
-
-        if (data && data.reply) {
-          addMessage(data.reply, "bot");
-        } else {
-          addMessage("Empty response from server", "bot");
-        }
+        addMessage(data.reply || "Empty response", "bot");
 
       } catch (error) {
-        console.error(error);
         typingMsg.remove();
         addMessage("Error contacting server", "bot");
-      } finally {
-        // 🔥 КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ
-        isSending = false;
-        sendBtn.disabled = false;
-        sendBtn.classList.remove("pause");
-        sendBtn.innerHTML = SEND_ICON_SVG;
-        messageInput.focus();
       }
+
+      isSending = false;
+      sendBtn.disabled = false;
+      sendBtn.classList.remove("pause");
+      sendBtn.innerHTML = SEND_ICON_SVG;
+      messageInput.disabled = false;
+      messageInput.focus();
     }
 
     //
-    // КНОПКА
+    // КНОПКИ И ENTER
     //
     sendBtn.onclick = function () {
+      // если пауза/запрос в процессе — просто игнорируем
       if (isSending) return;
       sendMessage();
     };
 
-    //
-    // ENTER
-    //
     messageInput.onkeydown = function (event) {
       if (event.key === "Enter") {
         if (isSending) {
+          // во время ответа бота Enter не отправляет сообщение
           event.preventDefault();
           return;
         }
