@@ -933,3 +933,21 @@ width: 30px;
 .cc-cru-btn:hover {
   background: #0066d6;
 }
+.cc-cru-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cc-cru-index {
+  background: #111;
+  color: #fff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
