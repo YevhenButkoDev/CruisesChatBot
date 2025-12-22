@@ -324,7 +324,7 @@
       try {
         // ❗❗❗ ВАЖНО
         // НЕ localhost — ИНАЧЕ НА ПРОДЕ ВСЁ ЛОМАЕТСЯ
-        const response = await fetch("https://YOUR_DOMAIN/api/chat", {
+        const response = await fetch("https://cruise-ai-widget-620626195243.europe-central2.run.app/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
