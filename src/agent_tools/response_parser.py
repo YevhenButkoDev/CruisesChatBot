@@ -10,10 +10,12 @@ def extract_cruise_summary(data):
         for item in data:
             cruise_id = item['cruiseInfoJson']['cruise']['cruise_id']
             if cruise_id not in grouped:
+                vessel_info = item.get('vesselInfoJson', {}).get('vessel', {})
                 grouped[cruise_id] = {
                     'ufl': item['ufl'],
                     'cruiseInfoJson': item['cruiseInfoJson'],
-                    'cruiseDateRangeInfoJson': []
+                    'cruiseDateRangeInfoJson': [],
+                    'vessel_info': vessel_info
                 }
             grouped[cruise_id]['cruiseDateRangeInfoJson'].append(item['cruiseDateRangeInfoJson'])
 
@@ -21,6 +23,7 @@ def extract_cruise_summary(data):
         for cruise_data in grouped.values():
             cruise_record = {
                 "id": cruise_data['cruiseInfoJson']['cruise']['cruise_id'],
+                'vessel_name': cruise_data['vessel_info'].get('name', ''),
                 "cruise_id": cruise_data['cruiseInfoJson']['cruise']['cruise_id'],
                 "ufl": cruise_data['ufl'],
                 "cruise_info": cruise_data['cruiseInfoJson'],
@@ -77,10 +80,13 @@ def get_date_and_price_info(data):
         date_range = row.get("dateRange")
         if date_range and date_range.get("begin_date") and date_range.get("end_date"):
             begin_date = datetime.fromisoformat(date_range["begin_date"].replace('Z', '+00:00'))
+            end_date = datetime.fromisoformat(date_range["end_date"].replace('Z', '+00:00'))
             is_valid = begin_date.date() >= datetime.now().date()
             if is_valid is True:
                 date_and_price_info[cruise_id]["dates"].append(begin_date.date().strftime("%Y%m"))
                 date_and_price_info[cruise_id]["ranges"].append(str(cruise_date_range_id))
+                date_and_price_info[cruise_id]["beginDate"] = begin_date.date().strftime("%Y-%m-%d")
+                date_and_price_info[cruise_id]["endDate"] = end_date.date().strftime("%Y-%m-%d")
 
     return date_and_price_info
 
@@ -107,6 +113,9 @@ def transform_data(cruise_data):
             "min_price": data_and_price_info.get("prices", [])[0],
             "max_price": data_and_price_info.get("prices", [])[1],
             "dates": ", ".join(data_and_price_info.get("dates", [])),
+            "beginDate": data_and_price_info.get("beginDate", []),
+            "endDate": data_and_price_info.get("endDate", []),
+            "vessel_name": cruise_data["vessel_name"],
             "ranges": ", ".join(data_and_price_info.get("ranges", [])),
             "website_urls": ", ".join([build_cruise_url(r, cruise_data["ufl"]) for r in data_and_price_info.get("ranges", [])])
         }
