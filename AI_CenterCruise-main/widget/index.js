@@ -418,19 +418,29 @@ function convertCruiseMarkdown(text) {
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
-    function addMessage(text, who = "bot") {
+   function addMessage(text, who = "bot") {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
-    msg.innerHTML = `
-      <div class="cc-avatar">
-        ${BOT_AVATAR_SVG}
-      </div>
+  let contentHtml = "";
 
-      <div style={{ whiteSpace: 'pre-line' }}>
-        ${simpleMarkdownToHtml(text)}
-      </div>
-    `;
+  if (who === "bot") {
+    // 👉 БОТ: круизный парсер
+    contentHtml = convertCruiseMarkdown(text);
+  } else {
+    // 👉 ПОЛЬЗОВАТЕЛЬ: простой текст
+    contentHtml = simpleMarkdownToHtml(text);
+  }
+
+  msg.innerHTML = `
+    <div class="cc-avatar">
+      ${BOT_AVATAR_SVG}
+    </div>
+
+    <div class="cc-text bot">
+      ${contentHtml}
+    </div>
+  `;
 
   body.append(msg);
   body.scrollTop = body.scrollHeight;
