@@ -94,9 +94,6 @@
 function convertCruiseMarkdown(text) {
   if (!text) return "";
 
-  const lang = detectLanguage(text);
-  const t = UI_TEXT[lang];
-
   const lines = text
     .split("\n")
     .map(line => line.trim())
@@ -124,13 +121,13 @@ function convertCruiseMarkdown(text) {
     /(?:Price|Цена|Ціна)\s*[:\-]?\s*(?:from|от|від)?\s*([0-9][0-9\s]*)/i;
 
   const NIGHTS_REG =
-    /(?:Nights?|Ночей?|Ночі)\s*[:\-]?\s*([0-9]+)/i;
+    /(?:Nights?|Ночей?|ночей?|Ночі|ночей)\s*[:\-]?\s*([0-9]+)/i;
 
   const DEPARTURE_REG =
     /^(?:Departure\/Return|Departure|Отправление\/Возврат|Отправление|Відправлення\/Повернення|Відправлення)\s*[:\-]?\s*(.+)$/i;
 
   const ROUTE_TITLE_REG =
-    /^(?:Route|Маршрут)\s*[:\-]?$/i;
+    /^(?:Route|Маршрут|Маршрут)\s*[:\-]?$/i;
 
   const URL_REG =
     /(https?:\/\/[^\s]+)/i;
@@ -154,23 +151,31 @@ function convertCruiseMarkdown(text) {
       url: ""
     };
 
+    // --- SHIP ---
     const shipMatch = raw.match(SHIP_REG);
     if (shipMatch) cruise.ship = shipMatch[1].trim();
 
+    // --- DATES ---
     const datesMatch = raw.match(DATES_REG);
     if (datesMatch) cruise.dates = datesMatch[1].trim();
 
+    // --- PRICE ---
     const priceMatch = raw.match(PRICE_REG);
     if (priceMatch) cruise.price = priceMatch[1].trim();
 
+    // --- NIGHTS ---
     const nightsMatch = raw.match(NIGHTS_REG);
     if (nightsMatch) cruise.nights = nightsMatch[1];
 
+    // --- DEPARTURE ---
     block.forEach(line => {
       const depMatch = line.match(DEPARTURE_REG);
-      if (depMatch) cruise.departure = depMatch[1].trim();
+      if (depMatch) {
+        cruise.departure = depMatch[1].trim();
+      }
     });
 
+    // --- ROUTE (MULTILINE) ---
     let routeStarted = false;
     const routeLines = [];
 
@@ -202,10 +207,17 @@ function convertCruiseMarkdown(text) {
       .map(s => s.trim())
       .filter(Boolean);
 
+    // --- URL ---
     const urlMatch = raw.match(URL_REG);
     if (urlMatch) cruise.url = urlMatch[1];
 
-    if (cruise.ship || cruise.departure || cruise.routeList.length) {
+    // --- VALIDATION ---
+    const hasMinimumData =
+      cruise.departure ||
+      cruise.routeList.length ||
+      cruise.ship;
+
+    if (hasMinimumData) {
       cruises.push(cruise);
     } else {
       freeText.push(raw);
@@ -215,7 +227,7 @@ function convertCruiseMarkdown(text) {
   }
 
   // =========================
-  // PARSE
+  // PARSE INPUT
   // =========================
 
   lines.forEach(line => {
@@ -225,51 +237,62 @@ function convertCruiseMarkdown(text) {
       return;
     }
 
-    if (block) block.push(line);
-    else freeText.push(line);
+    if (block) {
+      block.push(line);
+    } else {
+      freeText.push(line);
+    }
   });
 
   saveBlock();
 
   // =========================
-  // RENDER
+  // RENDER HTML
   // =========================
 
   let html = "";
 
-  freeText.forEach(tl => {
-    html += `<div class="cc-cru-text">${tl}</div>`;
+  freeText.forEach(t => {
+    html += `<div class="cc-cru-text">${t}</div>`;
   });
 
-  cruises.forEach((c, index) => {
+  cruises.forEach(c => {
     html += `
       <div class="cc-cru-card">
 
-        <div class="cc-cru-header">
-          <div class="cc-cru-index">${index + 1}</div>
-          <div class="cc-cru-ship">${c.ship || t.cruise}</div>
+        <div class="cc-cru-title">
+          ${c.ship ? c.ship : "Круиз"}
         </div>
 
         <div class="cc-cru-desc">
 
           <div class="cc-cru-toprow">
-            ${c.nights ? `<div>${c.nights} ${t.nights}</div>` : ""}
-            ${c.price ? `<div>${t.priceFrom} ${c.price} €</div>` : ""}
+            ${c.nights ? `<div class="cc-cru-nights"><b>${c.nights} ночей</b></div>` : ""}
+            ${c.price ? `<div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>` : ""}
           </div>
 
-          ${c.dates ? `<div><b>${t.dates}:</b> ${c.dates}</div>` : ""}
+          ${c.dates
+            ? `<div class="cc-cru-dates"><b>Даты:</b> ${c.dates}</div>`
+            : ""
+          }
 
-          ${c.departure ? `<div><b>${t.departure}:</b> ${c.departure}</div>` : ""}
+          ${c.departure
+            ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
+            : ""
+          }
 
           ${c.routeList.length
-            ? `<div><b>${t.route}:</b> ${c.routeList.join(" → ")}</div>`
+            ? `<div class="cc-cru-route-wrapper">
+                <div class="cc-cru-route-title">Маршрут:</div>
+                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
+              </div>`
             : ""
           }
 
         </div>
 
         ${c.url
-          ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">${t.details}</a>`
+          ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
           : ""
         }
 
@@ -279,7 +302,6 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
-
 
 
     //
