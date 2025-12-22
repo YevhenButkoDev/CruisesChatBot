@@ -90,6 +90,7 @@
         <rect x="14" y="4" width="4" height="16"></rect>
       </svg>
     `;
+
 function convertCruiseMarkdown(text) {
   if (!text) return "";
 
@@ -100,59 +101,107 @@ function convertCruiseMarkdown(text) {
 
   const cruises = [];
   const freeText = [];
-  let block = [];
-  let inCruiseBlock = false;
 
-  const URL_REG = /(https?:\/\/\S+)/i;
-  const PRICE_REG = /Price[:\s-]*from\s*([\d,.]+)\s*EUR/i;
-  const NIGHTS_REG = /Nights[:\s-]*(\d+)/i;
+  let block = null;
 
+  // ===== REGEX =====
+  const URL_REG = /(https?:\/\/[^\s]+)/i;
+
+  const PRICE_REG =
+    /(?:Price|Цена)\s*[:\-]?\s*(?:from|от)?\s*([0-9][0-9\s]*)/i;
+
+  const NIGHTS_REG =
+    /(?:Nights?|Ночей?|ночей?)\s*[:\-]?\s*([0-9]+)/i;
+
+  const DEPARTURE_START_REG =
+    /^(?:Departure\/Return|Departure|Отправление\/Возврат|Отправление)/i;
+
+  const ROUTE_TITLE_REG =
+    /^(?:Route|Маршрут)\s*[:\-]?$/i;
+
+  // ===== SAVE BLOCK =====
   function saveBlock() {
-    if (!block.length) return;
+    if (!block || !block.length) return;
 
     const raw = block.join("\n");
 
-    const url = (raw.match(URL_REG) || [])[1] || "";
-    const price = (raw.match(PRICE_REG) || [])[1] || "";
-    const nights = (raw.match(NIGHTS_REG) || [])[1] || "";
+    const cruise = {
+      url: (raw.match(URL_REG) || [])[1] || "",
+      price: "",
+      nights: "",
+      departure: "",
+      routeList: []
+    };
 
-    const depMatch = raw.match(/Departure\s*\/\s*Return[:\s-]*([^\n]+)/i);
-    const departure = depMatch ? depMatch[1].trim() : "";
+    const priceMatch = raw.match(PRICE_REG);
+    if (priceMatch) cruise.price = priceMatch[1].trim();
 
-    let routeList = [];
-    const routeMatch = raw.match(/Route[:\s-]*([^\n]+)/i);
-    if (routeMatch) {
-      routeList = routeMatch[1]
-        .split(/→|,/)
-        .map(s => s.trim())
-        .filter(Boolean);
-    }
+    const nightsMatch = raw.match(NIGHTS_REG);
+    if (nightsMatch) cruise.nights = nightsMatch[1];
 
-    if (url || price || nights || departure || routeList.length) {
-      cruises.push({ nights, price, url, departure, routeList });
+    // departure
+    block.forEach(line => {
+      if (DEPARTURE_START_REG.test(line)) {
+        cruise.departure = line.replace(DEPARTURE_START_REG, "").replace(/^[:\-]/, "").trim();
+      }
+    });
+
+    // route (multiline)
+    let routeStarted = false;
+    const routeLines = [];
+
+    block.forEach(line => {
+      if (ROUTE_TITLE_REG.test(line)) {
+        routeStarted = true;
+        return;
+      }
+
+      if (routeStarted) {
+        if (
+          PRICE_REG.test(line) ||
+          URL_REG.test(line) ||
+          NIGHTS_REG.test(line) ||
+          DEPARTURE_START_REG.test(line)
+        ) {
+          routeStarted = false;
+          return;
+        }
+        routeLines.push(line);
+      }
+    });
+
+    cruise.routeList = routeLines
+      .join(" ")
+      .split(/→|,/)
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    const hasData =
+      cruise.url ||
+      cruise.price ||
+      cruise.nights ||
+      cruise.departure ||
+      cruise.routeList.length;
+
+    if (hasData) {
+      cruises.push(cruise);
     } else {
       freeText.push(raw);
     }
 
-    block = [];
-    inCruiseBlock = false;
+    block = null;
   }
 
+  // ===== PARSE =====
   lines.forEach(line => {
-    // старт круиза: номер или Ship
-    if (/^\d+\.\s*Ship:/i.test(line) || /^Ship:/i.test(line)) {
+    if (DEPARTURE_START_REG.test(line)) {
       saveBlock();
-      inCruiseBlock = true;
-      block.push(line);
+      block = [line];
       return;
     }
 
-    if (inCruiseBlock) {
+    if (block) {
       block.push(line);
-
-      if (URL_REG.test(line)) {
-        saveBlock();
-      }
       return;
     }
 
@@ -161,7 +210,7 @@ function convertCruiseMarkdown(text) {
 
   saveBlock();
 
-  // ---------- RENDER ----------
+  // ===== RENDER =====
   let html = "";
 
   freeText.forEach(t => {
@@ -170,39 +219,35 @@ function convertCruiseMarkdown(text) {
 
   cruises.forEach(c => {
     html += `
-      <div class="cru-card">
+      <div class="cc-cru-card">
 
         <div class="cc-cru-title">Круиз</div>
 
         <div class="cc-cru-desc">
 
           <div class="cc-cru-toprow">
-            <div class="cc-cru-nights"><b>${c.nights || "—"} ночей</b></div>
-            <div class="cc-cru-price"><b>Цена — от ${c.price} EUR</b></div>
+            ${c.nights ? `<div class="cc-cru-nights"><b>${c.nights} ночей</b></div>` : ""}
+            ${c.price ? `<div class="cc-cru-price"><b>Цена — от ${c.price}</b></div>` : ""}
           </div>
 
-          ${
-            c.departure
-              ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
-              : ""
+          ${c.departure
+            ? `<div class="cc-cru-departure"><b>Отправление/возврат:</b> ${c.departure}</div>`
+            : ""
           }
 
-          ${
-            c.routeList.length
-              ? `
-              <div class="cc-cru-route-wrapper">
-                <div class="cc-cru-route-title">Маршрут:</div>
-                <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
-              </div>`
-              : ""
+          ${c.routeList.length
+            ? `<div class="cc-cru-route-wrapper">
+                 <div class="cc-cru-route-title">Маршрут:</div>
+                 <div class="cc-cru-route-text">${c.routeList.join(" → ")}</div>
+               </div>`
+            : ""
           }
 
         </div>
 
-        ${
-          c.url
-            ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
-            : `<button class="cc-cru-btn">Подробнее →</button>`
+        ${c.url
+          ? `<a href="${c.url}" class="cc-cru-btn" target="_blank">Подробнее →</a>`
+          : ""
         }
 
       </div>
@@ -211,8 +256,6 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
-
-
 
     //
     // СОЗДАНИЕ UI
@@ -483,7 +526,7 @@ function convertCruiseMarkdown(text) {
       const typingMsg = showTyping();
 
       try {
-        const response = await fetch("http://localhost:3000/api/chat", {
+        const response = await fetch(process.env.WIDGET_SERVER_URL || "http://localhost:3000/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -501,7 +544,8 @@ function convertCruiseMarkdown(text) {
 
       } catch (error) {
         typingMsg.remove();
-        addMessage("Error contacting server", "bot");
+        const errorText = error?.message || "Unknown error";
+        addMessage("Error contacting server: " + errorText, "bot");
       }
 
       isSending = false;
