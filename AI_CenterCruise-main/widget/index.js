@@ -94,53 +94,79 @@
 function convertCruiseMarkdown(text) {
   if (!text) return "";
 
-  // ---------- helpers ----------
-  function clean(line) {
-    return line.replace(/\*\*/g, "").trim();
-  }
+  const blocks = text.split(/\n\s*\n/);
 
-  // ---------- render original text ----------
-  let html = `
-    <div class="cc-cru-fulltext">
-      ${simpleMarkdownToHtml(text)}
-    </div>
-  `;
+  let introText = [];
+  let outroText = [];
+  let cruiseBlocks = [];
 
-  // ---------- split cruises ----------
-  const blocks = text.split(/\n\s*\n(?=\d+\.\s*Ship:)/i);
+  let inCruise = false;
 
   blocks.forEach(block => {
-    const ship = block.match(/Ship:\s*(.+)/i)?.[1];
-    if (!ship) return;
+    if (/^\d+\.\s*Ship:/i.test(block)) {
+      inCruise = true;
+      cruiseBlocks.push(block);
+    } else {
+      if (!inCruise) introText.push(block);
+      else outroText.push(block);
+    }
+  });
 
-    const departure = block.match(/Departure\s*\/\s*Return:\s*(.+)/i)?.[1];
-    const route = block.match(/Route:\s*(.+)/i)?.[1];
+  let html = "";
+
+  // ===== ВСТУПИТЕЛЬНЫЙ ТЕКСТ =====
+  if (introText.length) {
+    html += `
+      <div class="cc-cru-text">
+        ${simpleMarkdownToHtml(introText.join("\n\n"))}
+      </div>
+    `;
+  }
+
+  // ===== КАРТОЧКИ КРУИЗОВ =====
+  cruiseBlocks.forEach(block => {
+    const clean = s => s?.replace(/\*\*/g, "").trim();
+
+    const ship = clean(block.match(/Ship:\s*(.+)/i)?.[1]);
+    const departure = clean(block.match(/Departure\s*\/\s*Return:\s*(.+)/i)?.[1]);
+    const route = clean(block.match(/Route:\s*(.+)/i)?.[1]);
     const nights = block.match(/Nights:\s*(\d+)/i)?.[1];
-    const dates = block.match(/Dates:\s*(.+)/i)?.[1];
+    const dates = clean(block.match(/Dates:\s*(.+)/i)?.[1]);
     const price = block.match(/Price:\s*from\s*([\d,]+)/i)?.[1];
     const link = block.match(/Link:\s*(https?:\/\/[^\s]+)/i)?.[1];
+
+    if (!ship) return;
 
     html += `
       <div class="cc-cru-card">
 
-        <div class="cc-cru-title">${clean(ship)}</div>
+        <div class="cc-cru-title">${ship}</div>
 
         <div class="cc-cru-desc">
-          ${nights ? `<div class="cc-cru-nights"><b>${nights} ночей</b></div>` : ""}
-          ${dates ? `<div class="cc-cru-dates">${clean(dates)}</div>` : ""}
-          ${departure ? `<div class="cc-cru-departure"><b>Отправление / возврат:</b> ${clean(departure)}</div>` : ""}
-          ${route ? `<div class="cc-cru-route"><b>Маршрут:</b> ${clean(route)}</div>` : ""}
+          ${nights ? `<div><b>Ночей:</b> ${nights}</div>` : ""}
+          ${dates ? `<div><b>Даты:</b> ${dates}</div>` : ""}
+          ${departure ? `<div><b>Отправление / возврат:</b> ${departure}</div>` : ""}
+          ${route ? `<div><b>Маршрут:</b> ${route}</div>` : ""}
           ${price ? `<div class="cc-cru-price">Цена — от ${price} EUR</div>` : ""}
         </div>
 
         ${link ? `<a href="${link}" class="cc-cru-btn" target="_blank">Подробнее →</a>` : ""}
-
       </div>
     `;
   });
 
+  // ===== ЗАКЛЮЧИТЕЛЬНЫЙ ТЕКСТ =====
+  if (outroText.length) {
+    html += `
+      <div class="cc-cru-text">
+        ${simpleMarkdownToHtml(outroText.join("\n\n"))}
+      </div>
+    `;
+  }
+
   return html;
 }
+
 
     //
     // СОЗДАНИЕ UI
