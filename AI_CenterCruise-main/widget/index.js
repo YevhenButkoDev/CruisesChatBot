@@ -387,23 +387,15 @@ function convertCruiseMarkdown(text) {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
-  if (who === "bot") {
     msg.innerHTML = `
       <div class="cc-avatar">
         ${BOT_AVATAR_SVG}
       </div>
 
-      <div class="cc-bot-wrapper">
-        ${convertCruiseMarkdown(text)}
-      </div>
-    `;
-  } else {
-    msg.innerHTML = `
-      <div class="cc-text user">
+      <div style={{ whiteSpace: 'pre-line' }}>
         ${text}
       </div>
     `;
-  }
 
   body.append(msg);
   body.scrollTop = body.scrollHeight;
