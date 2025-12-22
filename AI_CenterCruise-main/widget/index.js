@@ -221,7 +221,7 @@
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
-    function addMessage(text, who = "bot") {
+function addMessage(text, who = "bot") {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
@@ -232,7 +232,9 @@
       </div>
 
       <div class="cc-bot-wrapper">
-        ${convertCruiseMarkdown(text)}
+        <div style="white-space: pre-line;">
+          ${text}
+        </div>
       </div>
     `;
   } else {
@@ -246,6 +248,7 @@
   body.append(msg);
   body.scrollTop = body.scrollHeight;
 }
+
 
 
     //
