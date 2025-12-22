@@ -95,7 +95,6 @@
 function convertCruiseMarkdown(text) {
   if (!text) return "";
 
-  // ---------- NORMALIZE ----------
   const lines = text
     .split("\n")
     .map(l => l.replace(/\*\*/g, "").trim());
@@ -104,25 +103,21 @@ function convertCruiseMarkdown(text) {
   const freeText = [];
 
   let current = null;
-
-  // ---------- REGEX ----------
-  const SHIP_START = /^\d+\.\s*(Ship|Корабль)\s*:\s*(.+)$/i;
-  const DEPARTURE = /^(Departure\s*\/\s*Return|Отправление\s*\/\s*Возврат)\s*:\s*(.+)$/i;
-  const ROUTE = /^Route\s*:\s*(.+)$/i;
-  const NIGHTS = /^Nights\s*:\s*(\d+)/i;
-  const DATES = /^Dates\s*:\s*(.+)$/i;
-  const PRICE = /^Price\s*:\s*(?:from\s*)?([\d\s,]+)/i;
-  const LINK = /^Link\s*:\s*(https?:\/\/\S+)/i;
+  let pendingField = null;
 
   function pushCurrent() {
     if (current) cruises.push(current);
     current = null;
   }
 
-  // ---------- PARSE ----------
-  for (const line of lines) {
-    if (!line) continue;
+  const SHIP_START = /^\d+\.\s*(Ship|Корабль)\s*:\s*(.+)$/i;
+  const FIELD_ONLY = /^(Route|Маршрут|Price|Цена|Dates|Даты|Nights|Ночей|Link|Ссылка|Departure\s*\/\s*Return|Отправление\s*\/\s*Возврат)\s*:?\s*$/i;
+  const FIELD_INLINE = /^(Route|Маршрут|Price|Цена|Dates|Даты|Nights|Ночей|Link|Ссылка|Departure\s*\/\s*Return|Отправление\s*\/\s*Возврат)\s*:\s*(.+)$/i;
 
+  lines.forEach(line => {
+    if (!line) return;
+
+    // --- START CRUISE ---
     const shipMatch = line.match(SHIP_START);
     if (shipMatch) {
       pushCurrent();
@@ -135,22 +130,39 @@ function convertCruiseMarkdown(text) {
         price: "",
         link: ""
       };
-      continue;
+      pendingField = null;
+      return;
     }
 
     if (!current) {
       freeText.push(line);
-      continue;
+      return;
     }
 
-    let m;
-    if ((m = line.match(DEPARTURE))) current.departure = m[2];
-    else if ((m = line.match(ROUTE))) current.route = m[1];
-    else if ((m = line.match(NIGHTS))) current.nights = m[1];
-    else if ((m = line.match(DATES))) current.dates = m[1];
-    else if ((m = line.match(PRICE))) current.price = m[1];
-    else if ((m = line.match(LINK))) current.link = m[1];
-  }
+    // --- FIELD INLINE ---
+    const inlineMatch = line.match(FIELD_INLINE);
+    if (inlineMatch) {
+      const field = inlineMatch[1].toLowerCase();
+      const value = inlineMatch[2];
+
+      assignField(current, field, value);
+      pendingField = null;
+      return;
+    }
+
+    // --- FIELD NAME ONLY (value on next line) ---
+    if (FIELD_ONLY.test(line)) {
+      pendingField = line.toLowerCase();
+      return;
+    }
+
+    // --- VALUE FOR PREVIOUS FIELD ---
+    if (pendingField) {
+      assignField(current, pendingField, line);
+      pendingField = null;
+      return;
+    }
+  });
 
   pushCurrent();
 
@@ -176,7 +188,7 @@ function convertCruiseMarkdown(text) {
           ${c.dates ? `<div><b>Даты:</b> ${c.dates}</div>` : ""}
           ${c.departure ? `<div><b>Отправление / возврат:</b> ${c.departure}</div>` : ""}
           ${c.route ? `<div><b>Маршрут:</b> ${c.route}</div>` : ""}
-          ${c.price ? `<div class="cc-cru-price">Цена — от ${c.price} EUR</div>` : ""}
+          ${c.price ? `<div class="cc-cru-price">Цена — от ${c.price}</div>` : ""}
         </div>
 
         ${
@@ -191,6 +203,25 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
+
+// ---------- FIELD ASSIGN ----------
+function assignField(obj, field, value) {
+  field = field.toLowerCase();
+
+  if (field.includes("departure") || field.includes("отправление"))
+    obj.departure = value;
+  else if (field.includes("route") || field.includes("маршрут"))
+    obj.route = value;
+  else if (field.includes("night") || field.includes("ноч"))
+    obj.nights = value;
+  else if (field.includes("date") || field.includes("дат"))
+    obj.dates = value;
+  else if (field.includes("price") || field.includes("цен"))
+    obj.price = value.replace(/from/i, "").trim();
+  else if (field.includes("link") || field.includes("ссыл"))
+    obj.link = value;
+}
+
 
 
 
