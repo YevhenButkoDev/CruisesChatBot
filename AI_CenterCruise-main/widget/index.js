@@ -380,6 +380,39 @@ function convertCruiseMarkdown(text) {
 
     let userEmail = null;
 
+    function simpleMarkdownToHtml(md) {
+  let html = md;
+
+  // Bold **text**
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  // Links [text](url)
+  html = html.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+  );
+
+  // Numbered lists
+  html = html.replace(
+    /(?:^|\n)(\d+\.\s.+(?:\n\d+\.\s.+)*)/g,
+    (match) => {
+      const items = match
+        .trim()
+        .split('\n')
+        .map(line => `<li>${line.replace(/^\d+\.\s/, '')}</li>`)
+        .join('');
+      return `<ol>${items}</ol>`;
+    }
+  );
+
+  // Line breaks
+  html = html.replace(/\n\n+/g, '</p><p>');
+  html = html.replace(/\n/g, '<br />');
+
+  return `<p>${html}</p>`;
+}
+
+
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
@@ -393,7 +426,7 @@ function convertCruiseMarkdown(text) {
       </div>
 
       <div style={{ whiteSpace: 'pre-line' }}>
-        ${text}
+        ${simpleMarkdownToHtml(text)}
       </div>
     `;
 
