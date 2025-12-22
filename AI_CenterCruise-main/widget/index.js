@@ -90,7 +90,19 @@
         <rect x="14" y="4" width="4" height="16"></rect>
       </svg>
     `;
+if (who === "bot") {
+  msg.innerHTML = `
+    <div class="cc-avatar">
+      ${BOT_AVATAR_SVG}
+    </div>
 
+    <div class="cc-bot-wrapper">
+      <div class="cc-text bot" style="white-space: pre-line;">
+        ${text}
+      </div>
+    </div>
+  `;
+}
 
 
 
