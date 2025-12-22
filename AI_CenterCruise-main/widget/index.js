@@ -90,19 +90,7 @@
         <rect x="14" y="4" width="4" height="16"></rect>
       </svg>
     `;
-if (who === "bot") {
-  msg.innerHTML = `
-    <div class="cc-avatar">
-      ${BOT_AVATAR_SVG}
-    </div>
 
-    <div class="cc-bot-wrapper">
-      <div class="cc-text bot" style="white-space: pre-line;">
-        ${text}
-      </div>
-    </div>
-  `;
-}
 
 
 
@@ -233,7 +221,7 @@ if (who === "bot") {
     //
     // ФУНКЦИЯ: добавление сообщения (бот / юзер)
     //
-    function addMessage(text, who = "bot") {
+function addMessage(text, who = "bot") {
   const msg = document.createElement("div");
   msg.className = "cc-msg " + who;
 
@@ -244,7 +232,9 @@ if (who === "bot") {
       </div>
 
       <div class="cc-bot-wrapper">
-        ${convertCruiseMarkdown(text)}
+        <div style="white-space: pre-line;">
+          ${text}
+        </div>
       </div>
     `;
   } else {
@@ -258,6 +248,7 @@ if (who === "bot") {
   body.append(msg);
   body.scrollTop = body.scrollHeight;
 }
+
 
 
     //
