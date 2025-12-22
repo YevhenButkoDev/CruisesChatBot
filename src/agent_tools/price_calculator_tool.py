@@ -26,5 +26,6 @@ def calculate_price(
         return -1
 
 
+
 if __name__ == "__main__":
     print(calculate_price(30936434,1, 2, 0))
