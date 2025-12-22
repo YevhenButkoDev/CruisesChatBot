@@ -97,7 +97,7 @@ function convertCruiseMarkdown(text) {
 
   const lines = text
     .split("\n")
-    .map(l => l.trim())
+    .map(l => l.replace(/\*\*/g, "").trim())
     .filter(Boolean);
 
   const cruises = [];
@@ -109,6 +109,9 @@ function convertCruiseMarkdown(text) {
   // ---------- REGEX ----------
   const URL_REG = /(https?:\/\/\S+)/i;
 
+  const SHIP_REG =
+    /^(Ship|Корабль)[:\s-]*(.+)/i;
+
   const PRICE_REG =
     /(?:Price[:\s-]*from\s*|Цена[:\s-]*от\s*)(\d[\d\s]*)/i;
 
@@ -116,13 +119,13 @@ function convertCruiseMarkdown(text) {
     /(?:Nights[:\s-]*(\d+)|Ночей[:\s-]*(\d+)|(\d+)\s*ноч)/i;
 
   const DEPARTURE_REG =
-    /(?:Departure\/Return|Отправление\/Возврат)[:\s-]*(.+)/i;
+    /(?:Departure\s*\/\s*Return|Отправление\s*\/\s*Возврат)[:\s-]*(.+)/i;
 
   const ROUTE_TITLE_REG =
     /^(Route|Маршрут)[:\s-]*/i;
 
   const STOP_REG =
-    /^(Nights|Ночей|Price|Цена|Link|Ссылка)/i;
+    /^(Nights|Ночей|Price|Цена|Link|Ссылка|Departure|Отправление)/i;
 
   // ---------- SAVE BLOCK ----------
   function saveBlock() {
@@ -130,16 +133,25 @@ function convertCruiseMarkdown(text) {
 
     const raw = block.join("\n");
 
-    const url = (raw.match(URL_REG) || [])[1] || "";
+    // Ship
+    const shipMatch = raw.match(SHIP_REG);
+    const ship = shipMatch ? shipMatch[2].trim() : "";
 
+    // URL
+    const urlMatch = raw.match(URL_REG);
+    const url = urlMatch ? urlMatch[1] : "";
+
+    // Price
     const priceMatch = raw.match(PRICE_REG);
     const price = priceMatch ? priceMatch[1].trim() : "";
 
+    // Nights
     const nightsMatch = raw.match(NIGHTS_REG);
     const nights = nightsMatch
       ? (nightsMatch[1] || nightsMatch[2] || nightsMatch[3])
       : "";
 
+    // Departure
     const depMatch = raw.match(DEPARTURE_REG);
     const departure = depMatch ? depMatch[1].trim() : "";
 
@@ -163,10 +175,17 @@ function convertCruiseMarkdown(text) {
     }
 
     const hasCruiseData =
-      url || price || nights || departure || routeList.length;
+      ship || url || price || nights || departure || routeList.length;
 
     if (hasCruiseData) {
-      cruises.push({ nights, price, url, departure, routeList });
+      cruises.push({
+        ship,
+        nights,
+        price,
+        url,
+        departure,
+        routeList
+      });
     } else {
       freeText.push(raw);
     }
@@ -177,8 +196,9 @@ function convertCruiseMarkdown(text) {
 
   // ---------- BUILD BLOCKS ----------
   lines.forEach(line => {
-    // START cruise block
-    if (DEPARTURE_REG.test(line)) {
+
+    // START new cruise block by Ship
+    if (SHIP_REG.test(line)) {
       saveBlock();
       inCruiseBlock = true;
       block.push(line);
@@ -187,12 +207,6 @@ function convertCruiseMarkdown(text) {
 
     if (inCruiseBlock) {
       block.push(line);
-
-      // END cruise block when link found
-      if (URL_REG.test(line)) {
-        saveBlock();
-      }
-
       return;
     }
 
@@ -214,6 +228,11 @@ function convertCruiseMarkdown(text) {
   cruises.forEach(c => {
     html += `
       <div class="cc-cru-card">
+
+        ${c.ship
+          ? `<div class="cc-cru-ship">${c.ship}</div>`
+          : ""
+        }
 
         <div class="cc-cru-title">Круиз</div>
 
@@ -258,6 +277,7 @@ function convertCruiseMarkdown(text) {
 
   return html;
 }
+
     //
     // СОЗДАНИЕ UI
     //
