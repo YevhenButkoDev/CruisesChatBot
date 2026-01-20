@@ -119,3 +119,7 @@ def _convert_to_request_params(param_name: str, values):
     else:
         # Handle single value: param=value
         return f"{param_name}={values}"
+
+
+if __name__ == "__main__":
+    print(search_cruises(port_from="Doha"))
