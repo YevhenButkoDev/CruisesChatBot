@@ -92,6 +92,20 @@
       </svg>
     `;
 
+function renderHeading(line) {
+  if (line.startsWith("### ")) {
+    return `<h3>${line.replace(/^###\s*/, "")}</h3>`;
+  }
+  if (line.startsWith("## ")) {
+    return `<h2>${line.replace(/^##\s*/, "")}</h2>`;
+  }
+  if (line.startsWith("# ")) {
+    return `<h1>${line.replace(/^#\s*/, "")}</h1>`;
+  }
+  return null;
+}
+
+
 function convertCruiseMarkdown(text) {
   if (!text) return "";
 
@@ -169,13 +183,16 @@ function convertCruiseMarkdown(text) {
   // ---------- RENDER ----------
   let html = "";
 
-  if (freeText.length) {
-    html += `
-      <div class="cc-cru-text">
-        ${freeText.join("<br>")}
-      </div>
-    `;
-  }
+if (freeText.length) {
+  html += `
+    <div class="cc-cru-text">
+      ${freeText
+        .map(line => renderHeading(line) || `<div>${line}</div>`)
+        .join("")}
+    </div>
+  `;
+}
+
 
  cruises.forEach((c, index) => {
   const num = index + 1;
