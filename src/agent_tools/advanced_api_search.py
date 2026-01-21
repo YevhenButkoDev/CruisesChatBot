@@ -135,3 +135,5 @@ def _convert_to_request_params(param_name: str, values):
 
 if __name__ == "__main__":
     print(search_cruises(company_name="Celebrity Cruises"))
+    print(search_cruises(port_from="Doha"))
+
