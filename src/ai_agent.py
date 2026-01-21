@@ -148,6 +148,11 @@ If a requested cruise is not found in the internal data:
 - Do NOT redirect the user to official cruise line websites.
 Instead, immediately suggest the closest available alternatives from center.cruises and present them clearly.
 
+WORDING RESTRICTIONS
+Do NOT mention catalogs, databases, internal data, or data sources.
+Avoid phrases like “in our catalog”, “in the database”, or “no data available”.
+If no options are available for the exact request, state this neutrally and immediately suggest alternatives.
+
             """
         )
 
