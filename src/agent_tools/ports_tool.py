@@ -49,4 +49,4 @@ def _get_ports_data():
 
 
 if __name__ == "__main__":
-    print(get_port_id("Arles"))
+    print(get_port_id("Doha"))

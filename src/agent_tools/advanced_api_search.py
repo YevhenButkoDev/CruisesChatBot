@@ -8,6 +8,8 @@ from src.agent_tools.cruise_type_tool import get_type_id
 from src.agent_tools.ports_tool import get_port_id
 from src.agent_tools.response_parser import extract_cruise_summary
 from src.agent_tools.rivers_tool import get_river_id
+from src.agent_tools.vessel_tool import get_vessel_id
+from src.agent_tools.company_tool import get_company_id
 import os
 
 
@@ -23,7 +25,9 @@ def search_cruises(
         time_from_date: str = None,
         time_to_date: str = None,
         price_min: int = None,
-        price_max: int = None
+        price_max: int = None,
+        vessel_name: str = None,
+        company_name: str = None
 ):
     """
     Search for cruises using advanced filtering criteria.
@@ -54,6 +58,8 @@ def search_cruises(
         - Format: "YYYY-MM-DD" (e.g., "2025-08-31")
     :param price_min: Minimum price in specified currency
     :param price_max: Maximum price in specified currency
+    :param vessel_name: The cruise vessel name
+    :param company_name: The company name
     :return Formatted cruise search results
     """
     search_parameters = []
@@ -95,6 +101,12 @@ def search_cruises(
     if price_max is not None:
         search_parameters.append(_convert_to_request_params("price.maxPrice", price_max))
 
+    if vessel_name is not None:
+        search_parameters.append(_convert_to_request_params("company.vessels[]", get_vessel_id(vessel_name)))
+
+    if company_name is not None:
+        search_parameters.append(_convert_to_request_params("company.companies[]", get_company_id(company_name)))
+
     search_parameters = [x for x in search_parameters if x is not None]
 
     base_url = 'https://center.cruises/api/chatbot/cruises/batch-data?'
@@ -119,3 +131,9 @@ def _convert_to_request_params(param_name: str, values):
     else:
         # Handle single value: param=value
         return f"{param_name}={values}"
+
+
+if __name__ == "__main__":
+    print(search_cruises(company_name="Celebrity Cruises"))
+    print(search_cruises(port_from="Doha"))
+

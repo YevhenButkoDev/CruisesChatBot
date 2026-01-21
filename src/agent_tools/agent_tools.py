@@ -5,6 +5,7 @@ import os
 from datetime import date
 
 from dotenv import load_dotenv
+from src.agent_tools.packages_knowledge_tool import get_packages_knowledge
 
 logger = logging.getLogger(__name__)
 
@@ -112,6 +113,12 @@ def find_cruise_info(cruise_id: str, desired_date: date = date.today()):
         logger.error(f"❌ Error finding cruise info for ID {cruise_id}: {str(e)}")
         return "no data"
 
+def get_package_info(query: str, cruise_line: str | None = None) -> str:
+    """
+    Knowledge tool: returns package/inclusion info (drinks, Wi-Fi, gratuities, included).
+    Reads from src/knowledge/packages/*.md via packages_knowledge_tool.py.
+    """
+    return get_packages_knowledge(query=query, cruise_line=cruise_line)
 
 if __name__ == "__main__":
     load_dotenv()

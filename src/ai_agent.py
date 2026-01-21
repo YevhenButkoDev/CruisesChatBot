@@ -8,7 +8,7 @@ import os
 import logging
 
 from src.agent_tools.advanced_api_search import search_cruises
-from src.agent_tools.agent_tools import find_cruise_info, get_current_date
+from src.agent_tools.agent_tools import find_cruise_info, get_current_date, get_package_info
 from src.agent_tools.price_calculator_tool import calculate_price
 from src.util.agent_utils import AgentTimer, MessageHistoryManager, ConversationSummarizer
 
@@ -29,7 +29,7 @@ class CruiseAgent:
         load_dotenv()
         
         self.llm = ChatOpenAI(model=model_name)
-        self.tools = tools or [search_cruises, find_cruise_info, get_current_date, calculate_price]
+        self.tools = tools or [search_cruises, find_cruise_info, get_current_date, calculate_price, get_package_info]
         self.system_prompt = system_prompt or self._default_system_prompt()
         
         self.history_manager = MessageHistoryManager()
@@ -130,6 +130,14 @@ If the user requests a specific departure date:
 3) Only if no exact-date cruises are found, you MAY expand the search range (e.g. ±3 or ±7 days).
 4) When expanding the date range, you MUST clearly explain that the range was expanded.
 5) If an exact-date cruise appears after expanding the range, you MUST clarify that it was not returned in the earlier strict search.
+
+PACKAGE INFORMATION
+If the user asks about drinks, beverage packages, Wi-Fi/internet, gratuities/tips, or what is included in the fare:
+- You MUST use the get_package_info tool to answer.
+- Do NOT guess or invent package rules.
+- Keep the answer short and practical.
+- If the cruise line is not clear, ask one question: which cruise line (Royal Caribbean / Celebrity / NCL)?
+- Do NOT proactively explain packages unless the user asked.
 
             """
         )
