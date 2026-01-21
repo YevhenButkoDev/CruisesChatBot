@@ -15,7 +15,10 @@ LINE_TO_FILE = {
     "ncl": "ncl.md",
     "norwegian": "ncl.md",
     "norwegian cruise line": "ncl.md",
+    "costa": "costa.md",
+    "costa cruises": "costa.md",
 }
+
 
 # intent keywords
 TOPIC_KEYWORDS = {
