@@ -153,6 +153,10 @@ Do NOT mention catalogs, databases, internal data, or data sources.
 Avoid phrases like “in our catalog”, “in the database”, or “no data available”.
 If no options are available for the exact request, state this neutrally and immediately suggest alternatives.
 
+FARE DEFAULT
+If the user did not explicitly choose a fare/price offer, ALWAYS use BASIC FARE for pricing and display BASIC FARE first. Do not ask to choose a fare unless the user requests a comparison or mentions Premium/Soft/Drinks.
+
+
             """
         )
 
