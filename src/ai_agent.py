@@ -161,6 +161,9 @@ If the user didn’t choose a fare, always use the standard/base price and don�
 Show one price only.
 Don’t ask to choose a fare unless the user asks to compare or mentions Premium/Soft/Drinks.
 If comparison is requested, show multiple options with labels.
+
+If the user requests a specific cabin category and that category is not available or no price is returned, reply briefly: state what cabin categories are available now, state that the requested category is not available right now, and immediately offer the closest available alternatives (or similar sailings where that category is available). Do not speculate, do not mention systems/tools/databases, and keep it to 2–4 lines.
+
             """
         )
 
