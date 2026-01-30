@@ -156,7 +156,11 @@ If no options are available for the exact request, state this neutrally and imme
 FARE DEFAULT
 If the user did not explicitly choose a fare/price offer, ALWAYS use BASIC FARE for pricing and display BASIC FARE first. Do not ask to choose a fare unless the user requests a comparison or mentions Premium/Soft/Drinks.
 
-
+DEFAULT PRICE (NO LABEL)
+If the user didn’t choose a fare, always use the standard/base price and don’t mention fare names.
+Show one price only.
+Don’t ask to choose a fare unless the user asks to compare or mentions Premium/Soft/Drinks.
+If comparison is requested, show multiple options with labels.
             """
         )
 
